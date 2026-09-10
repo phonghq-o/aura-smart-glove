@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA — Wear the Voice. Hear the World.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            brand: ['Montserrat', 'sans-serif'],
+            mono: ['Space Mono', 'monospace'],
+          },
+          colors: {
+            aura: {
+              cyan: '#00F0FF',
+              blue: '#0066FF',
+              indigo: '#4F46E5',
+              dark: '#05070D',
+              card: '#0D111C',
+              border: '#1E2638'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #05070D;
+      color: #F1F5F9;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+    .glow-cyan {
+      box-shadow: 0 0 50px -10px rgba(0, 240, 255, 0.25);
+    }
+    .glow-blue {
+      box-shadow: 0 0 70px -15px rgba(0, 102, 255, 0.35);
+    }
+    .mesh-gradient {
+      background: radial-gradient(circle at 50% 0%, rgba(0, 102, 255, 0.18) 0%, transparent 60%),
+                  radial-gradient(circle at 85% 30%, rgba(79, 70, 229, 0.15) 0%, transparent 50%),
+                  radial-gradient(circle at 15% 60%, rgba(0, 240, 255, 0.1) 0%, transparent 50%);
+    }
+    .glass-card {
+      background: rgba(13, 17, 28, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card:hover {
+      border-color: rgba(0, 240, 255, 0.3);
+    }
+    .pulse-ring {
+      animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.04); }
+    }
+  </style>
+</head>
+<body class="selection:bg-aura-cyan selection:text-black">
+
+  <!-- TOP STATUS / COMPETITION BANNER -->
+  <div class="border-b border-aura-border bg-[#070A12] text-xs py-2 px-4">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-aura-cyan animate-ping"></span>
+        <span class="font-mono text-slate-300">BACH KHOA INNOVATION 2026</span>
+        <span class="text-slate-600">•</span>
+        <span class="text-slate-400">University Category Showcase</span>
+      </div>
+      <div class="flex items-center gap-4 text-slate-400 font-mono text-[11px]">
+        <span>Hardware: ESP32-S3 + AMOLED</span>
+        <span class="text-slate-600">•</span>
+        <span>AI: TinyML + Google Gemini</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="sticky top-0 z-50 glass-card border-b border-aura-border/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <img src="./website_assets/logo_white.png" alt="AURA Logo" class="h-8 w-auto transition-transform group-hover:scale-105">
+      </a>
+
+      <!-- Menu links -->
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="#overview" class="hover:text-aura-cyan transition-colors">Overview</a>
+        <a href="#hardware" class="hover:text-aura-cyan transition-colors">Hardware Anatomy</a>
+        <a href="#interactive-demo" class="hover:text-aura-cyan transition-colors flex items-center gap-1.5 text-aura-cyan">
+          <span class="w-1.5 h-1.5 rounded-full bg-aura-cyan"></span>
+          Live Demo
+        </a>
+        <a href="#two-way" class="hover:text-aura-cyan transition-colors">2-Way Flow</a>
+        <a href="#specs" class="hover:text-aura-cyan transition-colors">Specs</a>
+        <a href="#gallery" class="hover:text-aura-cyan transition-colors">Gallery</a>
+      </div>
+
+      <!-- Action Button -->
+      <div class="flex items-center gap-3">
+        <a href="#interactive-demo" class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold bg-white text-black hover:bg-aura-cyan hover:shadow-lg transition-all duration-300">
+          <span>Test Gesture AI</span>
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section id="overview" class="relative pt-12 pb-24 lg:pt-20 lg:pb-32 mesh-gradient overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto space-y-6">
+        
+        <!-- Category Badge -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-semibold bg-aura-cyan/10 text-aura-cyan border border-aura-cyan/30">
+          <span>★ THE TWO-WAY SIGN LANGUAGE SMART GLOVE</span>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black font-brand tracking-tight text-white leading-none">
+          WEAR THE VOICE. <br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-aura-cyan via-blue-400 to-indigo-400">
+            HEAR THE WORLD.
+          </span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-base sm:text-lg text-slate-300 font-normal leading-relaxed max-w-2xl mx-auto">
+          <strong class="text-white">A.U.R.A.</strong> is an intelligent bionic wearable empowering the Deaf & Hard-of-Hearing community. Powered by on-device TinyML gesture recognition and conversational Gemini AI, it turns silence into natural voice and incoming speech into vibrant visual expressions.
+        </p>
+
+        <!-- CTA Row -->
+        <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+          <a href="#interactive-demo" class="px-7 py-3.5 rounded-full font-semibold text-sm bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-lg hover:shadow-cyan-500/30 hover:scale-105 transition-all">
+            Try Virtual Prototype Demo
+          </a>
+          <a href="#hardware" class="px-7 py-3.5 rounded-full font-semibold text-sm glass-card text-slate-300 hover:text-white hover:border-slate-500 transition-all">
+            Inspect Hardware Specs
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Hero Product Spotlight Card -->
+      <div class="mt-16 relative max-w-5xl mx-auto">
+        <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-aura-cyan/30 via-blue-600/30 to-indigo-600/30 blur-2xl opacity-60"></div>
+        
+        <div class="relative glass-card rounded-3xl border border-aura-border p-6 sm:p-10 overflow-hidden glow-blue">
+          
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <!-- Left: High-Def Real Glove Prototype Image -->
+            <div class="lg:col-span-7 flex flex-col items-center">
+              <div class="relative group rounded-2xl overflow-hidden bg-gradient-to-b from-[#111624] to-[#090D17] border border-slate-700/60 p-4 shadow-2xl">
+                <img src="./website_assets/glove_prototype.png" alt="AURA Smart Glove Prototype" class="max-h-[460px] w-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] transition-transform duration-500 group-hover:scale-105">
+                
+                <!-- Sensor Hotspot 1: Flex Ribs -->
+                <div class="absolute top-12 left-16 flex items-center gap-2">
+                  <span class="relative flex h-3.5 w-3.5">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-aura-cyan opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-aura-cyan"></span>
+                  </span>
+                  <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-black/80 text-aura-cyan border border-aura-cyan/40">5x Flex Ribs</span>
+                </div>
+
+                <!-- Sensor Hotspot 2: AMOLED Display -->
+                <div class="absolute bottom-20 right-14 flex items-center gap-2">
+                  <span class="relative flex h-3.5 w-3.5">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-indigo-500"></span>
+                  </span>
+                  <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-black/80 text-indigo-300 border border-indigo-500/40">AMOLED AI Hub</span>
+                </div>
+              </div>
+              <p class="text-xs text-slate-400 font-mono mt-3">Actual Prototype • Dual ESP32 + AMOLED Architecture</p>
+            </div>
+
+            <!-- Right: Feature Quick-Bites -->
+            <div class="lg:col-span-5 space-y-6">
+              
+              <div class="space-y-1">
+                <span class="text-xs font-mono text-aura-cyan font-semibold uppercase tracking-wider">Two-Way Synergy</span>
+                <h3 class="text-2xl font-bold text-white">Full-Duplex Communication</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                  No awkward phone typing. AURA bridges conversation naturally through touch, sound, text, and visual sign avatars.
+                </p>
+              </div>
+
+              <!-- Feature 1 -->
+              <div class="flex items-start gap-3.5 p-3.5 rounded-xl bg-slate-900/60 border border-slate-800">
+                <div class="p-2.5 rounded-lg bg-blue-500/10 text-blue-400 text-lg">⚡</div>
+                <div>
+                  <div class="text-sm font-semibold text-white">TinyML On-Device (0ms Latency)</div>
+                  <div class="text-xs text-slate-400">C-LSTM QAT neural net runs 100% offline on ESP32-S3. Instant gesture recognition anywhere.</div>
+                </div>
+              </div>
+
+              <!-- Feature 2 -->
+              <div class="flex items-start gap-3.5 p-3.5 rounded-xl bg-slate-900/60 border border-slate-800">
+                <div class="p-2.5 rounded-lg bg-cyan-500/10 text-cyan-400 text-lg">🤖</div>
+                <div>
+                  <div class="text-sm font-semibold text-white">Gemini Conversational AI Chat</div>
+                  <div class="text-xs text-slate-400">Expands raw gesture tokens into complete, empathetic, polite sentences tailored to context.</div>
+                </div>
+              </div>
+
+              <!-- Feature 3 -->
+              <div class="flex items-start gap-3.5 p-3.5 rounded-xl bg-slate-900/60 border border-slate-800">
+                <div class="p-2.5 rounded-lg bg-indigo-500/10 text-indigo-400 text-lg">👁️</div>
+                <div>
+                  <div class="text-sm font-semibold text-white">AMOLED & 3D Sign Avatars</div>
+                  <div class="text-xs text-slate-400">Translates hearing speech back into visual text and sign animations right on the wrist.</div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- LIVE INTERACTIVE DEMO SANDBOX (THE GESTURE STUDIO) -->
+  <section id="interactive-demo" class="py-20 bg-[#070A14] border-y border-aura-border relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto space-y-3 mb-14">
+        <span class="text-xs font-mono text-aura-cyan uppercase tracking-widest font-semibold">Interactive Prototype Studio</span>
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-white">Experience AURA in Action</h2>
+        <p class="text-sm text-slate-400">
+          Click the gestures below to simulate hand signs recognized by the glove's flex sensors. Observe how the AMOLED screen and AI Chat convert fragmented signs into fluent, spoken speech.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left: The 10 Gesture Buttons Matrix -->
+        <div class="lg:col-span-7 glass-card rounded-2xl p-6 sm:p-8 space-y-6">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+            <div>
+              <h3 class="text-base font-bold text-white">Available Sensor Gestures</h3>
+              <p class="text-xs text-slate-400 font-mono">10 Trained Model Classes (C-LSTM QAT)</p>
+            </div>
+            <button onclick="clearGestureBuffer()" class="text-xs font-mono px-3 py-1.5 rounded-md bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 transition">
+              Reset Buffer ↺
+            </button>
+          </div>
+
+          <!-- Gesture Chips Grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            
+            <button onclick="addGesture('Hello', '👋')" class="gesture-btn flex items-center gap-2.5 p-3 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-aura-cyan hover:bg-slate-800/80 transition text-left group">
+              <span class="text-2xl">👋</span>
+              <div>
+                <div class="text-xs font-bold text-white group-hover:text-aura-cyan">3_Hello</div>
+                <div class="text-[10px] text-slate-400">Xin chào</div>
+              </div>
+            </button>
+
+            <button onclick="addGesture('I', '👤')" class="gesture-btn flex items-center gap-2.5 p-3 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-aura-cyan hover:bg-slate-800/80 transition text-left group">
+              <span class="text-2xl">👤</span>
+              <div>
+                <div class="text-xs font-bold text-white group-hover:text-aura-cyan">4_I</div>
+                <div class="text-[10px] text-slate-400">Tôi / Mình</div>
+              </div>
+            </button>
+
+            <button onclick="addGesture('Meet', '🤝')" class="gesture-btn flex items-center gap-2.5 p-3 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-aura-cyan hover:bg-slate-800/80 transition text-left group">
+              <span class="text-2xl">🤝</span>
+              <div>
+                <div class="text-xs font-bold text-white group-hover:text-aura-cyan">5_Meet</div>
+                <div class="text-[10px] text-slate-400">Gặp / Làm quen</div>
+              </div>
+            </button>
+
+            <button onclick="addGesture('You', '👉')" class="gesture-btn flex items-center gap-2.5 p-3 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-aura-cyan hover:bg-slate-800/80 transition text-left group">
+              <span class="text-2xl">👉</span>
+              <div>
+                <div class="text-xs font-bold text-white group-hover:text-aura-cyan">7_You</div>
+                <div class="text-[10px] text-slate-400">Bạn / Cậu</div>
+              </div>
+            </button>
+
+            <button onclick="addGesture('Happy', '😄')" class="gesture-btn flex items-center gap-2.5 p-3 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-aura-cyan hover:bg-slate-800/80 transition text-left group">
+              <span class="text-2xl">😄</span>
+              <div>
+                <div class="text-xs font-bold text-white group-hover:text-aura-cyan">2_Happy</div>
+                <div class="text-[10px] text-slate-400">Vui vẻ</div>
+              </div>
+            </button>
+
+            <button onclick="addGesture('Name', '🏷️')" class="gesture-btn flex items-center gap-2.5 p-3 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-aura-cyan hover:bg-slate-800/80 transition text-left group">
+              <span class="text-2xl">🏷️</span>
+              <div>
+                <div class="text-xs font-bold text-white group-hover:text-aura-cyan">6_Name</div>
+                <div class="text-[10px] text-slate-400">Tên</div>
+              </div>
+            </button>
+
+            <button onclick="addGesture('Thank_you', '🙏')" class="gesture-btn flex items-center gap-2.5 p-3 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-aura-cyan hover:bg-slate-800/80 transition text-left group">
+              <span class="text-2xl">🙏</span>
+              <div>
+                <div class="text-xs font-bold text-white group-hover:text-aura-cyan">8_Thank_you</div>
+                <div class="text-[10px] text-slate-400">Cảm ơn</div>
+              </div>
+            </button>
+
+            <button onclick="addGesture('Good_bye', '🙋')" class="gesture-btn flex items-center gap-2.5 p-3 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-aura-cyan hover:bg-slate-800/80 transition text-left group">
+              <span class="text-2xl">🙋</span>
+              <div>
+                <div class="text-xs font-bold text-white group-hover:text-aura-cyan">9_Good_bye</div>
+                <div class="text-[10px] text-slate-400">Tạm biệt</div>
+              </div>
+            </button>
+
+            <button onclick="triggerHoldGesture()" class="gesture-btn flex items-center gap-2.5 p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 hover:bg-amber-500/20 transition text-left group">
+              <span class="text-2xl">🛑</span>
+              <div>
+                <div class="text-xs font-bold text-amber-300">1_Hold (Enter)</div>
+                <div class="text-[10px] text-amber-200/70">Gửi câu lên AI</div>
+              </div>
+            </button>
+
+          </div>
+
+          <!-- Live Input Buffer -->
+          <div class="p-4 rounded-xl bg-black/60 border border-slate-800 space-y-2">
+            <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span>RAW SENSOR TOKEN STREAM:</span>
+              <span id="tokenCount">0 tokens</span>
+            </div>
+            <div id="tokenStream" class="min-h-[38px] flex flex-wrap items-center gap-2 text-sm font-mono text-aura-cyan">
+              <span class="text-slate-500 italic text-xs">Tap gestures above to compose sign sequence...</span>
+            </div>
+          </div>
+
+          <!-- Preset Scenarios -->
+          <div class="space-y-2">
+            <div class="text-xs font-mono text-slate-400 uppercase">Quick Test Scenarios:</div>
+            <div class="flex flex-wrap gap-2">
+              <button onclick="loadScenario(['Hello', 'I', 'Meet', 'You', 'Happy'])" class="px-3 py-1.5 rounded-lg text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 transition">
+                🤝 Scenario 1: Icebreaker Greeting
+              </button>
+              <button onclick="loadScenario(['You', 'Name'])" class="px-3 py-1.5 rounded-lg text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 transition">
+                ❓ Scenario 2: Ask for Name
+              </button>
+              <button onclick="loadScenario(['Thank_you', 'Good_bye'])" class="px-3 py-1.5 rounded-lg text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 transition">
+                👋 Scenario 3: Polite Farewell
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: Interactive Virtual LilyGO AMOLED Screen -->
+        <div class="lg:col-span-5 flex flex-col items-center">
+          
+          <div class="relative w-full max-w-[360px] rounded-[44px] bg-[#0A0E1A] p-4 border-4 border-slate-700 shadow-2xl glow-cyan">
+            
+            <!-- Screen Header (Status bar) -->
+            <div class="rounded-[36px] bg-black p-5 border border-slate-800/80 min-h-[440px] flex flex-col justify-between text-white font-sans">
+              
+              <!-- Status bar -->
+              <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 border-b border-slate-900 pb-2">
+                <div class="flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                  <span>AURA OS</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span>BLE ●</span>
+                  <span>100% 🔋</span>
+                </div>
+              </div>
+
+              <!-- Screen Body -->
+              <div class="py-4 space-y-4 flex-1">
+                
+                <!-- Avatar / Mode Badge -->
+                <div class="flex items-center justify-between">
+                  <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 border border-blue-500/30">
+                    GEMINI CHAT ACTIVE
+                  </span>
+                  <span id="aiThinking" class="hidden text-[10px] font-mono text-aura-cyan animate-pulse">
+                    AI Generating...
+                  </span>
+                </div>
+
+                <!-- Input Signs Bubble -->
+                <div class="space-y-1">
+                  <span class="text-[10px] font-mono text-slate-500 uppercase">Input Gestures:</span>
+                  <div id="amoledTokens" class="p-2.5 rounded-xl bg-slate-900/90 text-xs font-mono text-slate-300 min-h-[32px]">
+                    Waiting for input...
+                  </div>
+                </div>
+
+                <!-- Output Expanded Speech Bubble -->
+                <div class="space-y-1">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[10px] font-mono text-cyan-400 uppercase">Expanded Speech (Voice):</span>
+                    <button id="btnSpeakAudio" onclick="speakCurrentText()" class="hidden text-[10px] font-mono text-emerald-400 hover:underline flex items-center gap-1">
+                      <span>🔊 Read Out Loud</span>
+                    </button>
+                  </div>
+                  <div id="amoledSpeech" class="p-3.5 rounded-xl bg-gradient-to-br from-blue-950/60 to-indigo-950/60 border border-blue-500/30 text-xs sm:text-sm text-cyan-100 font-medium leading-relaxed min-h-[90px]">
+                    "Press a scenario or combine gestures and tap 'Hold' to test real-time AI speech generation."
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Screen Footer Controls -->
+              <div class="border-t border-slate-900 pt-3 space-y-2">
+                <div class="flex items-center justify-between text-[10px] font-mono text-slate-400">
+                  <span>Tone: <strong class="text-white" id="currentToneLabel">Friendly</strong></span>
+                  <div class="flex gap-1">
+                    <button onclick="setTone('friendly')" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-white">Casual</button>
+                    <button onclick="setTone('formal')" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-white">Formal</button>
+                    <button onclick="setTone('english')" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-white">EN</button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <p class="text-xs text-slate-400 font-mono mt-3">Simulated 1.9" AMOLED (368 × 448 px) Display Interface</p>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HARDWARE ANATOMY (BREAKDOWN OF THE PROTOTYPE) -->
+  <section id="hardware" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto space-y-3 mb-16">
+      <span class="text-xs font-mono text-aura-cyan uppercase tracking-widest font-semibold">Physical Architecture</span>
+      <h2 class="text-3xl sm:text-5xl font-black text-white">Engineering Behind the Glove</h2>
+      <p class="text-sm text-slate-400">
+        Engineered specifically for low power consumption, ergonomic all-day wearable comfort, and deterministic latency.
+      </p>
+    </div>
+
+    <!-- 3-Column Hardware Modules Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <!-- Module 1: Sensing -->
+      <div class="glass-card rounded-2xl p-7 space-y-4 border border-slate-800 hover:border-aura-cyan/40 transition">
+        <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 text-xl font-bold">
+          01
+        </div>
+        <h3 class="text-lg font-bold text-white">Bionic Flex Sensor Array</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          5 high-durability bidirectional flex sensor strips mounted on custom 3D-printed articulated phalange rings. Accurately measures finger flexion and extension across 50 FPS sampling window.
+        </p>
+        <ul class="text-xs text-slate-300 font-mono space-y-1.5 pt-2 border-t border-slate-800">
+          <li class="flex items-center gap-2"><span class="text-aura-cyan">✓</span> 5x Dual-Axis Resistance Ribs</li>
+          <li class="flex items-center gap-2"><span class="text-aura-cyan">✓</span> QMI8658 6-Axis IMU (Wrist Motion)</li>
+          <li class="flex items-center gap-2"><span class="text-aura-cyan">✓</span> Flexible Silicone Ring Guides</li>
+        </ul>
+      </div>
+
+      <!-- Module 2: Embedded Edge Compute -->
+      <div class="glass-card rounded-2xl p-7 space-y-4 border border-slate-800 hover:border-aura-cyan/40 transition">
+        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 text-xl font-bold">
+          02
+        </div>
+        <h3 class="text-lg font-bold text-white">Dual-Core Edge TinyML Hub</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Driven by Espressif ESP32-S3 Xtensa LX7 dual-core processor with vectorized instructions. Executes a quantized C-LSTM neural network directly in local SRAM with 0% cloud dependency for gesture detection.
+        </p>
+        <ul class="text-xs text-slate-300 font-mono space-y-1.5 pt-2 border-t border-slate-800">
+          <li class="flex items-center gap-2"><span class="text-aura-cyan">✓</span> 240 MHz Dual-Core Processing</li>
+          <li class="flex items-center gap-2"><span class="text-aura-cyan">✓</span> Int8 Quantized C-LSTM Model</li>
+          <li class="flex items-center gap-2"><span class="text-aura-cyan">✓</span> Inference Latency &lt; 15 ms</li>
+        </ul>
+      </div>
+
+      <!-- Module 3: Two-Way Interaction Interface -->
+      <div class="glass-card rounded-2xl p-7 space-y-4 border border-slate-800 hover:border-aura-cyan/40 transition">
+        <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 text-xl font-bold">
+          03
+        </div>
+        <h3 class="text-lg font-bold text-white">AMOLED & Full-Duplex Audio</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          LilyGO 1.9" AMOLED high-contrast touch screen paired with an ES8311 I2S audio codec, onboard microphone, and compact speaker for direct vocal conversation with anyone.
+        </p>
+        <ul class="text-xs text-slate-300 font-mono space-y-1.5 pt-2 border-t border-slate-800">
+          <li class="flex items-center gap-2"><span class="text-aura-cyan">✓</span> 368 × 448 Retina AMOLED Screen</li>
+          <li class="flex items-center gap-2"><span class="text-aura-cyan">✓</span> ES8311 24-bit Hi-Fi Voice I2S Codec</li>
+          <li class="flex items-center gap-2"><span class="text-aura-cyan">✓</span> MicroSD Slot for 3D Sign Avatars</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TWO-WAY INTERACTIVE FLOW -->
+  <section id="two-way" class="py-20 bg-[#070912] border-t border-aura-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto space-y-3 mb-14">
+        <span class="text-xs font-mono text-aura-cyan uppercase tracking-widest font-semibold">Bilateral Interaction</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">How Two-Way Communication Works</h2>
+        <p class="text-xs sm:text-sm text-slate-400">
+          True accessibility requires dialogue, not a one-way monologue. AURA bridges both directions seamlessly.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Direction 1 -->
+        <div class="glass-card rounded-2xl p-7 space-y-5 border-l-4 border-l-aura-cyan">
+          <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded text-[11px] font-mono bg-cyan-500/10 text-cyan-400 font-semibold">
+            DIRECTION 1: I SIGN (TÔI KÝ HIỆU)
+          </div>
+          <h3 class="text-xl font-bold text-white">From Hand Motion to Natural Voice</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            The user signs with the glove. Flex sensors and IMU detect angular deflection in real-time. The on-device TinyML model classifies the gesture, while Gemini AI synthesizes a fluid, empathetic sentence broadcasted via the wrist speaker.
+          </p>
+          <div class="space-y-2 pt-2 text-xs font-mono text-slate-300">
+            <div class="p-2.5 rounded bg-black/50 border border-slate-800 flex items-center justify-between">
+              <span>1. Finger Flex Sensors</span>
+              <span class="text-aura-cyan">50 FPS Raw Data</span>
+            </div>
+            <div class="p-2.5 rounded bg-black/50 border border-slate-800 flex items-center justify-between">
+              <span>2. C-LSTM On-Device TinyML</span>
+              <span class="text-aura-cyan">Offline &lt;15ms</span>
+            </div>
+            <div class="p-2.5 rounded bg-black/50 border border-slate-800 flex items-center justify-between">
+              <span>3. Gemini AI Sentence Synthesizer</span>
+              <span class="text-aura-cyan">Contextual Speech</span>
+            </div>
+            <div class="p-2.5 rounded bg-black/50 border border-slate-800 flex items-center justify-between">
+              <span>4. ES8311 Audio Speaker</span>
+              <span class="text-aura-cyan">Vocalized Speech</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Direction 2 -->
+        <div class="glass-card rounded-2xl p-7 space-y-5 border-l-4 border-l-indigo-500">
+          <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded text-[11px] font-mono bg-indigo-500/10 text-indigo-400 font-semibold">
+            DIRECTION 2: I LISTEN (TÔI LẮNG NGHE)
+          </div>
+          <h3 class="text-xl font-bold text-white">From Spoken Words to Sign Avatars</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            The hearing partner speaks into the AURA wrist microphone. Speech is transcribed and simplified by Gemini STT in real-time, then displayed as clear text and 3D animated sign language avatar animations on the AMOLED screen.
+          </p>
+          <div class="space-y-2 pt-2 text-xs font-mono text-slate-300">
+            <div class="p-2.5 rounded bg-black/50 border border-slate-800 flex items-center justify-between">
+              <span>1. Wrist Microphone (ES8311)</span>
+              <span class="text-indigo-400">16kHz PCM Audio</span>
+            </div>
+            <div class="p-2.5 rounded bg-black/50 border border-slate-800 flex items-center justify-between">
+              <span>2. Cloud STT & Text Simplifier</span>
+              <span class="text-indigo-400">Gemini 1.5 Flash</span>
+            </div>
+            <div class="p-2.5 rounded bg-black/50 border border-slate-800 flex items-center justify-between">
+              <span>3. MicroSD 3D Sign Avatars</span>
+              <span class="text-indigo-400">30-60 FPS Video</span>
+            </div>
+            <div class="p-2.5 rounded bg-black/50 border border-slate-800 flex items-center justify-between">
+              <span>4. High-Contrast AMOLED Display</span>
+              <span class="text-indigo-400">Visual Understanding</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH SPECS BENTO GRID -->
+  <section id="specs" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto space-y-3 mb-16">
+      <span class="text-xs font-mono text-aura-cyan uppercase tracking-widest font-semibold">System Metrics</span>
+      <h2 class="text-3xl sm:text-5xl font-black text-white">Technical Specifications</h2>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="glass-card p-6 rounded-2xl text-center space-y-2 border border-slate-800">
+        <div class="text-3xl sm:text-4xl font-black font-brand text-aura-cyan">&lt; 15ms</div>
+        <div class="text-xs font-semibold text-white">Edge Inference Time</div>
+        <div class="text-[11px] text-slate-400">On-device C-LSTM QAT</div>
+      </div>
+
+      <div class="glass-card p-6 rounded-2xl text-center space-y-2 border border-slate-800">
+        <div class="text-3xl sm:text-4xl font-black font-brand text-blue-400">98.4%</div>
+        <div class="text-xs font-semibold text-white">Gesture Accuracy</div>
+        <div class="text-[11px] text-slate-400">Validated across 10 classes</div>
+      </div>
+
+      <div class="glass-card p-6 rounded-2xl text-center space-y-2 border border-slate-800">
+        <div class="text-3xl sm:text-4xl font-black font-brand text-indigo-400">~135g</div>
+        <div class="text-xs font-semibold text-white">Ultra-Lightweight</div>
+        <div class="text-[11px] text-slate-400">All-day wearable comfort</div>
+      </div>
+
+      <div class="glass-card p-6 rounded-2xl text-center space-y-2 border border-slate-800">
+        <div class="text-3xl sm:text-4xl font-black font-brand text-emerald-400">8+ Hours</div>
+        <div class="text-xs font-semibold text-white">Continuous Battery Life</div>
+        <div class="text-[11px] text-slate-400">AXP2101 PMU + 1200mAh LiPo</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY & ASSET SHOWCASE -->
+  <section id="gallery" class="py-20 bg-[#070A12] border-t border-aura-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <span class="text-xs font-mono text-aura-cyan uppercase tracking-widest font-semibold">Visual Archives</span>
+          <h2 class="text-3xl font-extrabold text-white">Project Showcase & Renders</h2>
+          <p class="text-xs text-slate-400 mt-1">Photos and design assets from the AURA project development lifecycle</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Item 1: AMOLED Interface -->
+        <div class="group relative rounded-2xl overflow-hidden glass-card border border-slate-800 p-4 space-y-3">
+          <div class="h-64 rounded-xl overflow-hidden bg-black flex items-center justify-center p-2">
+            <img src="./website_assets/amoled_ui.png" alt="AMOLED AI Chat Interface" class="h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105">
+          </div>
+          <div class="flex items-center justify-between text-xs">
+            <span class="font-semibold text-white">AMOLED Chat & Sign UI</span>
+            <span class="font-mono text-slate-400 text-[11px]">LilyGO S3 Display</span>
+          </div>
+        </div>
+
+        <!-- Item 2: Full System Presentation -->
+        <div class="group relative rounded-2xl overflow-hidden glass-card border border-slate-800 p-4 space-y-3">
+          <div class="h-64 rounded-xl overflow-hidden bg-slate-950 flex items-center justify-center">
+            <img src="./website_assets/presentation_full.jpg" alt="Research Presentation Slide" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+          </div>
+          <div class="flex items-center justify-between text-xs">
+            <span class="font-semibold text-white">System Workflow & Architecture</span>
+            <span class="font-mono text-slate-400 text-[11px]">Research Slides</span>
+          </div>
+        </div>
+
+        <!-- Item 3: Brand Moodboard -->
+        <div class="group relative rounded-2xl overflow-hidden glass-card border border-slate-800 p-4 space-y-3">
+          <div class="h-64 rounded-xl overflow-hidden bg-slate-950 flex items-center justify-center">
+            <img src="./website_assets/moodboard.png" alt="AURA Brand Moodboard" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+          </div>
+          <div class="flex items-center justify-between text-xs">
+            <span class="font-semibold text-white">Brand Identity System</span>
+            <span class="font-mono text-slate-400 text-[11px]">Red Dot / Behance Layout</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-aura-border bg-[#04060B] py-14 text-slate-400 text-xs font-sans">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <div class="flex items-center gap-4">
+        <img src="./website_assets/logo_white.png" alt="AURA" class="h-7 w-auto">
+        <span class="text-slate-600">|</span>
+        <span class="text-slate-400">Bach Khoa Innovation 2026 (BKI26)</span>
+      </div>
+
+      <div class="text-center md:text-right space-y-1">
+        <p class="text-slate-300 font-medium">Ho Chi Minh City University of Technology (HCMUT - VNU-HCM)</p>
+        <p class="text-slate-500 font-mono text-[11px]">Designed with passion by Team AURA • All rights reserved 2026</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- SCRIPT FOR INTERACTIVE DEMO -->
+  <script>
+    let currentTokens = [];
+    let currentTone = 'friendly';
+
+    const scenarioResponses = {
+      friendly: {
+        "Hello I Meet You Happy": "Xin chào bạn! Mình là người khiếm thính dùng găng tay AURA, rất vui và vinh hạnh được làm quen với bạn hôm nay!",
+        "You Name": "Cho mình hỏi bạn tên là gì thế? Chúng mình làm quen nhé!",
+        "Thank_you Good_bye": "Cảm ơn bạn rất nhiều vì cuộc trò chuyện thú vị này! Tạm biệt và hẹn gặp lại bạn nha!",
+        "I Happy": "Hôm nay tâm trạng mình rất vui vẻ và tràn đầy năng lượng!",
+        "Hello": "Chào bạn! Mình có thể giúp gì cho bạn hôm nay không?",
+        "Thank_you": "Cảm ơn bạn rất nhiều nhé!",
+        "Good_bye": "Tạm biệt bạn, chúc bạn một ngày tuyệt vời!"
+      },
+      formal: {
+        "Hello I Meet You Happy": "Kính chào quý vị, tôi rất vinh hạnh khi được diện kiến và kết nối cùng quý vị hôm nay.",
+        "You Name": "Xin phép được kính hỏi quý danh của quý vị ạ?",
+        "Thank_you Good_bye": "Xin chân thành cảm ơn quý vị đã dành thời gian. Kính chúc quý vị sức khỏe và xin phép chào tạm biệt.",
+        "I Happy": "Tôi cảm thấy rất hài lòng và tích cực với kết quả công việc hôm nay.",
+        "Hello": "Kính chào quý vị, rất hân hạnh được hỗ trợ.",
+        "Thank_you": "Xin chân thành cảm ơn sự hỗ trợ của quý vị.",
+        "Good_bye": "Xin trân trọng kính chào tạm biệt."
+      },
+      english: {
+        "Hello I Meet You Happy": "Hello there! I am using the AURA smart glove. It is truly a pleasure to meet you today!",
+        "You Name": "May I ask what your name is? Nice to meet you!",
+        "Thank_you Good_bye": "Thank you so much for this wonderful conversation. Have a great day and goodbye!",
+        "I Happy": "I am feeling very happy and energetic today!",
+        "Hello": "Hello! How can I assist you today?",
+        "Thank_you": "Thank you very much!",
+        "Good_bye": "Goodbye, take care and see you again soon!"
+      }
+    };
+
+    function addGesture(label, icon) {
+      currentTokens.push(label);
+      updateTokenUI();
+    }
+
+    function clearGestureBuffer() {
+      currentTokens = [];
+      updateTokenUI();
+      document.getElementById('amoledTokens').innerText = "Waiting for input...";
+      document.getElementById('amoledSpeech').innerText = ""Buffer reset. Click gestures or choose a scenario."";
+      document.getElementById('btnSpeakAudio').classList.add('hidden');
+    }
+
+    function loadScenario(tokens) {
+      currentTokens = [...tokens];
+      updateTokenUI();
+      triggerHoldGesture();
+    }
+
+    function updateTokenUI() {
+      const container = document.getElementById('tokenStream');
+      const countEl = document.getElementById('tokenCount');
+      countEl.innerText = currentTokens.length + " tokens";
+
+      if (currentTokens.length === 0) {
+        container.innerHTML = '<span class="text-slate-500 italic text-xs">Tap gestures above to compose sign sequence...</span>';
+      } else {
+        container.innerHTML = currentTokens.map(t => 
+          `<span class="px-2.5 py-1 rounded bg-slate-800 text-aura-cyan border border-aura-cyan/30 text-xs font-mono font-bold">${t}</span>`
+        ).join('');
+      }
+    }
+
+    function triggerHoldGesture() {
+      if (currentTokens.length === 0) {
+        alert("Please select at least one gesture first!");
+        return;
+      }
+
+      const key = currentTokens.join(" ");
+      document.getElementById('amoledTokens').innerText = key;
+
+      // Simulate Gemini AI Streaming thinking
+      const thinkingEl = document.getElementById('aiThinking');
+      const speechEl = document.getElementById('amoledSpeech');
+      const audioBtn = document.getElementById('btnSpeakAudio');
+
+      thinkingEl.classList.remove('hidden');
+      speechEl.innerText = "Gemini AI is analyzing gesture context...";
+
+      setTimeout(() => {
+        thinkingEl.classList.add('hidden');
+        const toneDict = scenarioResponses[currentTone] || scenarioResponses.friendly;
+        let result = toneDict[key];
+        
+        if (!result) {
+          if (currentTone === 'english') {
+            result = "Recognized: [" + key + "]. I am communicating with you through the AURA AI smart glove!";
+          } else {
+            result = "Nhận diện: [" + key + "]. Tôi đang giao tiếp cùng bạn thông qua găng tay thông minh AURA!";
+          }
+        }
+
+        speechEl.innerText = '"' + result + '"';
+        audioBtn.classList.remove('hidden');
+
+        // Automatically speak out loud!
+        speakText(result, currentTone === 'english' ? 'en-US' : 'vi-VN');
+      }, 500);
+    }
+
+    function setTone(tone) {
+      currentTone = tone;
+      const labels = { friendly: 'Casual (Bạn bè)', formal: 'Formal (Lịch sự)', english: 'English' };
+      document.getElementById('currentToneLabel').innerText = labels[tone];
+      if (currentTokens.length > 0) {
+        triggerHoldGesture();
+      }
+    }
+
+    function speakCurrentText() {
+      const text = document.getElementById('amoledSpeech').innerText.replace(/^"|"$/g, '');
+      speakText(text, currentTone === 'english' ? 'en-US' : 'vi-VN');
+    }
+
+    function speakText(text, lang) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = lang;
+        utterance.rate = 1.0;
+        window.speechSynthesis.speak(utterance);
+      }
+    }
+  </script>
+
+</body>
+</html>
