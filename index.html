@@ -118,19 +118,25 @@
   <!-- ================================================================= -->
   <!-- 1. TOP COMPETITION BANNER (BKI26) -->
   <!-- ================================================================= -->
-  <header class="border-b border-white/[0.07] bg-[#06080F]/90 backdrop-blur-md text-xs py-2.5 px-4 sm:px-8 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3 font-mono text-[11px]">
-      <div class="flex items-center gap-3">
-        <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 border border-sky-500/20 font-bold">
-          <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-ping"></span>
+  <header class="border-b border-white/[0.08] bg-[#070E1A]/95 backdrop-blur-md py-3.5 px-4 sm:px-8 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center gap-3 sm:gap-4 flex-wrap">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-sky-400 text-slate-950 font-display font-black text-xs sm:text-sm tracking-wider shadow-[0_0_15px_rgba(56,189,248,0.4)]">
+          <span class="w-2 h-2 rounded-full bg-slate-950 animate-ping"></span>
           BKI26
         </span>
-        <span class="text-slate-200 tracking-wider font-semibold">BACH KHOA INNOVATION 2026</span>
-        <span class="text-slate-600 hidden sm:inline">/</span>
-        <span class="text-slate-400 hidden sm:inline">University Division</span>
+        <span class="font-display font-black text-white text-base sm:text-xl tracking-tight">
+          BACH KHOA INNOVATION 2026
+        </span>
+        <span class="text-slate-600 hidden sm:inline text-lg font-black">/</span>
+        <span class="text-slate-300 hidden sm:inline text-xs sm:text-sm font-display font-black uppercase tracking-wider">
+          University Division
+        </span>
       </div>
-      <div class="flex items-center gap-4 text-slate-400">
-        <span class="text-sky-400 font-medium">Official Project Showcase</span>
+      <div class="flex items-center gap-2">
+        <span class="font-display font-black text-xs sm:text-sm text-sky-400 tracking-wider uppercase">
+          Official Project Showcase
+        </span>
       </div>
     </div>
   </header>
@@ -555,26 +561,26 @@
 
           <!-- Interactive Workflow Pipeline Trigger & Viewer (Replaces old token box) -->
           <div class="space-y-3">
-            <button onclick="toggleWorkflow('sign')" class="w-full p-3.5 rounded-xl bg-[#06080F] border border-sky-400/30 hover:border-sky-400 text-left transition flex items-center justify-between group">
-              <div class="flex items-center gap-2.5">
-                <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
-                <span class="font-mono text-xs font-bold text-white group-hover:text-sky-400 transition-colors">How It Works: Sensor Capture ⟶ TinyML Model ⟶ Spoken Gesture</span>
+            <button onclick="toggleWorkflow('sign')" class="w-full p-4 rounded-2xl bg-[#13243C] hover:bg-[#182E4D] text-left transition-all flex items-center justify-between group shadow-md border-0">
+              <div class="flex items-center gap-3">
+                <span class="w-2.5 h-2.5 rounded-full bg-sky-400 animate-pulse"></span>
+                <span class="text-xs sm:text-sm font-bold text-white tracking-wide">How It Works: Sensor Capture ⟶ TinyML Model ⟶ Spoken Gesture</span>
               </div>
-              <span id="signWorkflowArrow" class="font-mono text-xs text-sky-400">View Workflow ↓</span>
+              <span id="signWorkflowArrow" class="text-xs font-bold text-sky-400 shrink-0">View Workflow ↓</span>
             </button>
 
-            <div id="signWorkflowDetails" class="hidden p-4 rounded-xl bg-[#06080F] border border-white/[0.08] text-xs font-mono space-y-2.5 text-slate-300">
-              <div class="flex items-center gap-3">
-                <span class="px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 font-bold">Step 1</span>
-                <span><strong>Sensors Data Acquisition:</strong> 5 Flex Resistors measure finger flexion curvature + 6-Axis IMU tracks hand orientation.</span>
+            <div id="signWorkflowDetails" class="hidden p-5 rounded-2xl bg-[#0E1B2D] text-xs space-y-3.5 border-0 shadow-inner">
+              <div class="flex items-start gap-3">
+                <span class="px-2.5 py-1 rounded-lg bg-sky-400 text-slate-950 font-bold text-[11px] shrink-0">Step 1</span>
+                <div class="text-white leading-relaxed"><strong class="text-sky-300">Sensors Data Acquisition:</strong> 5 Flex Resistors measure finger flexion curvature + 6-Axis IMU tracks hand orientation.</div>
               </div>
-              <div class="flex items-center gap-3">
-                <span class="px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 font-bold">Step 2</span>
-                <span><strong>Edge TinyML Inference:</strong> Onboard neural network evaluates motion trajectory in &lt;15ms without cloud connection.</span>
+              <div class="flex items-start gap-3">
+                <span class="px-2.5 py-1 rounded-lg bg-sky-400 text-slate-950 font-bold text-[11px] shrink-0">Step 2</span>
+                <div class="text-white leading-relaxed"><strong class="text-sky-300">Edge TinyML Inference:</strong> Onboard neural network evaluates motion trajectory in &lt;15ms without cloud connection.</div>
               </div>
-              <div class="flex items-center gap-3">
-                <span class="px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 font-bold">Step 3</span>
-                <span><strong>Gesture Classification & Audio:</strong> Matched sign class is vocalized through the onboard speaker & displayed on wrist screen.</span>
+              <div class="flex items-start gap-3">
+                <span class="px-2.5 py-1 rounded-lg bg-sky-400 text-slate-950 font-bold text-[11px] shrink-0">Step 3</span>
+                <div class="text-white leading-relaxed"><strong class="text-sky-300">Gesture Classification & Audio:</strong> Matched sign class is vocalized through the onboard speaker & displayed on wrist screen.</div>
               </div>
             </div>
           </div>
@@ -719,26 +725,26 @@
 
           <!-- Interactive Workflow Pipeline Trigger for Listen -->
           <div class="space-y-3 pt-2">
-            <button onclick="toggleWorkflow('listen')" class="w-full p-3.5 rounded-xl bg-[#06080F] border border-sky-400/30 hover:border-sky-400 text-left transition flex items-center justify-between group">
-              <div class="flex items-center gap-2.5">
-                <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
-                <span class="font-mono text-xs font-bold text-white group-hover:text-sky-400 transition-colors">How It Works: Voice Ingestion ⟶ Keyword Parsing ⟶ Visual Sign Display</span>
+            <button onclick="toggleWorkflow('listen')" class="w-full p-4 rounded-2xl bg-[#13243C] hover:bg-[#182E4D] text-left transition-all flex items-center justify-between group shadow-md border-0">
+              <div class="flex items-center gap-3">
+                <span class="w-2.5 h-2.5 rounded-full bg-sky-400 animate-pulse"></span>
+                <span class="text-xs sm:text-sm font-bold text-white tracking-wide">How It Works: Voice Ingestion ⟶ Keyword Parsing ⟶ Visual Sign Display</span>
               </div>
-              <span id="listenWorkflowArrow" class="font-mono text-xs text-sky-400">View Workflow ↓</span>
+              <span id="listenWorkflowArrow" class="text-xs font-bold text-sky-400 shrink-0">View Workflow ↓</span>
             </button>
 
-            <div id="listenWorkflowDetails" class="hidden p-4 rounded-xl bg-[#06080F] border border-white/[0.08] text-xs font-mono space-y-2.5 text-slate-300">
-              <div class="flex items-center gap-3">
-                <span class="px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 font-bold">Step 1</span>
-                <span><strong>Voice Acoustic Capture:</strong> Built-in microphone records partner's voice with noise filtering.</span>
+            <div id="listenWorkflowDetails" class="hidden p-5 rounded-2xl bg-[#0E1B2D] text-xs space-y-3.5 border-0 shadow-inner">
+              <div class="flex items-start gap-3">
+                <span class="px-2.5 py-1 rounded-lg bg-sky-400 text-slate-950 font-bold text-[11px] shrink-0">Step 1</span>
+                <div class="text-white leading-relaxed"><strong class="text-sky-300">Voice Acoustic Capture:</strong> Built-in microphone records partner's voice with noise filtering.</div>
               </div>
-              <div class="flex items-center gap-3">
-                <span class="px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 font-bold">Step 2</span>
-                <span><strong>Speech-to-Text & Token Parsing:</strong> Voice is parsed into standardized sign lexicon tokens in real time.</span>
+              <div class="flex items-start gap-3">
+                <span class="px-2.5 py-1 rounded-lg bg-sky-400 text-slate-950 font-bold text-[11px] shrink-0">Step 2</span>
+                <div class="text-white leading-relaxed"><strong class="text-sky-300">Speech-to-Text & Token Parsing:</strong> Voice is parsed into standardized sign lexicon tokens in real time.</div>
               </div>
-              <div class="flex items-center gap-3">
-                <span class="px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 font-bold">Step 3</span>
-                <span><strong>Visual Sign Rendering:</strong> Wrist AMOLED displays legible sign tokens and avatar motions for deaf users.</span>
+              <div class="flex items-start gap-3">
+                <span class="px-2.5 py-1 rounded-lg bg-sky-400 text-slate-950 font-bold text-[11px] shrink-0">Step 3</span>
+                <div class="text-white leading-relaxed"><strong class="text-sky-300">Visual Sign Rendering:</strong> Wrist AMOLED displays legible sign tokens and avatar motions for deaf users.</div>
               </div>
             </div>
           </div>
@@ -843,26 +849,26 @@
 
           <!-- Interactive Workflow Pipeline Trigger for AI Chat -->
           <div class="space-y-3 pt-2">
-            <button onclick="toggleWorkflow('chat')" class="w-full p-3.5 rounded-xl bg-[#06080F] border border-sky-400/30 hover:border-sky-400 text-left transition flex items-center justify-between group">
-              <div class="flex items-center gap-2.5">
-                <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
-                <span class="font-mono text-xs font-bold text-white group-hover:text-sky-400 transition-colors">How It Works: User Input ⟶ Gemini Context Engine ⟶ Intelligent Assistant</span>
+            <button onclick="toggleWorkflow('chat')" class="w-full p-4 rounded-2xl bg-[#13243C] hover:bg-[#182E4D] text-left transition-all flex items-center justify-between group shadow-md border-0">
+              <div class="flex items-center gap-3">
+                <span class="w-2.5 h-2.5 rounded-full bg-sky-400 animate-pulse"></span>
+                <span class="text-xs sm:text-sm font-bold text-white tracking-wide">How It Works: User Input ⟶ Gemini Context Engine ⟶ Intelligent Assistant</span>
               </div>
-              <span id="chatWorkflowArrow" class="font-mono text-xs text-sky-400">View Workflow ↓</span>
+              <span id="chatWorkflowArrow" class="text-xs font-bold text-sky-400 shrink-0">View Workflow ↓</span>
             </button>
 
-            <div id="chatWorkflowDetails" class="hidden p-4 rounded-xl bg-[#06080F] border border-white/[0.08] text-xs font-mono space-y-2.5 text-slate-300">
-              <div class="flex items-center gap-3">
-                <span class="px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 font-bold">Step 1</span>
-                <span><strong>User Input Ingestion:</strong> Signs or voice query are captured and packed into lightweight contextual tokens.</span>
+            <div id="chatWorkflowDetails" class="hidden p-5 rounded-2xl bg-[#0E1B2D] text-xs space-y-3.5 border-0 shadow-inner">
+              <div class="flex items-start gap-3">
+                <span class="px-2.5 py-1 rounded-lg bg-sky-400 text-slate-950 font-bold text-[11px] shrink-0">Step 1</span>
+                <div class="text-white leading-relaxed"><strong class="text-sky-300">User Input Ingestion:</strong> Signs or voice query are captured and packed into lightweight contextual tokens.</div>
               </div>
-              <div class="flex items-center gap-3">
-                <span class="px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 font-bold">Step 2</span>
-                <span><strong>Gemini AI Reasoning:</strong> LLM analyzes intention, expands abbreviated sign tokens, and generates polite natural phrasing.</span>
+              <div class="flex items-start gap-3">
+                <span class="px-2.5 py-1 rounded-lg bg-sky-400 text-slate-950 font-bold text-[11px] shrink-0">Step 2</span>
+                <div class="text-white leading-relaxed"><strong class="text-sky-300">Gemini AI Reasoning:</strong> LLM analyzes intention, expands abbreviated sign tokens, and generates polite natural phrasing.</div>
               </div>
-              <div class="flex items-center gap-3">
-                <span class="px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 font-bold">Step 3</span>
-                <span><strong>Dual-Modal Response:</strong> Streaming text response renders on wrist AMOLED while spoken response sounds via speaker.</span>
+              <div class="flex items-start gap-3">
+                <span class="px-2.5 py-1 rounded-lg bg-sky-400 text-slate-950 font-bold text-[11px] shrink-0">Step 3</span>
+                <div class="text-white leading-relaxed"><strong class="text-sky-300">Dual-Modal Response:</strong> Streaming text response renders on wrist AMOLED while spoken response sounds via speaker.</div>
               </div>
             </div>
           </div>
