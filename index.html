@@ -9,7 +9,7 @@
   <!-- Google Fonts: Space Grotesk + Inter + JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -25,17 +25,14 @@
           },
           colors: {
             aura: {
-              bg: '#071527',
-              navy: '#0A1C34',
-              surface: '#0E2443',
-              surfaceHover: '#132E54',
-              border: 'rgba(59, 130, 246, 0.22)',
-              borderHover: 'rgba(96, 165, 250, 0.5)',
-              blue: '#2563EB',
-              sky: '#38BDF8',
-              accent: '#60A5FA',
-              emerald: '#10B981',
-              amber: '#F59E0B'
+              void: '#06080F',       /* Deep Obsidian Void */
+              surface: '#0B0F19',    /* Subtle Engineering Surface */
+              surfaceLight: '#111726',
+              hairline: 'rgba(255, 255, 255, 0.07)',
+              hairlineCyan: 'rgba(56, 189, 248, 0.16)',
+              cyan: '#38BDF8',       /* Signature Electric Cyan */
+              cyanMuted: 'rgba(56, 189, 248, 0.65)',
+              cobalt: '#1D4ED8',     /* Deep Energy Wave */
             }
           }
         }
@@ -44,279 +41,356 @@
   </script>
 
   <style>
+    :root {
+      --aura-void: #06080F;
+      --aura-surface: #0B0F19;
+      --aura-cyan: #38BDF8;
+      --aura-hairline: rgba(255, 255, 255, 0.07);
+    }
+
     body {
-      background-color: #071527;
-      color: #F1F5F9;
+      background-color: #06080F;
+      color: #E2E8F0;
       font-family: 'Inter', sans-serif;
       overflow-x: hidden;
     }
-    
-    /* Clean Engineering Grid (Solid Subtle Blue) */
-    .tech-grid {
-      background-size: 48px 48px;
+
+    ::selection {
+      background: #38BDF8;
+      color: #06080F;
+    }
+
+    /* Amorphous Organic Plasma Blob Animation (Google Gemini Inspired) */
+    @keyframes morphBlob {
+      0% {
+        border-radius: 62% 38% 70% 30% / 54% 48% 52% 46%;
+        transform: rotate(0deg) scale(1);
+      }
+      33% {
+        border-radius: 40% 60% 45% 55% / 62% 35% 65% 38%;
+        transform: rotate(120deg) scale(1.05);
+      }
+      66% {
+        border-radius: 70% 30% 50% 50% / 30% 60% 40% 70%;
+        transform: rotate(240deg) scale(0.95);
+      }
+      100% {
+        border-radius: 62% 38% 70% 30% / 54% 48% 52% 46%;
+        transform: rotate(360deg) scale(1);
+      }
+    }
+
+    .amorphous-blob {
+      animation: morphBlob 20s ease-in-out infinite alternate;
+      filter: blur(72px);
+      pointer-events: none;
+    }
+
+    /* Kinetic Signal Spline Dash Movement */
+    @keyframes dashMove {
+      to {
+        stroke-dashoffset: -100;
+      }
+    }
+    .signal-stream {
+      stroke-dasharray: 8 12;
+      animation: dashMove 4s linear infinite;
+    }
+
+    /* Subtle Architectural Technical Grid */
+    .blueprint-grid {
+      background-size: 64px 64px;
       background-image: 
-        linear-gradient(to right, rgba(59, 130, 246, 0.04) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(59, 130, 246, 0.04) 1px, transparent 1px);
-    }
-
-    /* Clean Solid Tech Card (No Rainbow AI Gradients) */
-    .tech-card {
-      background-color: #0E2443;
-      border: 1px solid rgba(59, 130, 246, 0.22);
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .tech-card:hover {
-      border-color: rgba(96, 165, 250, 0.5);
-      background-color: #122C50;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 24px -6px rgba(3, 10, 20, 0.6);
-    }
-
-    /* Pulse for Live Status */
-    @keyframes ping-slow {
-      0% { transform: scale(1); opacity: 0.8; }
-      100% { transform: scale(2.2); opacity: 0; }
-    }
-    .animate-ping-slow {
-      animation: ping-slow 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
     }
 
     /* Custom Scrollbar */
     ::-webkit-scrollbar {
-      width: 8px;
-      height: 8px;
+      width: 6px;
+      height: 6px;
     }
     ::-webkit-scrollbar-track {
-      background: #071527;
+      background: #06080F;
     }
     ::-webkit-scrollbar-thumb {
-      background: #1E3A8A;
-      border-radius: 4px;
+      background: #1E293B;
+      border-radius: 3px;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: #3B82F6;
+      background: #38BDF8;
     }
   </style>
 </head>
 
-<body class="selection:bg-blue-600 selection:text-white tech-grid">
+<body class="blueprint-grid min-h-screen relative">
 
-  <!-- TOP COMPETITION BANNER (BKI26) -->
-  <div class="border-b border-blue-900/40 bg-[#05101F] text-xs py-2 px-4 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
-      <div class="flex items-center gap-2.5">
-        <span class="relative flex h-2.5 w-2.5">
-          <span class="animate-ping-slow absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-sky-400"></span>
+  <!-- ================================================================= -->
+  <!-- 1. TOP COMPETITION BANNER (BKI26) -->
+  <!-- ================================================================= -->
+  <header class="border-b border-white/[0.07] bg-[#06080F]/90 backdrop-blur-md text-xs py-2.5 px-4 sm:px-8 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3 font-mono text-[11px]">
+      <div class="flex items-center gap-3">
+        <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 border border-sky-500/20 font-bold">
+          <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-ping"></span>
+          BKI26
         </span>
-        <span class="font-mono font-bold tracking-wider text-slate-200">BACH KHOA INNOVATION 2026 (BKI26)</span>
-        <span class="text-blue-900 hidden sm:inline">•</span>
-        <span class="text-slate-400 font-medium hidden sm:inline">University Division / Bionic AI Wearable System</span>
+        <span class="text-slate-200 tracking-wider font-semibold">BACH KHOA INNOVATION 2026</span>
+        <span class="text-slate-600 hidden md:inline">/</span>
+        <span class="text-slate-400 hidden md:inline">University Division • Bionic Wearable AI</span>
       </div>
-      <div class="flex items-center gap-4 text-slate-400 font-mono text-[11px]">
-        <span class="hidden md:inline-flex items-center gap-1.5 text-slate-300">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Edge AI: Dual-Core ESP32-S3 + Int8 C-LSTM
+      <div class="flex items-center gap-4 text-slate-400">
+        <span class="hidden sm:inline text-slate-300">
+          ESP32-S3 Edge TinyML Int8 C-LSTM
         </span>
-        <span class="text-blue-900 hidden md:inline">•</span>
+        <span class="text-slate-600 hidden sm:inline">•</span>
         <span class="text-sky-400 font-medium">Official Project Showcase</span>
       </div>
     </div>
-  </div>
+  </header>
 
-  <!-- NAVIGATION HEADER -->
-  <nav class="border-b border-blue-900/30 bg-[#071527]/95 sticky top-9 z-40">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+  <!-- ================================================================= -->
+  <!-- 2. NAVIGATION BAR -->
+  <!-- ================================================================= -->
+  <nav class="border-b border-white/[0.07] bg-[#06080F]/80 backdrop-blur-xl sticky top-9 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex items-center justify-between">
       
       <!-- Brand Logo -->
       <a href="#" class="flex items-center gap-3.5 group">
-        <img src="./website_assets/logo_white.png" alt="AURA Logo" class="h-8 w-auto transition-transform group-hover:scale-105">
+        <img src="./website_assets/logo_white.png" alt="AURA Logo" class="h-7 w-auto transition-transform group-hover:scale-105">
         <div class="flex flex-col">
           <span class="font-display font-black text-xl tracking-tight text-white group-hover:text-sky-400 transition-colors">AURA</span>
           <span class="font-mono text-[9px] uppercase tracking-widest text-slate-400">Bionic Smart Glove</span>
         </div>
       </a>
 
-      <!-- Menu links -->
-      <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-300">
-        <a href="#overview" class="hover:text-sky-400 transition-colors">Overview</a>
-        <a href="#interactive-demo" class="hover:text-sky-400 transition-colors flex items-center gap-1.5 text-sky-400 font-semibold">
-          <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse"></span>
-          Live Studio
+      <!-- Desktop Nav Links -->
+      <div class="hidden lg:flex items-center gap-8 text-xs font-mono tracking-wider uppercase text-slate-300">
+        <a href="#overview" class="hover:text-sky-400 transition-colors">01. Overview</a>
+        <a href="#interactive-demo" class="hover:text-sky-400 transition-colors flex items-center gap-1.5 text-sky-400 font-bold">
+          <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+          02. Live Studio
         </a>
-        <a href="#hardware" class="hover:text-sky-400 transition-colors">Hardware Anatomy</a>
-        <a href="#two-way" class="hover:text-sky-400 transition-colors">Two-Way Pipeline</a>
-        <a href="#benchmark" class="hover:text-sky-400 transition-colors">Benchmark</a>
-        <a href="#gallery" class="hover:text-sky-400 transition-colors">Design Archive</a>
+        <a href="#hardware" class="hover:text-sky-400 transition-colors">03. Hardware Blueprint</a>
+        <a href="#two-way" class="hover:text-sky-400 transition-colors">04. Two-Way Flow</a>
+        <a href="#benchmark" class="hover:text-sky-400 transition-colors">05. Benchmark</a>
+        <a href="#gallery" class="hover:text-sky-400 transition-colors">06. Archive</a>
       </div>
 
-      <!-- Header Action CTA -->
+      <!-- Header CTA -->
       <div class="flex items-center gap-3">
-        <a href="#interactive-demo" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-blue-600 text-white hover:bg-blue-500 transition-colors shadow-sm">
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          <span>Launch Demo</span>
+        <a href="#interactive-demo" class="relative group px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-slate-950 bg-sky-400 hover:bg-white transition-all shadow-[0_0_20px_rgba(56,189,248,0.35)] flex items-center gap-2">
+          <span>Test Gestures</span>
+          <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </a>
       </div>
     </div>
   </nav>
 
-  <!-- HERO SECTION -->
-  <section id="overview" class="relative pt-16 pb-24 lg:pt-24 lg:pb-32 bg-[#071527] overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-4xl mx-auto space-y-7">
+  <!-- ================================================================= -->
+  <!-- 3. HERO SECTION: "THE ETHEREAL HORIZON" -->
+  <!-- ================================================================= -->
+  <section id="overview" class="relative pt-16 pb-28 lg:pt-24 lg:pb-36 overflow-hidden">
+    
+    <!-- AMORPHOUS ORGANIC GRADIENT BLOBS (Non-Uniform Shapes) -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[500px] bg-gradient-to-tr from-sky-500/20 via-blue-600/15 to-transparent amorphous-blob -z-10"></div>
+    <div class="absolute top-1/3 right-10 w-[380px] h-[380px] bg-gradient-to-br from-sky-400/15 via-sky-600/10 to-transparent amorphous-blob -z-10" style="animation-duration: 26s; animation-delay: -5s;"></div>
 
-        <!-- Main Title (Clean Solid Typography) -->
-        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-display font-black tracking-tight text-white leading-none">
+    <!-- ASYMMETRIC BACKGROUND KINETIC SPLINE (SVG Ribbon) -->
+    <svg class="absolute inset-0 w-full h-full pointer-events-none -z-10 opacity-30" viewBox="0 0 1440 900" fill="none">
+      <path d="M-100,450 C300,200 600,650 1100,320 C1350,150 1500,280 1600,250" stroke="url(#cyanRibbonGrad)" stroke-width="1.5" stroke-dasharray="6 8" class="signal-stream" />
+      <path d="M-50,480 C350,230 650,680 1150,350 C1400,180 1550,310 1650,280" stroke="rgba(56, 189, 248, 0.12)" stroke-width="1" />
+      <defs>
+        <linearGradient id="cyanRibbonGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="transparent" />
+          <stop offset="30%" stop-color="#38BDF8" stop-opacity="0.8" />
+          <stop offset="70%" stop-color="#1D4ED8" stop-opacity="0.6" />
+          <stop offset="100%" stop-color="transparent" />
+        </linearGradient>
+      </defs>
+    </svg>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 space-y-16">
+      
+      <!-- Typographic Header: Open & Free-Floating -->
+      <div class="max-w-4xl mx-auto text-center space-y-6">
+        
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-slate-300 font-mono text-xs">
+          <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+          <span>HUMAN-MACHINE INTERFACE // BKI26 PROTOTYPE v2</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-display font-black tracking-tight text-white leading-[1.05]">
           WEAR THE VOICE. <br>
-          <span class="text-sky-400">
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-sky-400 to-blue-500">
             HEAR THE WORLD.
           </span>
         </h1>
 
-        <!-- English Problem Statement -->
-        <p class="text-base sm:text-xl text-slate-300 font-normal leading-relaxed max-w-3xl mx-auto">
-          Over 70 million deaf and speech-impaired individuals worldwide remain isolated in everyday communication. <strong class="text-white">A.U.R.A.</strong> is an intelligent bionic glove engineered with <strong class="text-sky-400">Edge TinyML</strong>. It translates sign gestures into discrete spoken words via an onboard speaker and interprets ambient speech into real-time visual sign cues on the wrist display — completely autonomous, private, and independent of external cameras.
+        <p class="text-base sm:text-lg text-slate-300 font-normal leading-relaxed max-w-2xl mx-auto">
+          Over 70 million deaf individuals worldwide remain isolated in everyday communication. 
+          <strong class="text-white">A.U.R.A.</strong> is an intelligent bionic glove engineered with 
+          <strong class="text-sky-400">On-Device TinyML</strong>. It translates sign gestures into discrete spoken words via an onboard speaker and interprets ambient speech into real-time visual sign cues on the wrist display — 100% autonomous, private, and camera-free.
         </p>
 
-        <!-- CTA Buttons -->
-        <div class="flex flex-wrap items-center justify-center gap-4 pt-3">
-          <a href="#interactive-demo" class="px-8 py-4 rounded-xl font-bold text-sm bg-blue-600 hover:bg-blue-500 text-white transition-colors shadow-sm flex items-center gap-2">
+        <!-- CTA Actions -->
+        <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+          <a href="#interactive-demo" class="px-7 py-3.5 rounded-full font-mono text-xs font-bold uppercase tracking-wider text-slate-950 bg-sky-400 hover:bg-white transition-all shadow-[0_0_24px_rgba(56,189,248,0.4)] flex items-center gap-2">
             <span>Explore Virtual Gestures (10 Signs)</span>
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
-          <a href="#hardware" class="px-8 py-4 rounded-xl font-bold text-sm tech-card text-slate-200 hover:text-white transition-colors">
-            Inspect Hardware Anatomy
+          <a href="#hardware" class="px-7 py-3.5 rounded-full font-mono text-xs font-bold uppercase tracking-wider text-slate-200 border border-white/[0.12] hover:border-sky-400 hover:text-white hover:bg-white/[0.03] transition-all">
+            Inspect Hardware Blueprint
           </a>
-        </div>
-
-        <!-- Fast Stats Metric Row -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8 max-w-4xl mx-auto">
-          <div class="tech-card p-4 rounded-2xl text-center">
-            <div class="text-2xl sm:text-3xl font-display font-bold text-sky-400">&lt; 130 ms</div>
-            <div class="text-xs text-slate-400 font-mono mt-0.5">On-Device Inference Latency</div>
-          </div>
-          <div class="tech-card p-4 rounded-2xl text-center">
-            <div class="text-2xl sm:text-3xl font-display font-bold text-emerald-400">10 Signs</div>
-            <div class="text-xs text-slate-400 font-mono mt-0.5">Discrete Word Vocabulary</div>
-          </div>
-          <div class="tech-card p-4 rounded-2xl text-center">
-            <div class="text-2xl sm:text-3xl font-display font-bold text-blue-400">100% Offline</div>
-            <div class="text-xs text-slate-400 font-mono mt-0.5">On-Device Edge Recognition</div>
-          </div>
-          <div class="tech-card p-4 rounded-2xl text-center">
-            <div class="text-2xl sm:text-3xl font-display font-bold text-amber-400">Two-Way Flow</div>
-            <div class="text-xs text-slate-400 font-mono mt-0.5">Bidirectional Translation</div>
-          </div>
         </div>
 
       </div>
 
-      <!-- Hero Product Spotlight Card -->
-      <div class="mt-16 relative max-w-5xl mx-auto">
-        <div class="tech-card rounded-3xl p-6 sm:p-10 overflow-hidden shadow-xl">
+      <!-- HORIZONTAL HAIRLINE METRIC STRIP (No Boxes / Swiss Editorial) -->
+      <div class="border-y border-white/[0.08] py-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 divide-y md:divide-y-0 md:divide-x divide-white/[0.07] text-left">
           
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="pt-4 md:pt-0 md:px-6">
+            <div class="font-mono text-[11px] text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
+              <span>01. INFERENCE SPEED</span>
+            </div>
+            <div class="text-3xl sm:text-4xl font-display font-black text-white mt-1.5">&lt; 15 ms</div>
+            <div class="text-xs text-slate-400 font-mono mt-1">Dual-Core ESP32-S3 Vector Acceleration</div>
+          </div>
+
+          <div class="pt-4 md:pt-0 md:px-6">
+            <div class="font-mono text-[11px] text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
+              <span>02. VOCABULARY</span>
+            </div>
+            <div class="text-3xl sm:text-4xl font-display font-black text-white mt-1.5">10 Signs</div>
+            <div class="text-xs text-slate-400 font-mono mt-1">Discrete Word Vocabulary via Int8 C-LSTM</div>
+          </div>
+
+          <div class="pt-4 md:pt-0 md:px-6">
+            <div class="font-mono text-[11px] text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
+              <span>03. CONNECTIVITY</span>
+            </div>
+            <div class="text-3xl sm:text-4xl font-display font-black text-white mt-1.5">100% Offline</div>
+            <div class="text-xs text-slate-400 font-mono mt-1">Zero Cloud Latency • Total Privacy</div>
+          </div>
+
+          <div class="pt-4 md:pt-0 md:px-6">
+            <div class="font-mono text-[11px] text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
+              <span>04. TRANSLATION</span>
+            </div>
+            <div class="text-3xl sm:text-4xl font-display font-black text-white mt-1.5">Two-Way</div>
+            <div class="text-xs text-slate-400 font-mono mt-1">Duplex Acoustic & Visual Flow</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- FREE-FLOATING HARDWARE PROTOTYPE HERO SHOWCASE -->
+      <div class="relative pt-6">
+        
+        <!-- Large Background Asymmetric Technical Cutout Outline -->
+        <div class="relative max-w-6xl mx-auto rounded-3xl border border-white/[0.08] bg-gradient-to-b from-[#0B0F19]/80 to-[#06080F]/90 backdrop-blur-xl p-6 sm:p-12 overflow-hidden">
+          
+          <!-- Subtle Topographic Resonance Rings (Non-Uniform Graphic Shape) -->
+          <svg class="absolute -right-24 -top-24 w-[600px] h-[600px] pointer-events-none opacity-20" viewBox="0 0 500 500" fill="none">
+            <ellipse cx="250" cy="250" rx="220" ry="170" stroke="#38BDF8" stroke-width="1" transform="rotate(-15 250 250)" />
+            <ellipse cx="250" cy="250" rx="180" ry="130" stroke="#38BDF8" stroke-width="1" stroke-dasharray="4 6" transform="rotate(-25 250 250)" />
+            <ellipse cx="250" cy="250" rx="140" ry="95" stroke="#38BDF8" stroke-width="1.5" transform="rotate(-10 250 250)" />
+            <ellipse cx="250" cy="250" rx="90" ry="60" stroke="#38BDF8" stroke-width="1" transform="rotate(-35 250 250)" />
+          </svg>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
-            <!-- Left: Real Physical Glove Prototype Photo with Precision Component Pins -->
-            <div class="lg:col-span-7 flex flex-col items-center">
-              <div class="rounded-2xl bg-[#071527] border border-blue-900/50 p-4 sm:p-6 flex flex-col items-center justify-center w-full">
-                <!-- Precision Image Frame: pins stay strictly anchored to glove components -->
-                <div class="relative max-w-[320px] sm:max-w-[340px] w-full rounded-2xl overflow-hidden bg-white p-2 shadow-xl border border-blue-900/40">
-                  <img src="./website_assets/glove_prototype_studio.png" alt="AURA Smart Glove Physical Prototype" class="w-full h-auto object-contain">
-                  
-                  <!-- Sensor Hotspot 1: 5x Flex Sensors (Anchored directly to fingertips) -->
-                  <div class="absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#071527]/95 text-white border border-sky-400/50 shadow-md">
-                    <span class="relative flex h-2 w-2">
-                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
-                      <span class="relative inline-flex rounded-full h-2 w-2 bg-sky-400"></span>
-                    </span>
-                    <span class="text-[10px] font-mono font-bold tracking-tight">5x Flex Sensors</span>
-                  </div>
+            <!-- Left: Floating Transparent Glove Photo with Component Pins -->
+            <div class="lg:col-span-7 flex flex-col items-center relative">
+              
+              <!-- Soft Directional Energy Glow directly behind the glove -->
+              <div class="absolute inset-0 max-w-[400px] max-h-[400px] m-auto bg-gradient-to-tr from-sky-500/25 via-blue-600/20 to-transparent amorphous-blob -z-10"></div>
+              
+              <div class="relative max-w-[340px] sm:max-w-[380px] w-full flex items-center justify-center p-4">
+                <img src="./website_assets/glove_prototype_transparent.png" alt="AURA Physical Glove Prototype" class="w-full h-auto object-contain drop-shadow-[0_20px_35px_rgba(56,189,248,0.25)]">
 
-                  <!-- Sensor Hotspot 2: 6-Axis IMU (Anchored to sensor board at thumb base) -->
-                  <div class="absolute top-[58%] left-2 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#071527]/95 text-white border border-emerald-400/50 shadow-md">
-                    <span class="relative flex h-2 w-2">
-                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                      <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
-                    </span>
-                    <span class="text-[10px] font-mono font-bold tracking-tight">6-Axis IMU</span>
-                  </div>
-
-                  <!-- Sensor Hotspot 3: 1.9" AMOLED Core (Anchored directly to wrist display module) -->
-                  <div class="absolute bottom-6 right-2 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#071527]/95 text-white border border-blue-400/50 shadow-md">
-                    <span class="relative flex h-2 w-2">
-                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                      <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-400"></span>
-                    </span>
-                    <span class="text-[10px] font-mono font-bold tracking-tight">1.9" AMOLED Core</span>
-                  </div>
+                <!-- Hotspot Pin 1: Fingertip Flex Array -->
+                <div class="absolute top-4 right-4 flex items-center gap-2 px-3 py-1 rounded-full bg-[#06080F]/90 border border-sky-400/40 text-white font-mono text-[10px] backdrop-blur-md shadow-lg">
+                  <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+                  <span>5x Flex Sensors [ADC0-4]</span>
                 </div>
 
-                <div class="w-full max-w-[340px] px-1 mt-3 space-y-1 text-center font-mono">
-                  <div class="flex items-center justify-between text-xs text-slate-400">
-                    <span>R&D Engineering Prototype v2</span>
-                    <span class="text-sky-400 font-semibold">Dual-Core ESP32</span>
-                  </div>
+                <!-- Hotspot Pin 2: Thumb Base 6-Axis IMU -->
+                <div class="absolute top-[54%] left-0 flex items-center gap-2 px-3 py-1 rounded-full bg-[#06080F]/90 border border-sky-400/40 text-white font-mono text-[10px] backdrop-blur-md shadow-lg">
+                  <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+                  <span>6-Axis IMU (Yaw/Pitch)</span>
                 </div>
+
+                <!-- Hotspot Pin 3: Wrist 1.9" AMOLED Core -->
+                <div class="absolute bottom-6 right-2 flex items-center gap-2 px-3 py-1 rounded-full bg-[#06080F]/90 border border-sky-400/40 text-white font-mono text-[10px] backdrop-blur-md shadow-lg">
+                  <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+                  <span>1.9" AMOLED Display</span>
+                </div>
+              </div>
+
+              <!-- Monospace Technical Sub-label -->
+              <div class="flex items-center justify-between w-full max-w-[360px] font-mono text-[11px] text-slate-400 border-t border-white/[0.07] pt-3 mt-2">
+                <span>LAB PROTOTYPE v2.4</span>
+                <span class="text-sky-400 font-bold">DUAL-CORE ESP32-S3</span>
               </div>
             </div>
 
-            <!-- Right: Highlights & Value Props -->
+            <!-- Right: High-Density Editorial Feature Breakdown -->
             <div class="lg:col-span-5 space-y-6">
               
               <div class="space-y-3">
-                <div>
-                  <span class="text-xs font-mono text-sky-400 font-bold uppercase tracking-wider">Core Breakthrough</span>
-                  <h3 class="text-2xl font-display font-bold text-white mt-1">Two-Way Sign & Voice Communication</h3>
-                </div>
-                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                  No bulky camera rigs, no lighting constraints, and zero internet required for real-time sign recognition. AURA delivers accessible, discrete gesture-to-speech interaction anytime, anywhere.
+                <span class="font-mono text-xs text-sky-400 uppercase tracking-widest font-bold">01 // THE BREAKTHROUGH</span>
+                <h3 class="text-2xl sm:text-3xl font-display font-black text-white">Full-Duplex Acoustic & Visual Bridge</h3>
+                <p class="text-sm text-slate-300 leading-relaxed">
+                  Eliminating external cameras and restrictive lighting conditions. AURA translates hand kinematics into clear acoustic words while simultaneously transcribing surrounding conversation into visual signs on the wrist AMOLED.
                 </p>
-                <!-- Prototype Status Note -->
-                <div class="p-3 rounded-xl bg-blue-950/70 border border-blue-700/40 text-[11px] text-blue-200 leading-relaxed flex items-start gap-2">
-                  <span class="text-amber-400 text-xs shrink-0 mt-0.5">ℹ</span>
-                  <span><strong>Prototype Notice:</strong> The hardware shown represents the working laboratory engineering prototype (v2). The final commercial product will feature an injection-molded, ergonomic bionic enclosure with concealed wiring and refined aesthetics.</span>
-                </div>
               </div>
 
-              <!-- Feature 1 -->
-              <div class="flex items-start gap-4 p-4 rounded-2xl bg-blue-950/40 border border-blue-900/40">
-                <div class="p-2.5 rounded-xl bg-blue-900/50 text-sky-400 shrink-0">
-                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                </div>
-                <div class="space-y-1">
-                  <div class="text-sm font-bold text-white">On-Device TinyML (Sign-to-Speech)</div>
-                  <div class="text-xs text-slate-300 leading-relaxed">Quantized Int8 C-LSTM model runs natively on the ESP32-S3 processor. Real-time inference with full privacy.</div>
-                  <div class="text-[11px] font-mono text-sky-300/90 pt-1">
-                    * Note: The <strong>Sign-to-Speech</strong> pipeline translates discrete sign gestures into discrete spoken words 100% locally on-device via TinyML; no cloud LLM or AI Chat is utilized.
+              <!-- Architectural Spec Points (No rounded box cards) -->
+              <div class="space-y-4 border-t border-white/[0.07] pt-4">
+                
+                <div class="flex items-start gap-3">
+                  <div class="w-5 h-5 rounded-full bg-sky-400/10 border border-sky-400/30 text-sky-400 flex items-center justify-center font-mono text-[11px] font-bold shrink-0 mt-0.5">
+                    1
+                  </div>
+                  <div>
+                    <h4 class="text-sm font-bold text-white font-display">On-Device TinyML Inference</h4>
+                    <p class="text-xs text-slate-400 mt-0.5 leading-relaxed">
+                      Quantized Int8 C-LSTM network executed in local PSRAM. Translates discrete sign gestures into discrete spoken words in &lt;15ms without cloud dependencies.
+                    </p>
                   </div>
                 </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="w-5 h-5 rounded-full bg-sky-400/10 border border-sky-400/30 text-sky-400 flex items-center justify-center font-mono text-[11px] font-bold shrink-0 mt-0.5">
+                    2
+                  </div>
+                  <div>
+                    <h4 class="text-sm font-bold text-white font-display">Hi-Fi Acoustic Vocalization (ES8311)</h4>
+                    <p class="text-xs text-slate-400 mt-0.5 leading-relaxed">
+                      Dedicated I2S DAC with Class-D power amplifier delivers clear spoken pronunciation through an ergonomic wrist-mounted micro-speaker.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="w-5 h-5 rounded-full bg-sky-400/10 border border-sky-400/30 text-sky-400 flex items-center justify-center font-mono text-[11px] font-bold shrink-0 mt-0.5">
+                    3
+                  </div>
+                  <div>
+                    <h4 class="text-sm font-bold text-white font-display">100% Privacy & Dark Operability</h4>
+                    <p class="text-xs text-slate-400 mt-0.5 leading-relaxed">
+                      Pure biomechanical resistive sensing functions flawlessly in pitch darkness, rain, and crowded public venues without invasive video capture.
+                    </p>
+                  </div>
+                </div>
+
               </div>
 
-              <!-- Feature 2 -->
-              <div class="flex items-start gap-4 p-4 rounded-2xl bg-blue-950/40 border border-blue-900/40">
-                <div class="p-2.5 rounded-xl bg-blue-900/50 text-sky-400 shrink-0">
-                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-                </div>
-                <div>
-                  <div class="text-sm font-bold text-white">Bidirectional Acoustic & Visual Translation</div>
-                  <div class="text-xs text-slate-300 mt-1">Translates hand gestures into spoken voice through an onboard Hi-Fi speaker, and converts incoming speech into visual sign cues.</div>
-                </div>
-              </div>
-
-              <!-- Feature 3 -->
-              <div class="flex items-start gap-4 p-4 rounded-2xl bg-blue-950/40 border border-blue-900/40">
-                <div class="p-2.5 rounded-xl bg-blue-900/50 text-sky-400 shrink-0">
-                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
-                </div>
-                <div>
-                  <div class="text-sm font-bold text-white">All-Lighting & Total Privacy</div>
-                  <div class="text-xs text-slate-300 mt-1">Pure biomechanical sensors operate with 100% precision in total darkness, crowded venues, and without invasive video recording.</div>
-                </div>
+              <!-- Lab Prototype Disclaimer -->
+              <div class="border-l-2 border-sky-400/60 pl-3 py-1 font-mono text-[11px] text-slate-400">
+                <span class="text-sky-400 font-bold">NOTICE:</span> Displayed hardware represents the working laboratory engineering prototype. Commercial release will integrate seamless injection-molded chassis and internal flex traces.
               </div>
 
             </div>
@@ -324,254 +398,258 @@
           </div>
 
         </div>
+
       </div>
 
     </div>
   </section>
 
-  <!-- INTERACTIVE 2-WAY COMMUNICATION STUDIO -->
-  <section id="interactive-demo" class="py-24 bg-[#0A1C34] border-t border-blue-900/30">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+  <!-- ================================================================= -->
+  <!-- 4. INTERACTIVE 2-WAY COMMUNICATION STUDIO -->
+  <!-- ================================================================= -->
+  <section id="interactive-demo" class="py-24 bg-[#0B0F19] border-t border-white/[0.07] relative overflow-hidden">
+    
+    <!-- Background Asymmetrical Light Wave -->
+    <div class="absolute -bottom-32 -left-20 w-[550px] h-[550px] bg-gradient-to-tr from-sky-500/15 via-blue-600/10 to-transparent amorphous-blob -z-10"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
       
       <!-- Section Header -->
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-blue-900/40 pb-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/[0.08] pb-8">
         <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono font-semibold bg-blue-950 text-sky-400 border border-blue-700/50 mb-3">
-            <span>LIVE INTERACTIVE SIMULATOR</span>
-          </div>
-          <h2 class="text-3xl sm:text-4xl font-display font-black text-white">Two-Way Communication Studio</h2>
-          <p class="text-xs sm:text-sm text-slate-300 mt-2 max-w-2xl">
-            Test real-time sign recognition with instant discrete speech vocalization, zero cloud latency, and reverse voice-to-sign visual interpretation.
+          <span class="font-mono text-xs text-sky-400 font-bold uppercase tracking-widest">02 // REAL-TIME CONSOLE</span>
+          <h2 class="text-3xl sm:text-5xl font-display font-black text-white mt-1">Two-Way Communication Studio</h2>
+          <p class="text-xs sm:text-sm text-slate-400 mt-2 max-w-2xl">
+            Simulate on-device sign recognition, instant discrete speech vocalization, and reverse voice-to-sign visual rendering on the simulated AMOLED display.
           </p>
         </div>
 
-        <!-- Mode Toggle Switcher -->
-        <div class="flex items-center p-1.5 rounded-2xl bg-[#071527] border border-blue-900/50 shrink-0">
-          <button id="tabSignMode" onclick="switchStudioMode('sign')" class="px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all bg-blue-600 text-white shadow-sm">
+        <!-- Mode Toggle Switcher (Clean Pill) -->
+        <div class="flex items-center p-1 rounded-full bg-[#06080F] border border-white/[0.12] shrink-0 font-mono text-xs">
+          <button id="tabSignMode" onclick="switchStudioMode('sign')" class="px-6 py-2.5 rounded-full font-bold uppercase tracking-wider transition-all bg-sky-400 text-slate-950 shadow-[0_0_15px_rgba(56,189,248,0.3)]">
             I Sign (Glove ⟶ Speech)
           </button>
-          <button id="tabListenMode" onclick="switchStudioMode('listen')" class="px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all text-slate-400 hover:text-white">
+          <button id="tabListenMode" onclick="switchStudioMode('listen')" class="px-6 py-2.5 rounded-full font-bold uppercase tracking-wider transition-all text-slate-400 hover:text-white">
             I Listen (Voice ⟶ Signs)
           </button>
         </div>
       </div>
 
       <!-- CONTAINER: MODE 1 (I SIGN - GLOVE TO SPEECH) -->
-      <div id="signModeContainer" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div id="signModeContainer" class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
         
-        <!-- Left Column: Virtual Gestures & Sensor Gauges -->
-        <div class="lg:col-span-7 tech-card rounded-3xl p-6 sm:p-8 space-y-6">
+        <!-- Left: Virtual Gestures & Sensor Gauges (Laboratory Console Style) -->
+        <div class="lg:col-span-7 space-y-8">
           
-          <div class="flex items-center justify-between border-b border-blue-900/40 pb-4">
+          <div class="flex items-center justify-between border-b border-white/[0.08] pb-4">
             <div>
-              <h3 class="text-base font-bold text-white flex items-center gap-2">
-                <span>10 Biomechanical Flex Sensor Gestures</span>
-                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-950 text-sky-400 border border-blue-700/40">C-LSTM Int8</span>
+              <h3 class="text-sm font-mono font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                <span>10 Biomechanical Gesture Lexicon</span>
+                <span class="text-[10px] px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 border border-sky-500/20">C-LSTM Int8</span>
               </h3>
-              <p class="text-xs text-slate-300 font-mono mt-0.5">Click any gesture to simulate finger sensor resistance telemetry and vocalize discrete speech</p>
+              <p class="text-xs text-slate-400 font-mono mt-0.5">Click any sign to simulate real-time flex resistance vectors and vocalize speech</p>
             </div>
-            <button onclick="clearGestureBuffer()" class="text-xs font-mono px-3 py-1.5 rounded-lg bg-blue-950/80 border border-blue-800/40 text-slate-300 hover:text-white hover:bg-blue-900/60 transition flex items-center gap-1.5">
+            <button onclick="clearGestureBuffer()" class="text-xs font-mono px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.1] text-slate-300 hover:text-white hover:border-sky-400 transition flex items-center gap-1.5">
               <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-              <span>Reset Buffer</span>
+              <span>Reset</span>
             </button>
           </div>
 
-          <!-- 10 Gesture Buttons Grid -->
+          <!-- 10 Gesture Buttons (Flat Monospaced Precision Tags) -->
           <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
             
-            <button onclick="addGesture('Hello', '04_Hello', 'Greeting', [80, 85, 90, 88, 82])" class="p-3 rounded-2xl bg-[#071527] border border-blue-900/40 hover:border-sky-400 hover:bg-blue-950/60 transition text-left group">
+            <button onclick="addGesture('Hello', '04_Hello', 'Greeting', [80, 85, 90, 88, 82])" class="p-3.5 rounded-2xl bg-[#06080F] border border-white/[0.08] hover:border-sky-400 hover:bg-white/[0.02] transition text-left group">
               <div class="flex items-center justify-between mb-1.5">
                 <span class="font-mono text-[11px] text-slate-400 font-semibold group-hover:text-sky-400">04_Hello</span>
-                <span class="w-2 h-2 rounded-full bg-blue-600 group-hover:bg-sky-400"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-sky-400 transition-colors"></span>
               </div>
-              <div class="text-sm font-bold text-white">Hello</div>
-              <div class="text-[11px] text-slate-400">Greeting / Hi</div>
+              <div class="text-sm font-bold text-white font-display">Hello</div>
+              <div class="text-[11px] text-slate-400 font-mono">Greeting / Hi</div>
             </button>
 
-            <button onclick="addGesture('I', '05_I', 'Self / Me', [95, 15, 10, 15, 20])" class="p-3 rounded-2xl bg-[#071527] border border-blue-900/40 hover:border-sky-400 hover:bg-blue-950/60 transition text-left group">
+            <button onclick="addGesture('I', '05_I', 'Self / Me', [95, 15, 10, 15, 20])" class="p-3.5 rounded-2xl bg-[#06080F] border border-white/[0.08] hover:border-sky-400 hover:bg-white/[0.02] transition text-left group">
               <div class="flex items-center justify-between mb-1.5">
                 <span class="font-mono text-[11px] text-slate-400 font-semibold group-hover:text-sky-400">05_I</span>
-                <span class="w-2 h-2 rounded-full bg-blue-600 group-hover:bg-sky-400"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-sky-400 transition-colors"></span>
               </div>
-              <div class="text-sm font-bold text-white">I</div>
-              <div class="text-[11px] text-slate-400">Self / Myself</div>
+              <div class="text-sm font-bold text-white font-display">I</div>
+              <div class="text-[11px] text-slate-400 font-mono">Self / Myself</div>
             </button>
 
-            <button onclick="addGesture('Meet', '06_Meet', 'Encounter', [65, 70, 75, 70, 60])" class="p-3 rounded-2xl bg-[#071527] border border-blue-900/40 hover:border-sky-400 hover:bg-blue-950/60 transition text-left group">
+            <button onclick="addGesture('Meet', '06_Meet', 'Encounter', [65, 70, 75, 70, 60])" class="p-3.5 rounded-2xl bg-[#06080F] border border-white/[0.08] hover:border-sky-400 hover:bg-white/[0.02] transition text-left group">
               <div class="flex items-center justify-between mb-1.5">
                 <span class="font-mono text-[11px] text-slate-400 font-semibold group-hover:text-sky-400">06_Meet</span>
-                <span class="w-2 h-2 rounded-full bg-blue-600 group-hover:bg-sky-400"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-sky-400 transition-colors"></span>
               </div>
-              <div class="text-sm font-bold text-white">Meet</div>
-              <div class="text-[11px] text-slate-400">Encounter / Connect</div>
+              <div class="text-sm font-bold text-white font-display">Meet</div>
+              <div class="text-[11px] text-slate-400 font-mono">Encounter</div>
             </button>
 
-            <button onclick="addGesture('You', '08_You', 'Partner', [10, 95, 10, 15, 15])" class="p-3 rounded-2xl bg-[#071527] border border-blue-900/40 hover:border-sky-400 hover:bg-blue-950/60 transition text-left group">
+            <button onclick="addGesture('You', '07_You', 'Target', [20, 85, 20, 15, 15])" class="p-3.5 rounded-2xl bg-[#06080F] border border-white/[0.08] hover:border-sky-400 hover:bg-white/[0.02] transition text-left group">
               <div class="flex items-center justify-between mb-1.5">
-                <span class="font-mono text-[11px] text-slate-400 font-semibold group-hover:text-sky-400">08_You</span>
-                <span class="w-2 h-2 rounded-full bg-blue-600 group-hover:bg-sky-400"></span>
+                <span class="font-mono text-[11px] text-slate-400 font-semibold group-hover:text-sky-400">07_You</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-sky-400 transition-colors"></span>
               </div>
-              <div class="text-sm font-bold text-white">You</div>
-              <div class="text-[11px] text-slate-400">Partner / Receiver</div>
+              <div class="text-sm font-bold text-white font-display">You</div>
+              <div class="text-[11px] text-slate-400 font-mono">Partner / Target</div>
             </button>
 
-            <button onclick="addGesture('Happy', '03_Happy', 'Joy', [90, 85, 80, 85, 90])" class="p-3 rounded-2xl bg-[#071527] border border-blue-900/40 hover:border-sky-400 hover:bg-blue-950/60 transition text-left group">
+            <button onclick="addGesture('Happy', '08_Happy', 'Emotion', [70, 75, 80, 75, 70])" class="p-3.5 rounded-2xl bg-[#06080F] border border-white/[0.08] hover:border-sky-400 hover:bg-white/[0.02] transition text-left group">
               <div class="flex items-center justify-between mb-1.5">
-                <span class="font-mono text-[11px] text-slate-400 font-semibold group-hover:text-sky-400">03_Happy</span>
-                <span class="w-2 h-2 rounded-full bg-blue-600 group-hover:bg-sky-400"></span>
+                <span class="font-mono text-[11px] text-slate-400 font-semibold group-hover:text-sky-400">08_Happy</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-sky-400 transition-colors"></span>
               </div>
-              <div class="text-sm font-bold text-white">Happy</div>
-              <div class="text-[11px] text-slate-400">Joyful / Glad</div>
+              <div class="text-sm font-bold text-white font-display">Happy</div>
+              <div class="text-[11px] text-slate-400 font-mono">Joy / Positive</div>
             </button>
 
-            <button onclick="addGesture('Name', '07_Name', 'Identity', [30, 80, 85, 20, 20])" class="p-3 rounded-2xl bg-[#071527] border border-blue-900/40 hover:border-sky-400 hover:bg-blue-950/60 transition text-left group">
+            <button onclick="addGesture('Name', '09_Name', 'Identity', [45, 60, 65, 20, 20])" class="p-3.5 rounded-2xl bg-[#06080F] border border-white/[0.08] hover:border-sky-400 hover:bg-white/[0.02] transition text-left group">
               <div class="flex items-center justify-between mb-1.5">
-                <span class="font-mono text-[11px] text-slate-400 font-semibold group-hover:text-sky-400">07_Name</span>
-                <span class="w-2 h-2 rounded-full bg-blue-600 group-hover:bg-sky-400"></span>
+                <span class="font-mono text-[11px] text-slate-400 font-semibold group-hover:text-sky-400">09_Name</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-sky-400 transition-colors"></span>
               </div>
-              <div class="text-sm font-bold text-white">Name</div>
-              <div class="text-[11px] text-slate-400">Name / Title</div>
+              <div class="text-sm font-bold text-white font-display">Name</div>
+              <div class="text-[11px] text-slate-400 font-mono">Identity / Label</div>
             </button>
 
-            <button onclick="addGesture('Thank_you', '09_Thank_you', 'Gratitude', [95, 95, 95, 95, 95])" class="p-3 rounded-2xl bg-[#071527] border border-blue-900/40 hover:border-sky-400 hover:bg-blue-950/60 transition text-left group">
+            <button onclick="addGesture('Thank_you', '02_Thank', 'Gratitude', [85, 90, 90, 85, 80])" class="p-3.5 rounded-2xl bg-[#06080F] border border-white/[0.08] hover:border-sky-400 hover:bg-white/[0.02] transition text-left group">
               <div class="flex items-center justify-between mb-1.5">
-                <span class="font-mono text-[11px] text-slate-400 font-semibold group-hover:text-sky-400">09_Thank_you</span>
-                <span class="w-2 h-2 rounded-full bg-blue-600 group-hover:bg-sky-400"></span>
+                <span class="font-mono text-[11px] text-slate-400 font-semibold group-hover:text-sky-400">02_Thank</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-sky-400 transition-colors"></span>
               </div>
-              <div class="text-sm font-bold text-white">Thank You</div>
-              <div class="text-[11px] text-slate-400">Gratitude / Thanks</div>
+              <div class="text-sm font-bold text-white font-display">Thank You</div>
+              <div class="text-[11px] text-slate-400 font-mono">Gratitude</div>
             </button>
 
-            <button onclick="addGesture('Good_bye', '10_Good_bye', 'Farewell', [85, 90, 88, 85, 80])" class="p-3 rounded-2xl bg-[#071527] border border-blue-900/40 hover:border-sky-400 hover:bg-blue-950/60 transition text-left group">
+            <button onclick="addGesture('Good_bye', '03_Bye', 'Farewell', [75, 80, 85, 80, 75])" class="p-3.5 rounded-2xl bg-[#06080F] border border-white/[0.08] hover:border-sky-400 hover:bg-white/[0.02] transition text-left group">
               <div class="flex items-center justify-between mb-1.5">
-                <span class="font-mono text-[11px] text-slate-400 font-semibold group-hover:text-sky-400">10_Good_bye</span>
-                <span class="w-2 h-2 rounded-full bg-blue-600 group-hover:bg-sky-400"></span>
+                <span class="font-mono text-[11px] text-slate-400 font-semibold group-hover:text-sky-400">03_Bye</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-sky-400 transition-colors"></span>
               </div>
-              <div class="text-sm font-bold text-white">Good Bye</div>
-              <div class="text-[11px] text-slate-400">Farewell / Bye</div>
+              <div class="text-sm font-bold text-white font-display">Goodbye</div>
+              <div class="text-[11px] text-slate-400 font-mono">Farewell</div>
             </button>
 
-            <button onclick="triggerHoldGesture()" class="p-3 rounded-2xl bg-blue-900/40 border border-blue-600/50 hover:bg-blue-800/50 transition text-left group">
+            <button onclick="addGesture('Rest', '01_Rest', 'Neutral', [15, 15, 15, 15, 15])" class="p-3.5 rounded-2xl bg-[#06080F] border border-white/[0.08] hover:border-sky-400 hover:bg-white/[0.02] transition text-left group">
               <div class="flex items-center justify-between mb-1.5">
-                <span class="font-mono text-[11px] text-sky-300 font-bold">02_Hold (EXEC)</span>
-                <span class="w-2 h-2 rounded-full bg-sky-400 animate-ping"></span>
+                <span class="font-mono text-[11px] text-slate-400 font-semibold group-hover:text-sky-400">01_Rest</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-sky-400 transition-colors"></span>
               </div>
-              <div class="text-sm font-bold text-white">Vocalize Buffer</div>
-              <div class="text-[11px] text-sky-200/80">Trigger Audio Output</div>
+              <div class="text-sm font-bold text-white font-display">Rest</div>
+              <div class="text-[11px] text-slate-400 font-mono">Neutral Position</div>
             </button>
 
           </div>
 
-          <!-- Live 5-Finger Resistance Sensor Visualizer -->
-          <div class="p-4 rounded-2xl bg-[#071527] border border-blue-900/40 space-y-3">
-            <div class="flex items-center justify-between text-xs font-mono text-slate-400">
-              <span class="text-sky-400 font-bold flex items-center gap-1.5">
-                <span class="w-2 h-2 rounded-full bg-sky-400"></span>
-                <span>FLEX RESISTANCE TELEMETRY (F1 - F5):</span>
-              </span>
-              <span id="sensorTimestamp" class="text-slate-400">50 FPS Live Stream</span>
+          <!-- 5-Finger Real-Time Resistance Bars (Sleek Cyan Laser Meters) -->
+          <div class="border-t border-white/[0.08] pt-4 space-y-3">
+            <div class="flex items-center justify-between font-mono text-[11px] text-slate-400">
+              <span>FLEX RESISTANCE SAMPLING (50 FPS):</span>
+              <span class="text-sky-400">12-BIT ADC SAMPLING</span>
             </div>
             
-            <!-- 5 Finger Bars (Solid Clean Blue Gauges) -->
-            <div class="grid grid-cols-5 gap-2 text-center text-[11px] font-mono">
-              <div class="space-y-1">
-                <div class="h-16 w-full bg-[#05101F] rounded-lg p-1 flex flex-col justify-end">
-                  <div id="barF1" class="w-full bg-blue-500 rounded-md transition-all duration-300" style="height: 35%;"></div>
+            <div class="grid grid-cols-5 gap-3 font-mono text-xs text-center">
+              
+              <div class="space-y-1.5">
+                <div class="h-20 w-full bg-[#06080F] rounded-lg p-1 flex flex-col justify-end border border-white/[0.07]">
+                  <div id="barF1" class="w-full bg-sky-400 rounded-sm transition-all duration-300" style="height: 35%;"></div>
                 </div>
-                <div class="text-slate-300">F1 (Thumb)</div>
+                <div class="text-slate-400 text-[10px]">F1 (Thumb)</div>
                 <div id="valF1" class="text-sky-400 font-bold">35%</div>
               </div>
 
-              <div class="space-y-1">
-                <div class="h-16 w-full bg-[#05101F] rounded-lg p-1 flex flex-col justify-end">
-                  <div id="barF2" class="w-full bg-blue-500 rounded-md transition-all duration-300" style="height: 40%;"></div>
+              <div class="space-y-1.5">
+                <div class="h-20 w-full bg-[#06080F] rounded-lg p-1 flex flex-col justify-end border border-white/[0.07]">
+                  <div id="barF2" class="w-full bg-sky-400 rounded-sm transition-all duration-300" style="height: 40%;"></div>
                 </div>
-                <div class="text-slate-300">F2 (Index)</div>
+                <div class="text-slate-400 text-[10px]">F2 (Index)</div>
                 <div id="valF2" class="text-sky-400 font-bold">40%</div>
               </div>
 
-              <div class="space-y-1">
-                <div class="h-16 w-full bg-[#05101F] rounded-lg p-1 flex flex-col justify-end">
-                  <div id="barF3" class="w-full bg-blue-500 rounded-md transition-all duration-300" style="height: 45%;"></div>
+              <div class="space-y-1.5">
+                <div class="h-20 w-full bg-[#06080F] rounded-lg p-1 flex flex-col justify-end border border-white/[0.07]">
+                  <div id="barF3" class="w-full bg-sky-400 rounded-sm transition-all duration-300" style="height: 45%;"></div>
                 </div>
-                <div class="text-slate-300">F3 (Middle)</div>
+                <div class="text-slate-400 text-[10px]">F3 (Middle)</div>
                 <div id="valF3" class="text-sky-400 font-bold">45%</div>
               </div>
 
-              <div class="space-y-1">
-                <div class="h-16 w-full bg-[#05101F] rounded-lg p-1 flex flex-col justify-end">
-                  <div id="barF4" class="w-full bg-blue-500 rounded-md transition-all duration-300" style="height: 30%;"></div>
+              <div class="space-y-1.5">
+                <div class="h-20 w-full bg-[#06080F] rounded-lg p-1 flex flex-col justify-end border border-white/[0.07]">
+                  <div id="barF4" class="w-full bg-sky-400 rounded-sm transition-all duration-300" style="height: 30%;"></div>
                 </div>
-                <div class="text-slate-300">F4 (Ring)</div>
+                <div class="text-slate-400 text-[10px]">F4 (Ring)</div>
                 <div id="valF4" class="text-sky-400 font-bold">30%</div>
               </div>
 
-              <div class="space-y-1">
-                <div class="h-16 w-full bg-[#05101F] rounded-lg p-1 flex flex-col justify-end">
-                  <div id="barF5" class="w-full bg-blue-500 rounded-md transition-all duration-300" style="height: 25%;"></div>
+              <div class="space-y-1.5">
+                <div class="h-20 w-full bg-[#06080F] rounded-lg p-1 flex flex-col justify-end border border-white/[0.07]">
+                  <div id="barF5" class="w-full bg-sky-400 rounded-sm transition-all duration-300" style="height: 25%;"></div>
                 </div>
-                <div class="text-slate-300">F5 (Pinky)</div>
+                <div class="text-slate-400 text-[10px]">F5 (Pinky)</div>
                 <div id="valF5" class="text-sky-400 font-bold">25%</div>
               </div>
+
             </div>
           </div>
 
           <!-- Token Queue Stream -->
-          <div class="p-4 rounded-2xl bg-[#071527] border border-blue-900/40 space-y-2">
+          <div class="p-4 rounded-2xl bg-[#06080F] border border-white/[0.08] space-y-2">
             <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
               <span>RECOGNIZED SIGN TOKENS (INPUT QUEUE):</span>
               <span id="tokenCount" class="text-sky-400 font-bold">0 tokens</span>
             </div>
-            <div id="tokenStream" class="min-h-[42px] flex flex-wrap items-center gap-2 text-sm font-mono text-sky-300">
-              <span class="text-slate-400 italic text-xs">Click gesture buttons above to assemble sign tokens...</span>
+            <div id="tokenStream" class="min-h-[38px] flex flex-wrap items-center gap-2 text-sm font-mono text-sky-300">
+              <span class="text-slate-500 italic text-xs">Click gesture buttons above to assemble sign tokens...</span>
             </div>
           </div>
 
           <!-- Quick Test Scenarios & Auto-Voice Toggle -->
-          <div class="space-y-3">
+          <div class="space-y-3 pt-2">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-mono">
               <span class="text-slate-300 uppercase tracking-wider font-semibold">Discrete Word Presets:</span>
-              <label class="inline-flex items-center gap-2 cursor-pointer text-[11px] text-sky-300 bg-blue-950/80 px-3 py-1 rounded-lg border border-blue-700/40">
-                <input type="checkbox" id="autoVoiceToggle" checked onchange="toggleAutoVoice(this.checked)" class="accent-blue-500 cursor-pointer">
+              <label class="inline-flex items-center gap-2 cursor-pointer text-[11px] text-sky-400 bg-[#06080F] px-3 py-1.5 rounded-full border border-white/[0.1]">
+                <input type="checkbox" id="autoVoiceToggle" checked onchange="toggleAutoVoice(this.checked)" class="accent-sky-400 cursor-pointer">
                 <span>Auto-vocalize on touch</span>
               </label>
             </div>
             
             <div class="flex flex-wrap gap-2">
-              <button onclick="loadScenario(['Hello'])" class="px-4 py-2.5 rounded-xl text-xs bg-blue-600 text-white hover:bg-blue-500 font-bold transition flex items-center gap-2 shadow-sm">
-                <span>👋 Gesture: "Hello" ⟶ "Hello"</span>
+              <button onclick="loadScenario(['Hello'])" class="px-4 py-2 rounded-full text-xs font-mono bg-sky-400 text-slate-950 font-bold hover:bg-white transition flex items-center gap-2">
+                <span>👋 "Hello"</span>
               </button>
-              <button onclick="loadScenario(['Thank_you'])" class="px-3.5 py-2.5 rounded-xl text-xs bg-[#071527] border border-blue-900/50 hover:border-sky-400 hover:bg-blue-950/50 text-slate-200 transition">
-                🙏 Gesture: "Thank You" ⟶ "Thank You"
+              <button onclick="loadScenario(['Thank_you'])" class="px-4 py-2 rounded-full text-xs font-mono bg-[#06080F] border border-white/[0.1] hover:border-sky-400 text-slate-200 transition">
+                🙏 "Thank You"
               </button>
-              <button onclick="loadScenario(['Good_bye'])" class="px-3.5 py-2.5 rounded-xl text-xs bg-[#071527] border border-blue-900/50 hover:border-sky-400 hover:bg-blue-950/50 text-slate-200 transition">
-                👋 Gesture: "Good Bye" ⟶ "Goodbye"
+              <button onclick="loadScenario(['Good_bye'])" class="px-4 py-2 rounded-full text-xs font-mono bg-[#06080F] border border-white/[0.1] hover:border-sky-400 text-slate-200 transition">
+                👋 "Goodbye"
               </button>
-              <button onclick="loadScenario(['Hello', 'You', 'Happy'])" class="px-3.5 py-2.5 rounded-xl text-xs bg-[#071527] border border-blue-900/50 hover:border-sky-400 hover:bg-blue-950/50 text-slate-200 transition">
-                🤝 Sequence: "Hello • You • Happy"
+              <button onclick="loadScenario(['Hello', 'You', 'Happy'])" class="px-4 py-2 rounded-full text-xs font-mono bg-[#06080F] border border-white/[0.1] hover:border-sky-400 text-slate-200 transition">
+                🤝 "Hello • You • Happy"
               </button>
             </div>
           </div>
 
         </div>
 
-        <!-- Right Column: Simulated LilyGO AMOLED Display Module -->
+        <!-- Right: Simulated LilyGO AMOLED Display Module -->
         <div class="lg:col-span-5 flex flex-col items-center">
           
-          <div class="relative w-full max-w-[370px] rounded-[42px] bg-[#0E2443] p-4 border-2 border-blue-700/50 shadow-xl">
+          <!-- Outer Bionic Watch Enclosure with Chamfered Tech Edges -->
+          <div class="relative w-full max-w-[360px] rounded-[38px] bg-[#080D17] p-4 border border-sky-400/30 shadow-[0_0_40px_rgba(56,189,248,0.15)]">
             
             <!-- Watch Body (AMOLED Display Frame) -->
-            <div class="rounded-[34px] bg-[#05101F] p-5 border border-blue-900/60 min-h-[470px] flex flex-col justify-between text-white font-sans relative overflow-hidden">
+            <div class="rounded-[30px] bg-[#04060A] p-5 border border-white/[0.08] min-h-[470px] flex flex-col justify-between text-white font-sans relative overflow-hidden">
 
               <!-- Top Status Bar -->
-              <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 border-b border-blue-950 pb-2.5 z-10">
+              <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 border-b border-white/[0.06] pb-2.5 z-10">
                 <div class="flex items-center gap-1.5">
-                  <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                  <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse"></span>
                   <span class="font-bold text-white">AURA OS v2.4</span>
                 </div>
                 <div class="flex items-center gap-2">
                   <span class="text-sky-400">BLE 5.3</span>
-                  <span class="text-slate-300">88% ⚡</span>
+                  <span class="text-slate-400">88% ⚡</span>
                 </div>
               </div>
 
@@ -580,47 +658,47 @@
                 
                 <!-- Input Signs Box -->
                 <div class="space-y-1">
-                  <span class="text-[10px] font-mono text-slate-400 uppercase font-semibold">Detected Sign Tokens:</span>
-                  <div id="amoledTokens" class="p-3 rounded-xl bg-[#071527] border border-blue-900/60 text-xs font-mono text-sky-400 min-h-[36px] flex items-center">
+                  <span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider">Detected Sign Tokens:</span>
+                  <div id="amoledTokens" class="p-3 rounded-xl bg-[#080D17] border border-white/[0.08] text-xs font-mono text-sky-400 min-h-[36px] flex items-center">
                     Awaiting hand gesture kinematics...
                   </div>
                 </div>
 
-                <!-- Output Expanded Speech Box (Solid Clean Card) -->
+                <!-- Output Expanded Speech Box -->
                 <div class="space-y-1">
                   <div class="flex items-center justify-between">
-                    <span class="text-[10px] font-mono text-emerald-400 uppercase font-bold">Discrete Speech Output (Speaker):</span>
+                    <span class="text-[10px] font-mono text-sky-400 uppercase font-bold">Discrete Speech Output:</span>
                     <button id="btnSpeakAudio" onclick="speakCurrentText()" class="hidden text-[10px] font-mono text-sky-400 hover:underline flex items-center gap-1">
                       <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M12 6v12m0-12L7 10H4a1 1 0 00-1 1v2a1 1 0 001 1h3l5 4V6z"/></svg>
-                      <span>Replay Audio</span>
+                      <span>Replay</span>
                     </button>
                   </div>
                   
-                  <div id="amoledSpeech" class="p-4 rounded-xl bg-[#0E2443] border border-blue-600/40 text-xs sm:text-sm text-slate-100 font-medium leading-relaxed min-h-[105px] flex items-center justify-center text-center">
+                  <div id="amoledSpeech" class="p-4 rounded-xl bg-[#0A101D] border border-sky-400/30 text-xs sm:text-sm text-slate-100 font-medium leading-relaxed min-h-[105px] flex items-center justify-center text-center">
                     "Tap any gesture on the left or choose a Preset to vocalize discrete words!"
                   </div>
                 </div>
 
                 <!-- Active Sign Avatar Status Indicator -->
-                <div class="p-2.5 rounded-xl bg-[#071527] border border-blue-900/50 flex items-center gap-3">
-                  <div class="w-10 h-10 rounded-lg bg-blue-900/40 border border-blue-700/40 flex items-center justify-center text-sky-400 shrink-0">
-                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <div class="p-2.5 rounded-xl bg-[#080D17] border border-white/[0.08] flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-lg bg-sky-400/10 border border-sky-400/30 flex items-center justify-center text-sky-400 shrink-0">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                   </div>
                   <div class="text-[11px] leading-tight">
-                    <div class="font-bold text-white" id="avatarSignLabel">C-LSTM: Ready</div>
-                    <div class="text-slate-400 text-[10px]" id="avatarSignSub">On-Device Latency: 11.8ms</div>
+                    <div class="font-bold text-white font-mono" id="avatarSignLabel">C-LSTM: Ready</div>
+                    <div class="text-slate-400 text-[10px] font-mono" id="avatarSignSub">On-Device Latency: 11.8ms</div>
                   </div>
                 </div>
 
               </div>
 
               <!-- Screen Footer Controls -->
-              <div class="border-t border-blue-950 pt-3 space-y-2 z-10">
+              <div class="border-t border-white/[0.06] pt-3 space-y-2 z-10">
                 <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
-                  <span>Language: <strong class="text-white" id="currentLangLabel">English</strong></span>
+                  <span>Lang: <strong class="text-white" id="currentLangLabel">English</strong></span>
                   <div class="flex gap-1.5">
-                    <button id="btnLangEn" onclick="setLanguage('en')" class="px-2.5 py-1 rounded bg-blue-600 text-white text-[10px] font-bold">EN</button>
-                    <button id="btnLangVi" onclick="setLanguage('vi')" class="px-2.5 py-1 rounded bg-blue-950 hover:bg-blue-900 text-slate-300 text-[10px] font-bold border border-blue-800/50">VI</button>
+                    <button id="btnLangEn" onclick="setLanguage('en')" class="px-2.5 py-1 rounded bg-sky-400 text-slate-950 text-[10px] font-bold">EN</button>
+                    <button id="btnLangVi" onclick="setLanguage('vi')" class="px-2.5 py-1 rounded bg-[#080D17] hover:bg-white/[0.05] text-slate-300 text-[10px] font-bold border border-white/[0.1]">VI</button>
                   </div>
                 </div>
               </div>
@@ -629,7 +707,7 @@
 
           </div>
 
-          <p class="text-xs text-slate-400 font-mono mt-3 text-center">
+          <p class="text-xs text-slate-500 font-mono mt-3 text-center">
             Simulated 1.9" Retina AMOLED (368 × 448 px) • LilyGO ESP32-S3
           </p>
 
@@ -638,35 +716,35 @@
       </div>
 
       <!-- CONTAINER: MODE 2 (I LISTEN - VOICE TO VISUAL SIGN) -->
-      <div id="listenModeContainer" class="hidden grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div id="listenModeContainer" class="hidden grid-cols-1 lg:grid-cols-12 gap-10 items-start">
         
         <!-- Left: Speech Input & Inbound Acoustic Pipeline -->
-        <div class="lg:col-span-7 tech-card rounded-3xl p-6 sm:p-8 space-y-6">
-          <div class="border-b border-blue-900/40 pb-4">
-            <h3 class="text-base font-bold text-white flex items-center gap-2">
-              <span>Hearing Person Speaks ⟶ Visual Wrist Sign Interpreter</span>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-700/40">Acoustic Pipeline</span>
+        <div class="lg:col-span-7 space-y-6">
+          <div class="border-b border-white/[0.08] pb-4">
+            <h3 class="text-sm font-mono font-bold text-white uppercase tracking-wider flex items-center gap-2">
+              <span>Ambient Speech ⟶ Visual Wrist Sign Interpreter</span>
+              <span class="text-[10px] px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 border border-sky-500/20">Acoustic Pipeline</span>
             </h3>
-            <p class="text-xs text-slate-300 font-mono mt-0.5">Test inbound ambient voice capture and automatic visual sign rendering</p>
+            <p class="text-xs text-slate-400 font-mono mt-0.5">Test inbound ambient voice capture and automatic visual sign rendering</p>
           </div>
 
           <!-- Quick Speech Presets -->
-          <div class="space-y-2">
+          <div class="space-y-3">
             <div class="flex items-center justify-between text-xs font-mono">
               <span class="text-slate-300 uppercase font-semibold">Select an ambient speech phrase:</span>
-              <span class="text-[11px] text-emerald-400 font-bold">⚡ Zero-Latency Automatic STT</span>
+              <span class="text-sky-400 font-bold">⚡ Zero-Latency STT</span>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <button onclick="simulateInboundSpeech('Hello AURA, can you introduce yourself?')" class="p-4 rounded-2xl bg-[#071527] border border-blue-900/50 hover:border-emerald-400 text-left text-xs text-emerald-300 font-semibold transition flex items-center gap-2">
+              <button onclick="simulateInboundSpeech('Hello AURA, can you introduce yourself?')" class="p-4 rounded-2xl bg-[#06080F] border border-white/[0.08] hover:border-sky-400 text-left text-xs text-slate-200 font-mono transition flex items-center gap-2">
                 <span>💬 "Hello AURA, can you introduce yourself?"</span>
               </button>
-              <button onclick="simulateInboundSpeech('Very pleased to meet you at Bach Khoa Innovation 2026!')" class="p-4 rounded-2xl bg-[#071527] border border-blue-900/50 hover:border-emerald-400 text-left text-xs text-slate-200 transition">
+              <button onclick="simulateInboundSpeech('Very pleased to meet you at Bach Khoa Innovation 2026!')" class="p-4 rounded-2xl bg-[#06080F] border border-white/[0.08] hover:border-sky-400 text-left text-xs text-slate-200 font-mono transition">
                 💬 "Very pleased to meet you at BKI 2026!"
               </button>
-              <button onclick="simulateInboundSpeech('What is your name? Nice to connect with you.')" class="p-4 rounded-2xl bg-[#071527] border border-blue-900/50 hover:border-emerald-400 text-left text-xs text-slate-200 transition">
+              <button onclick="simulateInboundSpeech('What is your name? Nice to connect with you.')" class="p-4 rounded-2xl bg-[#06080F] border border-white/[0.08] hover:border-sky-400 text-left text-xs text-slate-200 font-mono transition">
                 💬 "What is your name? Nice to connect."
               </button>
-              <button onclick="simulateInboundSpeech('Thank you very much for sharing your innovative project!')" class="p-4 rounded-2xl bg-[#071527] border border-blue-900/50 hover:border-emerald-400 text-left text-xs text-slate-200 transition">
+              <button onclick="simulateInboundSpeech('Thank you very much for sharing your innovative project!')" class="p-4 rounded-2xl bg-[#06080F] border border-white/[0.08] hover:border-sky-400 text-left text-xs text-slate-200 font-mono transition">
                 💬 "Thank you very much for sharing!"
               </button>
             </div>
@@ -676,45 +754,46 @@
 
         <!-- Right: AMOLED Inbound Screen Display -->
         <div class="lg:col-span-5 flex flex-col items-center">
-          <div class="relative w-full max-w-[370px] rounded-[42px] bg-[#0E2443] p-4 border-2 border-emerald-600/50 shadow-xl">
+          <div class="relative w-full max-w-[360px] rounded-[38px] bg-[#080D17] p-4 border border-sky-400/30 shadow-[0_0_40px_rgba(56,189,248,0.15)]">
             
-            <div class="rounded-[34px] bg-[#05101F] p-5 border border-blue-900/60 min-h-[470px] flex flex-col justify-between text-white font-sans">
+            <div class="rounded-[30px] bg-[#04060A] p-5 border border-white/[0.08] min-h-[470px] flex flex-col justify-between text-white font-sans">
+              
               <!-- Header -->
-              <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 border-b border-blue-950 pb-2">
+              <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 border-b border-white/[0.06] pb-2">
                 <div class="flex items-center gap-1.5">
-                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-ping"></span>
                   <span class="font-bold text-white">VOICE RECEPTION MODE</span>
                 </div>
-                <span class="text-emerald-400 font-semibold">MIC ACTIVE</span>
+                <span class="text-sky-400 font-semibold">MIC ACTIVE</span>
               </div>
 
               <!-- Main Visualized Message -->
               <div class="py-6 space-y-4 flex-1 flex flex-col justify-center text-center">
                 
                 <span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider">Detected Speech:</span>
-                <div id="inboundTranscript" class="text-base font-display font-bold text-emerald-300 leading-snug px-2">
+                <div id="inboundTranscript" class="text-base font-display font-bold text-sky-300 leading-snug px-2">
                   "Hello AURA, can you introduce yourself?"
                 </div>
 
-                <div class="my-3 border-t border-blue-950 pt-3">
-                  <span class="text-[10px] font-mono text-sky-400 uppercase tracking-wider">Visual Sign Avatar Sequence:</span>
+                <div class="my-3 border-t border-white/[0.06] pt-3">
+                  <span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider">Visual Sign Avatar Sequence:</span>
                   <div id="inboundSignSequence" class="mt-2 flex flex-wrap justify-center gap-1.5">
-                    <span class="px-2.5 py-1 rounded-lg bg-blue-950 text-sky-300 text-xs font-mono font-bold border border-blue-700/40">Hello</span>
-                    <span class="px-2.5 py-1 rounded-lg bg-blue-950 text-sky-300 text-xs font-mono font-bold border border-blue-700/40">I</span>
-                    <span class="px-2.5 py-1 rounded-lg bg-blue-950 text-sky-300 text-xs font-mono font-bold border border-blue-700/40">Happy</span>
+                    <span class="px-2.5 py-1 rounded-full bg-[#080D17] text-sky-400 text-xs font-mono font-bold border border-sky-400/30">Hello</span>
+                    <span class="px-2.5 py-1 rounded-full bg-[#080D17] text-sky-400 text-xs font-mono font-bold border border-sky-400/30">I</span>
+                    <span class="px-2.5 py-1 rounded-full bg-[#080D17] text-sky-400 text-xs font-mono font-bold border border-sky-400/30">Happy</span>
                   </div>
                 </div>
 
                 <!-- Graphic Indicator -->
-                <div class="p-3 rounded-xl bg-[#071527] border border-blue-900/50 flex items-center justify-center gap-2 text-xs text-slate-300">
-                  <svg class="w-5 h-5 text-emerald-400 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <div class="p-3 rounded-xl bg-[#080D17] border border-white/[0.08] flex items-center justify-center gap-2 text-xs text-slate-300">
+                  <svg class="w-4 h-4 text-sky-400 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                   <span>AMOLED rendering dynamic sign motions</span>
                 </div>
 
               </div>
 
               <!-- Footer info -->
-              <div class="border-t border-blue-950 pt-2 text-[10px] font-mono text-slate-400 text-center">
+              <div class="border-t border-white/[0.06] pt-2 text-[10px] font-mono text-slate-400 text-center">
                 Full-Duplex Acoustic Feedback • ESP32-S3 I2S Codec
               </div>
 
@@ -722,7 +801,7 @@
 
           </div>
 
-          <p class="text-xs text-slate-400 font-mono mt-3 text-center">
+          <p class="text-xs text-slate-500 font-mono mt-3 text-center">
             AMOLED Wrist Interpretation Screen • Reverse Flow
           </p>
 
@@ -733,142 +812,142 @@
     </div>
   </section>
 
-  <!-- HARDWARE ANATOMY (APPLE-STYLE BENTO GRID) -->
-  <section id="hardware" class="py-24 bg-[#071527] border-t border-blue-900/30">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+  <!-- ================================================================= -->
+  <!-- 5. HARDWARE ANATOMY: SWISS SPECSHEET (No Bento Box Fatigue) -->
+  <!-- ================================================================= -->
+  <section id="hardware" class="py-24 bg-[#06080F] border-t border-white/[0.07] relative">
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 space-y-16">
       
-      <!-- Section Header -->
-      <div class="text-center max-w-3xl mx-auto space-y-3">
-        <span class="text-xs font-mono text-sky-400 uppercase tracking-widest font-bold">Hardware Anatomy</span>
-        <h2 class="text-3xl sm:text-5xl font-display font-black text-white">Modular Architecture & Custom PCB</h2>
-        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-          Engineered from scratch at HCMUT: Dual-Core embedded edge computing, 5-finger flex sensor arrays, and biocompatible fabrication.
-        </p>
+      <!-- Section Header: Clean Editorial -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/[0.08] pb-8">
+        <div>
+          <span class="font-mono text-xs text-sky-400 uppercase tracking-widest font-bold">03 // HARDWARE ARCHITECTURE</span>
+          <h2 class="text-3xl sm:text-5xl font-display font-black text-white mt-1">Bionic Hardware Anatomy</h2>
+          <p class="text-xs sm:text-sm text-slate-400 mt-2 max-w-2xl">
+            Custom engineered at HCMUT: Dual-Core embedded edge computing, 5-finger flex sensor arrays, and biocompatible phalange fabrication.
+          </p>
+        </div>
+        <div class="font-mono text-xs text-slate-500 text-right hidden md:block">
+          <div>FABRICATION: LAB v2.4</div>
+          <div class="text-sky-400">MODULAR BUS: I2C / I2S / QSPI</div>
+        </div>
       </div>
 
-      <!-- Bento Grid (6 Modules) -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Precision Specsheet Matrix (Continuous Hairline Strips) -->
+      <div class="divide-y divide-white/[0.08]">
         
-        <!-- Bento 1: Dual-Core Computing Core -->
-        <div class="md:col-span-2 lg:col-span-2 tech-card rounded-3xl p-8 space-y-6">
-          <div class="flex items-center justify-between">
-            <div class="w-12 h-12 rounded-2xl bg-blue-950 border border-blue-700/50 flex items-center justify-center text-sky-400">
-              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
+        <!-- Module 01: Dual-Core Hub -->
+        <div class="py-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start group">
+          <div class="lg:col-span-3 flex items-baseline gap-4">
+            <span class="text-4xl sm:text-5xl font-display font-black text-slate-700 group-hover:text-sky-400 transition-colors">01</span>
+            <div>
+              <div class="font-mono text-xs text-sky-400 uppercase tracking-wider font-bold">COMPUTING HUB</div>
+              <h3 class="text-xl font-display font-bold text-white mt-0.5">ESP32-S3 + ESP32-C6</h3>
             </div>
-            <span class="text-xs font-mono px-3 py-1 rounded-md bg-blue-950 text-sky-400 border border-blue-700/40 font-bold">EDGE COMPUTING</span>
           </div>
-
-          <div>
-            <h3 class="text-xl font-display font-bold text-white">Dual-Core Computing Hub (ESP32-S3 + ESP32-C6)</h3>
-            <p class="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">
-              Main computation is powered by the <strong>ESP32-S3 Xtensa dual-core 32-bit LX7</strong> running at 240 MHz with dedicated vector instructions for TinyML inference. It pairs seamlessly with an <strong>ESP32-C6 RISC-V</strong> coprocessor managing low-power BLE 5.3 and Wi-Fi 6 mesh networking.
-            </p>
+          <div class="lg:col-span-6 text-slate-300 text-sm leading-relaxed">
+            Primary computation is powered by the <strong>ESP32-S3 Xtensa dual-core 32-bit LX7</strong> running at 240 MHz with dedicated vector instructions for TinyML inference. It pairs seamlessly with an <strong>ESP32-C6 RISC-V</strong> coprocessor managing low-power BLE 5.3 and Wi-Fi 6 mesh networking.
           </div>
-
-          <div class="grid grid-cols-3 gap-4 pt-2 border-t border-blue-900/40 text-center font-mono">
-            <div class="p-2.5 rounded-xl bg-[#071527] border border-blue-900/50">
-              <div class="text-sky-400 font-bold">&lt; 15 ms</div>
-              <div class="text-[10px] text-slate-400">Inference Time</div>
-            </div>
-            <div class="p-2.5 rounded-xl bg-[#071527] border border-blue-900/50">
-              <div class="text-blue-400 font-bold">240 MHz</div>
-              <div class="text-[10px] text-slate-400">Dual-Core Xtensa</div>
-            </div>
-            <div class="p-2.5 rounded-xl bg-[#071527] border border-blue-900/50">
-              <div class="text-emerald-400 font-bold">8 MB</div>
-              <div class="text-[10px] text-slate-400">Octal PSRAM</div>
-            </div>
+          <div class="lg:col-span-3 font-mono text-xs text-slate-400 space-y-1.5 border-l border-white/[0.08] pl-4">
+            <div><span class="text-white font-bold">&lt; 15 ms</span> Inference Latency</div>
+            <div><span class="text-white font-bold">240 MHz</span> Dual-Core Xtensa</div>
+            <div><span class="text-white font-bold">8 MB</span> Octal PSRAM</div>
           </div>
         </div>
 
-        <!-- Bento 2: 5x Bionic Flex Sensors -->
-        <div class="tech-card rounded-3xl p-7 space-y-4">
-          <div class="flex items-center justify-between">
-            <div class="w-12 h-12 rounded-2xl bg-blue-950 border border-blue-700/50 flex items-center justify-center text-sky-400">
-              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11"/></svg>
+        <!-- Module 02: 5-Finger Flex Sensors -->
+        <div class="py-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start group">
+          <div class="lg:col-span-3 flex items-baseline gap-4">
+            <span class="text-4xl sm:text-5xl font-display font-black text-slate-700 group-hover:text-sky-400 transition-colors">02</span>
+            <div>
+              <div class="font-mono text-xs text-sky-400 uppercase tracking-wider font-bold">SENSORY MATRIX</div>
+              <h3 class="text-xl font-display font-bold text-white mt-0.5">5-Finger Flex Array</h3>
             </div>
-            <span class="text-xs font-mono px-3 py-1 rounded-md bg-blue-950 text-sky-400 border border-blue-700/40 font-bold">SENSING</span>
           </div>
-          <h3 class="text-lg font-display font-bold text-white">5-Finger Flex Sensor Array</h3>
-          <p class="text-xs text-slate-300 leading-relaxed">
-            5 bidirectional flex resistance strips mounted along custom 3D-printed phalange joints. Captures precise finger flexion angles at 50 FPS with real-time Kalman filtering.
-          </p>
-          <ul class="text-xs text-slate-300 font-mono space-y-1 pt-2 border-t border-blue-900/40">
-            <li class="flex items-center gap-2"><span class="text-sky-400 font-bold">✓</span> Biocompatible Silicone Mounts</li>
-            <li class="flex items-center gap-2"><span class="text-sky-400 font-bold">✓</span> 12-bit ADC Sampling Resolution</li>
-          </ul>
+          <div class="lg:col-span-6 text-slate-300 text-sm leading-relaxed">
+            5 bidirectional flex resistance strips mounted along custom 3D-printed phalange joints. Captures precise finger flexion angles at 50 FPS with real-time Kalman filtering and 12-bit ADC sampling resolution.
+          </div>
+          <div class="lg:col-span-3 font-mono text-xs text-slate-400 space-y-1.5 border-l border-white/[0.08] pl-4">
+            <div><span class="text-white font-bold">12-bit</span> ADC Resolution</div>
+            <div><span class="text-white font-bold">50 FPS</span> Sampling Rate</div>
+            <div><span class="text-white font-bold">Resin 3D</span> Biocompatible Mounts</div>
+          </div>
         </div>
 
-        <!-- Bento 3: Full-Duplex I2S Audio -->
-        <div class="tech-card rounded-3xl p-7 space-y-4">
-          <div class="flex items-center justify-between">
-            <div class="w-12 h-12 rounded-2xl bg-blue-950 border border-blue-700/50 flex items-center justify-center text-sky-400">
-              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"/></svg>
+        <!-- Module 03: I2S Audio Codec -->
+        <div class="py-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start group">
+          <div class="lg:col-span-3 flex items-baseline gap-4">
+            <span class="text-4xl sm:text-5xl font-display font-black text-slate-700 group-hover:text-sky-400 transition-colors">03</span>
+            <div>
+              <div class="font-mono text-xs text-sky-400 uppercase tracking-wider font-bold">AUDIO SUBSYSTEM</div>
+              <h3 class="text-xl font-display font-bold text-white mt-0.5">ES8311 Codec + Mic</h3>
             </div>
-            <span class="text-xs font-mono px-3 py-1 rounded-md bg-blue-950 text-sky-400 border border-blue-700/40 font-bold">AUDIO</span>
           </div>
-          <h3 class="text-lg font-display font-bold text-white">I2S Audio Codec & 24-Bit Mic</h3>
-          <p class="text-xs text-slate-300 leading-relaxed">
-            Hi-Fi ES8311 audio codec integrated with power amplifier and miniature speaker. Delivers crisp vocal pronunciation and captures ambient partner dialogue with noise filtering.
-          </p>
-          <ul class="text-xs text-slate-300 font-mono space-y-1 pt-2 border-t border-blue-900/40">
-            <li class="flex items-center gap-2"><span class="text-sky-400 font-bold">✓</span> High-Efficiency Class-D Speaker</li>
-            <li class="flex items-center gap-2"><span class="text-sky-400 font-bold">✓</span> Wind Noise Suppressing MEMS Mic</li>
-          </ul>
+          <div class="lg:col-span-6 text-slate-300 text-sm leading-relaxed">
+            Hi-Fi ES8311 audio codec integrated with power amplifier and miniature speaker. Delivers crisp vocal pronunciation and captures ambient partner dialogue with noise filtering via high-sensitivity MEMS microphone.
+          </div>
+          <div class="lg:col-span-3 font-mono text-xs text-slate-400 space-y-1.5 border-l border-white/[0.08] pl-4">
+            <div><span class="text-white font-bold">16 kHz</span> Hi-Fi Voice Output</div>
+            <div><span class="text-white font-bold">I2S Bus</span> Digital Audio Link</div>
+            <div><span class="text-white font-bold">Class-D</span> Onboard Amplifier</div>
+          </div>
         </div>
 
-        <!-- Bento 4: AMOLED Touch Screen -->
-        <div class="tech-card rounded-3xl p-7 space-y-4">
-          <div class="flex items-center justify-between">
-            <div class="w-12 h-12 rounded-2xl bg-blue-950 border border-blue-700/50 flex items-center justify-center text-sky-400">
-              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+        <!-- Module 04: Retina AMOLED Display -->
+        <div class="py-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start group">
+          <div class="lg:col-span-3 flex items-baseline gap-4">
+            <span class="text-4xl sm:text-5xl font-display font-black text-slate-700 group-hover:text-sky-400 transition-colors">04</span>
+            <div>
+              <div class="font-mono text-xs text-sky-400 uppercase tracking-wider font-bold">VISUAL INTERFACE</div>
+              <h3 class="text-xl font-display font-bold text-white mt-0.5">1.9" Retina AMOLED</h3>
             </div>
-            <span class="text-xs font-mono px-3 py-1 rounded-md bg-blue-950 text-sky-400 border border-blue-700/40 font-bold">DISPLAY</span>
           </div>
-          <h3 class="text-lg font-display font-bold text-white">1.9" Retina AMOLED Display</h3>
-          <p class="text-xs text-slate-300 leading-relaxed">
-            Crisp 368 × 448 px resolution, infinite contrast, and custom LVGL 8.3 graphical interface for clear visibility under harsh outdoor sunlight.
-          </p>
-          <ul class="text-xs text-slate-300 font-mono space-y-1 pt-2 border-t border-blue-900/40">
-            <li class="flex items-center gap-2"><span class="text-sky-400 font-bold">✓</span> SH8601 QSPI Display Driver</li>
-            <li class="flex items-center gap-2"><span class="text-sky-400 font-bold">✓</span> True-Black Energy Saving Mode</li>
-          </ul>
+          <div class="lg:col-span-6 text-slate-300 text-sm leading-relaxed">
+            Crisp 368 × 448 px resolution, infinite contrast, and custom LVGL 8.3 graphical interface for clear visibility under harsh outdoor sunlight with SH8601 QSPI display driver.
+          </div>
+          <div class="lg:col-span-3 font-mono text-xs text-slate-400 space-y-1.5 border-l border-white/[0.08] pl-4">
+            <div><span class="text-white font-bold">368 × 448</span> Retina Resolution</div>
+            <div><span class="text-white font-bold">QSPI</span> High-Speed Bus</div>
+            <div><span class="text-white font-bold">LVGL 8.3</span> Dynamic UI Engine</div>
+          </div>
         </div>
 
-        <!-- Bento 5: 6-Axis Motion IMU -->
-        <div class="tech-card rounded-3xl p-7 space-y-4">
-          <div class="flex items-center justify-between">
-            <div class="w-12 h-12 rounded-2xl bg-blue-950 border border-blue-700/50 flex items-center justify-center text-sky-400">
-              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"/></svg>
+        <!-- Module 05: 6-Axis Motion IMU -->
+        <div class="py-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start group">
+          <div class="lg:col-span-3 flex items-baseline gap-4">
+            <span class="text-4xl sm:text-5xl font-display font-black text-slate-700 group-hover:text-sky-400 transition-colors">05</span>
+            <div>
+              <div class="font-mono text-xs text-sky-400 uppercase tracking-wider font-bold">SPATIAL MOTION</div>
+              <h3 class="text-xl font-display font-bold text-white mt-0.5">QMI8658 6-Axis IMU</h3>
             </div>
-            <span class="text-xs font-mono px-3 py-1 rounded-md bg-blue-950 text-sky-400 border border-blue-700/40 font-bold">MOTION</span>
           </div>
-          <h3 class="text-lg font-display font-bold text-white">QMI8658 6-Axis Motion IMU</h3>
-          <p class="text-xs text-slate-300 leading-relaxed">
-            6-DOF accelerometer and gyroscope measuring 3D spatial velocity and Yaw-Pitch-Roll wrist orientations for dynamic signs.
-          </p>
-          <ul class="text-xs text-slate-300 font-mono space-y-1 pt-2 border-t border-blue-900/40">
-            <li class="flex items-center gap-2"><span class="text-sky-400 font-bold">✓</span> Drift Compensation Filter</li>
-            <li class="flex items-center gap-2"><span class="text-sky-400 font-bold">✓</span> Integrated Air Mouse Navigation</li>
-          </ul>
+          <div class="lg:col-span-6 text-slate-300 text-sm leading-relaxed">
+            6-DOF accelerometer and gyroscope measuring 3D spatial velocity and Yaw-Pitch-Roll wrist orientations for dynamic signs, paired with drift compensation filters.
+          </div>
+          <div class="lg:col-span-3 font-mono text-xs text-slate-400 space-y-1.5 border-l border-white/[0.08] pl-4">
+            <div><span class="text-white font-bold">6-DOF</span> Accel + Gyro</div>
+            <div><span class="text-white font-bold">Kalman</span> Drift Compensation</div>
+            <div><span class="text-white font-bold">I2C</span> Fast-Mode 400kHz</div>
+          </div>
         </div>
 
-        <!-- Bento 6: Battery & PMU (Span 2 cols) -->
-        <div class="md:col-span-2 lg:col-span-2 tech-card rounded-3xl p-7 space-y-4">
-          <div class="flex items-center justify-between">
-            <div class="w-12 h-12 rounded-2xl bg-blue-950 border border-blue-700/50 flex items-center justify-center text-amber-400">
-              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        <!-- Module 06: Power & Battery -->
+        <div class="py-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start group">
+          <div class="lg:col-span-3 flex items-baseline gap-4">
+            <span class="text-4xl sm:text-5xl font-display font-black text-slate-700 group-hover:text-sky-400 transition-colors">06</span>
+            <div>
+              <div class="font-mono text-xs text-sky-400 uppercase tracking-wider font-bold">POWER CORE</div>
+              <h3 class="text-xl font-display font-bold text-white mt-0.5">AXP2101 + 1200mAh Li-Po</h3>
             </div>
-            <span class="text-xs font-mono px-3 py-1 rounded-md bg-blue-950 text-amber-400 border border-amber-700/40 font-bold">POWER</span>
           </div>
-          <h3 class="text-lg font-display font-bold text-white">AXP2101 PMU & 1200mAh Li-Po Battery</h3>
-          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            Intelligent AXP2101 power management controller dynamically regulates voltage rails for all peripheral sensors and radio cores. Combined with a 1200mAh high-density Li-Po battery, it delivers over 8 hours of continuous operation with safe USB-C fast charging.
-          </p>
-          <div class="flex flex-wrap gap-4 pt-1 text-xs font-mono text-slate-300">
-            <span class="flex items-center gap-1.5"><span class="text-amber-400">⚡</span> USB Type-C Fast Charge</span>
-            <span class="flex items-center gap-1.5"><span class="text-amber-400">⚡</span> Deep Sleep Auto-Shutdown</span>
-            <span class="flex items-center gap-1.5"><span class="text-amber-400">⚡</span> 8+ Hours Continuous Active Use</span>
+          <div class="lg:col-span-6 text-slate-300 text-sm leading-relaxed">
+            Intelligent AXP2101 PMU dynamically regulates voltage rails for all peripheral sensors and radio cores. Combined with a 1200mAh high-density Li-Po battery, it delivers over 8 hours of continuous operation with safe USB-C fast charging.
+          </div>
+          <div class="lg:col-span-3 font-mono text-xs text-slate-400 space-y-1.5 border-l border-white/[0.08] pl-4">
+            <div><span class="text-white font-bold">8+ Hours</span> Active Battery Life</div>
+            <div><span class="text-white font-bold">USB Type-C</span> Fast Charging</div>
+            <div><span class="text-white font-bold">AXP2101</span> Dynamic PMU Rails</div>
           </div>
         </div>
 
@@ -877,87 +956,104 @@
     </div>
   </section>
 
-  <!-- TWO-WAY COMMUNICATION PIPELINE FLOW -->
-  <section id="two-way" class="py-24 bg-[#0A1C34] border-t border-blue-900/30">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+  <!-- ================================================================= -->
+  <!-- 6. TWO-WAY PIPELINE: KINETIC SIGNAL WAVE -->
+  <!-- ================================================================= -->
+  <section id="two-way" class="py-24 bg-[#0B0F19] border-t border-white/[0.07] relative overflow-hidden">
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 space-y-16">
       
-      <div class="text-center max-w-3xl mx-auto space-y-3">
-        <span class="text-xs font-mono text-sky-400 uppercase tracking-widest font-bold">End-to-End Pipeline</span>
-        <h2 class="text-3xl sm:text-5xl font-display font-black text-white">Bidirectional Communication Architecture</h2>
-        <p class="text-xs sm:text-sm text-slate-300">
-          How AURA bridges the communication gap between the deaf and hearing worlds.
+      <div class="border-b border-white/[0.08] pb-8">
+        <span class="font-mono text-xs text-sky-400 uppercase tracking-widest font-bold">04 // END-TO-END PIPELINE</span>
+        <h2 class="text-3xl sm:text-5xl font-display font-black text-white mt-1">Bidirectional Communication Architecture</h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-2 max-w-2xl">
+          Continuous data transformation bridging the barrier between the deaf and hearing worlds.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 relative">
         
-        <!-- Forward Direction Flow -->
-        <div class="tech-card rounded-3xl p-8 space-y-6">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-mono px-3 py-1 rounded-md bg-blue-950 text-sky-400 border border-blue-700/40 font-bold">FORWARD DIRECTION</span>
-            <span class="text-xs text-slate-400 font-mono">Sign ⟶ Spoken Voice</span>
+        <!-- Forward Direction (Sign to Speech) -->
+        <div class="space-y-8 relative">
+          <div class="flex items-center justify-between border-b border-white/[0.08] pb-4">
+            <span class="font-mono text-xs text-sky-400 font-bold uppercase tracking-wider">FORWARD DIRECTION</span>
+            <span class="font-mono text-xs text-slate-400">Sign ⟶ Acoustic Voice</span>
           </div>
-          <h3 class="text-xl font-display font-bold text-white">From Hand Kinematics to Spoken Voice</h3>
-          
-          <div class="space-y-4">
+
+          <div class="space-y-6">
+            
             <div class="flex gap-4 items-start">
-              <div class="w-8 h-8 rounded-lg bg-blue-900/50 text-sky-400 flex items-center justify-center font-mono font-bold text-sm shrink-0">1</div>
+              <span class="font-mono text-sm text-sky-400 font-bold mt-0.5">01</span>
               <div>
-                <div class="text-sm font-bold text-white">Biomechanical Motion Acquisition</div>
-                <div class="text-xs text-slate-300 mt-0.5">5 flex sensors & 6-DOF IMU stream continuous angle and velocity vectors at 50 FPS with Kalman filtering.</div>
+                <h4 class="text-base font-bold text-white font-display">Biomechanical Motion Acquisition</h4>
+                <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+                  5 flex sensors & 6-DOF IMU stream continuous angle and velocity vectors at 50 FPS with discrete Kalman filtering.
+                </p>
               </div>
             </div>
 
             <div class="flex gap-4 items-start">
-              <div class="w-8 h-8 rounded-lg bg-blue-900/50 text-sky-400 flex items-center justify-center font-mono font-bold text-sm shrink-0">2</div>
+              <span class="font-mono text-sm text-sky-400 font-bold mt-0.5">02</span>
               <div>
-                <div class="text-sm font-bold text-white">On-Device TinyML Inference</div>
-                <div class="text-xs text-slate-300 mt-0.5">ESP32-S3 executes quantized Int8 C-LSTM network locally in PSRAM to classify discrete hand sign classes.</div>
+                <h4 class="text-base font-bold text-white font-display">On-Device TinyML Inference</h4>
+                <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+                  ESP32-S3 executes quantized Int8 C-LSTM network locally in PSRAM to classify discrete hand sign classes in 11.8ms.
+                </p>
               </div>
             </div>
 
             <div class="flex gap-4 items-start">
-              <div class="w-8 h-8 rounded-lg bg-blue-900/50 text-sky-400 flex items-center justify-center font-mono font-bold text-sm shrink-0">3</div>
+              <span class="font-mono text-sm text-sky-400 font-bold mt-0.5">03</span>
               <div>
-                <div class="text-sm font-bold text-white">Discrete Audio Vocalization</div>
-                <div class="text-xs text-slate-300 mt-0.5">ES8311 audio codec outputs corresponding discrete PCM vocalizations through the onboard speaker with zero cloud delay.</div>
+                <h4 class="text-base font-bold text-white font-display">Discrete Audio Vocalization</h4>
+                <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+                  ES8311 audio codec outputs corresponding discrete PCM vocalizations through the onboard speaker with zero cloud delay.
+                </p>
               </div>
             </div>
+
           </div>
         </div>
 
-        <!-- Reverse Direction Flow -->
-        <div class="tech-card rounded-3xl p-8 space-y-6">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-mono px-3 py-1 rounded-md bg-emerald-950 text-emerald-400 border border-emerald-700/40 font-bold">REVERSE DIRECTION</span>
-            <span class="text-xs text-slate-400 font-mono">Spoken Voice ⟶ Visual Signs</span>
+        <!-- Reverse Direction (Speech to Sign) -->
+        <div class="space-y-8 relative md:border-l md:border-white/[0.08] md:pl-12">
+          <div class="flex items-center justify-between border-b border-white/[0.08] pb-4">
+            <span class="font-mono text-xs text-sky-400 font-bold uppercase tracking-wider">REVERSE DIRECTION</span>
+            <span class="font-mono text-xs text-slate-400">Acoustic Voice ⟶ Visual Sign</span>
           </div>
-          <h3 class="text-xl font-display font-bold text-white">From Partner Speech to Visual Signs</h3>
-          
-          <div class="space-y-4">
+
+          <div class="space-y-6">
+            
             <div class="flex gap-4 items-start">
-              <div class="w-8 h-8 rounded-lg bg-emerald-900/50 text-emerald-400 flex items-center justify-center font-mono font-bold text-sm shrink-0">1</div>
+              <span class="font-mono text-sm text-sky-400 font-bold mt-0.5">01</span>
               <div>
-                <div class="text-sm font-bold text-white">Acoustic Audio Ingestion</div>
-                <div class="text-xs text-slate-300 mt-0.5">High-sensitivity MEMS microphone samples ambient partner speech at 16kHz with background noise reduction.</div>
+                <h4 class="text-base font-bold text-white font-display">Acoustic Audio Ingestion</h4>
+                <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+                  High-sensitivity MEMS microphone samples ambient partner speech at 16kHz with background noise reduction.
+                </p>
               </div>
             </div>
 
             <div class="flex gap-4 items-start">
-              <div class="w-8 h-8 rounded-lg bg-emerald-900/50 text-emerald-400 flex items-center justify-center font-mono font-bold text-sm shrink-0">2</div>
+              <span class="font-mono text-sm text-sky-400 font-bold mt-0.5">02</span>
               <div>
-                <div class="text-sm font-bold text-white">Semantic Keyword Parsing</div>
-                <div class="text-xs text-slate-300 mt-0.5">Audio stream is transcribed and mapped to standardized sign language dictionary tokens.</div>
+                <h4 class="text-base font-bold text-white font-display">Semantic Keyword Parsing</h4>
+                <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+                  Audio stream is transcribed and mapped to standardized sign language dictionary tokens in real-time.
+                </p>
               </div>
             </div>
 
             <div class="flex gap-4 items-start">
-              <div class="w-8 h-8 rounded-lg bg-emerald-900/50 text-emerald-400 flex items-center justify-center font-mono font-bold text-sm shrink-0">3</div>
+              <span class="font-mono text-sm text-sky-400 font-bold mt-0.5">03</span>
               <div>
-                <div class="text-sm font-bold text-white">Retina AMOLED Visual Rendering</div>
-                <div class="text-xs text-slate-300 mt-0.5">Wrist AMOLED screen renders 3D sign avatar animations and clear text for deaf users to read instantly.</div>
+                <h4 class="text-base font-bold text-white font-display">Retina AMOLED Visual Rendering</h4>
+                <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+                  Wrist AMOLED screen renders sign avatar animations and clear text for deaf users to read instantly in sunlight.
+                </p>
               </div>
             </div>
+
           </div>
         </div>
 
@@ -966,149 +1062,154 @@
     </div>
   </section>
 
-  <!-- COMPETITIVE BENCHMARK MATRIX -->
-  <section id="benchmark" class="py-24 bg-[#071527] border-t border-blue-900/30">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+  <!-- ================================================================= -->
+  <!-- 7. COMPETITIVE BENCHMARK MATRIX (Minimalist Hairline) -->
+  <!-- ================================================================= -->
+  <section id="benchmark" class="py-24 bg-[#06080F] border-t border-white/[0.07]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
       
-      <div class="text-center max-w-3xl mx-auto space-y-3">
-        <span class="text-xs font-mono text-sky-400 uppercase tracking-widest font-bold">Technical Benchmarking</span>
-        <h2 class="text-3xl sm:text-5xl font-display font-black text-white">Why AURA Outperforms Alternatives</h2>
-        <p class="text-xs sm:text-sm text-slate-300">
-          Rigorous engineering comparison highlighting AURA's decisive advantages over camera-based AI and generic Arduino gloves.
+      <div class="border-b border-white/[0.08] pb-8">
+        <span class="font-mono text-xs text-sky-400 uppercase tracking-widest font-bold">05 // TECHNICAL BENCHMARK</span>
+        <h2 class="text-3xl sm:text-5xl font-display font-black text-white mt-1">Why AURA Outperforms Alternatives</h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-2 max-w-2xl">
+          Rigorous engineering comparison highlighting AURA's decisive advantages over camera-based AI and generic DIY Arduino gloves.
         </p>
       </div>
 
-      <!-- Comparison Table -->
-      <div class="overflow-x-auto rounded-3xl border border-blue-900/50 shadow-xl">
+      <!-- Minimalist Table -->
+      <div class="overflow-x-auto border border-white/[0.08] rounded-2xl">
         <table class="w-full text-left border-collapse text-xs sm:text-sm">
-          <thead class="bg-[#05101F] text-slate-200 border-b border-blue-900/40 font-mono text-xs uppercase">
+          <thead class="bg-[#0B0F19] text-slate-300 border-b border-white/[0.08] font-mono text-xs uppercase">
             <tr>
-              <th class="py-4 px-6">Evaluation Criteria</th>
-              <th class="py-4 px-6 text-sky-400 font-bold bg-blue-950/60 border-x border-blue-800/40">AURA Smart Glove</th>
+              <th class="py-4 px-6">Evaluation Parameter</th>
+              <th class="py-4 px-6 text-sky-400 font-bold bg-white/[0.02] border-x border-white/[0.08]">AURA Smart Glove</th>
               <th class="py-4 px-6 text-slate-400">Camera Vision (MediaPipe)</th>
-              <th class="py-4 px-6 text-slate-400">Generic DIY Arduino Glove</th>
+              <th class="py-4 px-6 text-slate-400">Generic DIY Glove</th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-blue-900/30 text-slate-300 bg-[#0E2443]/60">
-            <tr class="hover:bg-blue-900/20 transition">
-              <td class="py-4 px-6 font-semibold text-white">Bidirectional Two-Way Communication</td>
-              <td class="py-4 px-6 text-emerald-400 font-bold bg-blue-950/40 border-x border-blue-800/40 flex items-center gap-1.5">
-                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                <span>Full-Duplex (Sign ⟷ Speech)</span>
+          <tbody class="divide-y divide-white/[0.06] text-slate-300">
+            <tr class="hover:bg-white/[0.02] transition">
+              <td class="py-4 px-6 font-semibold text-white">Bidirectional Communication</td>
+              <td class="py-4 px-6 text-sky-400 font-bold bg-white/[0.02] border-x border-white/[0.08] flex items-center gap-1.5">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                <span>Full-Duplex (Two-Way)</span>
               </td>
-              <td class="py-4 px-6 text-rose-400">One-Way Only (Sign ⟶ Text)</td>
-              <td class="py-4 px-6 text-rose-400">Primitive One-Way</td>
+              <td class="py-4 px-6 text-slate-500">One-Way Only (Sign ⟶ Text)</td>
+              <td class="py-4 px-6 text-slate-500">Primitive One-Way</td>
             </tr>
 
-            <tr class="hover:bg-blue-900/20 transition">
-              <td class="py-4 px-6 font-semibold text-white">Night / Low-Light Environment Operability</td>
-              <td class="py-4 px-6 text-emerald-400 font-bold bg-blue-950/40 border-x border-blue-800/40">
-                100% Light-Independent (Sensors)
+            <tr class="hover:bg-white/[0.02] transition">
+              <td class="py-4 px-6 font-semibold text-white">Night / Dark Operability</td>
+              <td class="py-4 px-6 text-sky-400 font-bold bg-white/[0.02] border-x border-white/[0.08]">
+                100% Light-Independent (Resistive)
               </td>
-              <td class="py-4 px-6 text-rose-400">Fails completely in low light</td>
-              <td class="py-4 px-6 text-emerald-400">Operable</td>
+              <td class="py-4 px-6 text-slate-500">Fails completely in low light</td>
+              <td class="py-4 px-6 text-slate-300">Operable</td>
             </tr>
 
-            <tr class="hover:bg-blue-900/20 transition">
-              <td class="py-4 px-6 font-semibold text-white">End-to-End Processing Latency</td>
-              <td class="py-4 px-6 text-emerald-400 font-bold bg-blue-950/40 border-x border-blue-800/40">
-                &lt; 15 ms (On-Device Inference)
+            <tr class="hover:bg-white/[0.02] transition">
+              <td class="py-4 px-6 font-semibold text-white">Inference Latency</td>
+              <td class="py-4 px-6 text-sky-400 font-bold bg-white/[0.02] border-x border-white/[0.08]">
+                &lt; 15 ms (ESP32-S3 Vector Int8)
               </td>
-              <td class="py-4 px-6 text-amber-400">120 - 350 ms (Camera / FPS bottleneck)</td>
+              <td class="py-4 px-6 text-slate-400">120 - 350 ms (Camera bottleneck)</td>
               <td class="py-4 px-6 text-slate-400">50 - 100 ms</td>
             </tr>
 
-            <tr class="hover:bg-blue-900/20 transition">
+            <tr class="hover:bg-white/[0.02] transition">
               <td class="py-4 px-6 font-semibold text-white">Privacy & Public Discretion</td>
-              <td class="py-4 px-6 text-emerald-400 font-bold bg-blue-950/40 border-x border-blue-800/40">
-                100% Private (Zero Camera Recording)
+              <td class="py-4 px-6 text-sky-400 font-bold bg-white/[0.02] border-x border-white/[0.08]">
+                100% Private (No Cameras)
               </td>
-              <td class="py-4 px-6 text-rose-400">Invasive cameras in public spaces</td>
-              <td class="py-4 px-6 text-emerald-400">No camera</td>
+              <td class="py-4 px-6 text-slate-500">Invasive video recording</td>
+              <td class="py-4 px-6 text-slate-300">No camera</td>
             </tr>
           </tbody>
         </table>
       </div>
+
     </div>
   </section>
 
-  <!-- ENGINEERING VISUAL ARCHIVE & GALLERY -->
-  <section id="gallery" class="py-24 bg-[#0A1C34] border-t border-blue-900/30">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+  <!-- ================================================================= -->
+  <!-- 8. ENGINEERING VISUAL ARCHIVE & GALLERY -->
+  <!-- ================================================================= -->
+  <section id="gallery" class="py-24 bg-[#0B0F19] border-t border-white/[0.07]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
       
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-        <div>
-          <span class="text-xs font-mono text-sky-400 uppercase tracking-widest font-bold">Research & Development Archive</span>
-          <h2 class="text-3xl sm:text-4xl font-display font-black text-white">Engineering Schematics & Prototypes</h2>
-          <p class="text-xs sm:text-sm text-slate-300 mt-1">Authentic circuit schematics, TinyML pipeline flowcharts, and fabrication photos from laboratory thesis research.</p>
-        </div>
+      <div class="border-b border-white/[0.08] pb-8">
+        <span class="font-mono text-xs text-sky-400 uppercase tracking-widest font-bold">06 // R&D ARCHIVE</span>
+        <h2 class="text-3xl sm:text-5xl font-display font-black text-white mt-1">Engineering Schematics & Prototypes</h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-2 max-w-2xl">
+          Authentic circuit schematics, TinyML pipeline flowcharts, and fabrication photos from laboratory research.
+        </p>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         
         <!-- Gallery 1: Glove Prototype Studio -->
-        <div class="tech-card rounded-3xl overflow-hidden p-4 space-y-3 group cursor-pointer" onclick="openLightbox('./website_assets/glove_prototype_studio.png', 'AURA v2 Bionic Smart Glove Physical Prototype')">
-          <div class="h-60 rounded-2xl overflow-hidden bg-[#071527] flex items-center justify-center p-3">
+        <div class="rounded-2xl border border-white/[0.08] bg-[#06080F] p-4 space-y-3 group cursor-pointer hover:border-sky-400 transition" onclick="openLightbox('./website_assets/glove_prototype_studio.png', 'AURA v2 Bionic Smart Glove Physical Prototype')">
+          <div class="h-60 rounded-xl overflow-hidden bg-white/5 flex items-center justify-center p-3">
             <img src="./website_assets/glove_prototype_studio.png" alt="AURA Glove Prototype" class="h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105">
           </div>
-          <div class="flex items-center justify-between text-xs px-1">
+          <div class="flex items-center justify-between text-xs px-1 font-mono">
             <span class="font-bold text-white">AURA v2 Physical Prototype</span>
-            <span class="font-mono text-sky-400 text-[11px]">Hardware Fabricated</span>
+            <span class="text-sky-400 text-[11px]">Hardware Fabricated</span>
           </div>
         </div>
 
         <!-- Gallery 2: Schematic Diagram -->
-        <div class="tech-card rounded-3xl overflow-hidden p-4 space-y-3 group cursor-pointer" onclick="openLightbox('./website_assets/hardware_schematic.png', 'Dual-Core Hardware Circuit Schematic Diagram')">
-          <div class="h-60 rounded-2xl overflow-hidden bg-[#071527] flex items-center justify-center p-2">
+        <div class="rounded-2xl border border-white/[0.08] bg-[#06080F] p-4 space-y-3 group cursor-pointer hover:border-sky-400 transition" onclick="openLightbox('./website_assets/hardware_schematic.png', 'Dual-Core Hardware Circuit Schematic Diagram')">
+          <div class="h-60 rounded-xl overflow-hidden bg-white/5 flex items-center justify-center p-2">
             <img src="./website_assets/hardware_schematic.png" alt="Hardware Schematic" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
           </div>
-          <div class="flex items-center justify-between text-xs px-1">
+          <div class="flex items-center justify-between text-xs px-1 font-mono">
             <span class="font-bold text-white">Circuit Schematic Diagram</span>
-            <span class="font-mono text-blue-400 text-[11px]">Dual-Core PCB</span>
+            <span class="text-sky-400 text-[11px]">Dual-Core PCB</span>
           </div>
         </div>
 
         <!-- Gallery 3: Algorithm Flowchart -->
-        <div class="tech-card rounded-3xl overflow-hidden p-4 space-y-3 group cursor-pointer" onclick="openLightbox('./website_assets/flowchart1.png', 'TinyML Signal Acquisition & Inference Flowchart')">
-          <div class="h-60 rounded-2xl overflow-hidden bg-[#071527] flex items-center justify-center p-2">
+        <div class="rounded-2xl border border-white/[0.08] bg-[#06080F] p-4 space-y-3 group cursor-pointer hover:border-sky-400 transition" onclick="openLightbox('./website_assets/flowchart1.png', 'TinyML Signal Acquisition & Inference Flowchart')">
+          <div class="h-60 rounded-xl overflow-hidden bg-white/5 flex items-center justify-center p-2">
             <img src="./website_assets/flowchart1.png" alt="TinyML Pipeline Flowchart" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
           </div>
-          <div class="flex items-center justify-between text-xs px-1">
+          <div class="flex items-center justify-between text-xs px-1 font-mono">
             <span class="font-bold text-white">TinyML Pipeline Flowchart</span>
-            <span class="font-mono text-sky-400 text-[11px]">C-LSTM Logic</span>
+            <span class="text-sky-400 text-[11px]">C-LSTM Logic</span>
           </div>
         </div>
 
         <!-- Gallery 4: 3D Printing & Fabrication -->
-        <div class="tech-card rounded-3xl overflow-hidden p-4 space-y-3 group cursor-pointer" onclick="openLightbox('./website_assets/3D_printing.png', '3D Printing & Phalange Ring Fabrication')">
-          <div class="h-60 rounded-2xl overflow-hidden bg-[#071527] flex items-center justify-center p-2">
+        <div class="rounded-2xl border border-white/[0.08] bg-[#06080F] p-4 space-y-3 group cursor-pointer hover:border-sky-400 transition" onclick="openLightbox('./website_assets/3D_printing.png', '3D Printing & Phalange Ring Fabrication')">
+          <div class="h-60 rounded-xl overflow-hidden bg-white/5 flex items-center justify-center p-2">
             <img src="./website_assets/3D_printing.png" alt="3D Printing Fabrication" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
           </div>
-          <div class="flex items-center justify-between text-xs px-1">
+          <div class="flex items-center justify-between text-xs px-1 font-mono">
             <span class="font-bold text-white">3D Phalange Mount Fabrication</span>
-            <span class="font-mono text-emerald-400 text-[11px]">Ergonomics</span>
+            <span class="text-sky-400 text-[11px]">Ergonomics</span>
           </div>
         </div>
 
         <!-- Gallery 5: AMOLED Display Interface -->
-        <div class="tech-card rounded-3xl overflow-hidden p-4 space-y-3 group cursor-pointer" onclick="openLightbox('./website_assets/amoled_ui.png', 'AMOLED Retina Graphical Interface')">
-          <div class="h-60 rounded-2xl overflow-hidden bg-[#05101F] flex items-center justify-center p-2">
+        <div class="rounded-2xl border border-white/[0.08] bg-[#06080F] p-4 space-y-3 group cursor-pointer hover:border-sky-400 transition" onclick="openLightbox('./website_assets/amoled_ui.png', 'AMOLED Retina Graphical Interface')">
+          <div class="h-60 rounded-xl overflow-hidden bg-[#04060A] flex items-center justify-center p-2">
             <img src="./website_assets/amoled_ui.png" alt="AMOLED GUI" class="h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105">
           </div>
-          <div class="flex items-center justify-between text-xs px-1">
+          <div class="flex items-center justify-between text-xs px-1 font-mono">
             <span class="font-bold text-white">AMOLED LVGL 8.3 Graphical UI</span>
-            <span class="font-mono text-amber-400 text-[11px]">Wrist Display</span>
+            <span class="text-sky-400 text-[11px]">Wrist Display</span>
           </div>
         </div>
 
         <!-- Gallery 6: Competition Poster -->
-        <div class="tech-card rounded-3xl overflow-hidden p-4 space-y-3 group cursor-pointer" onclick="openLightbox('./website_assets/demo_poster.png', 'Bach Khoa Innovation 2026 Project Showcase Poster')">
-          <div class="h-60 rounded-2xl overflow-hidden bg-[#071527] flex items-center justify-center p-2">
+        <div class="rounded-2xl border border-white/[0.08] bg-[#06080F] p-4 space-y-3 group cursor-pointer hover:border-sky-400 transition" onclick="openLightbox('./website_assets/demo_poster.png', 'Bach Khoa Innovation 2026 Project Showcase Poster')">
+          <div class="h-60 rounded-xl overflow-hidden bg-white/5 flex items-center justify-center p-2">
             <img src="./website_assets/demo_poster.png" alt="BKI26 Poster" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
           </div>
-          <div class="flex items-center justify-between text-xs px-1">
-            <span class="font-bold text-white">BKI 2026 Project Showcase Poster</span>
-            <span class="font-mono text-sky-400 text-[11px]">Official Pitch</span>
+          <div class="flex items-center justify-between text-xs px-1 font-mono">
+            <span class="font-bold text-white">BKI 2026 Project Poster</span>
+            <span class="text-sky-400 text-[11px]">Official Pitch</span>
           </div>
         </div>
 
@@ -1117,39 +1218,45 @@
     </div>
   </section>
 
-  <!-- LIGHTBOX MODAL -->
-  <div id="lightboxModal" class="fixed inset-0 z-50 bg-[#05101F]/95 backdrop-blur-sm hidden flex items-center justify-center p-4">
+  <!-- ================================================================= -->
+  <!-- 9. LIGHTBOX MODAL -->
+  <!-- ================================================================= -->
+  <div id="lightboxModal" class="fixed inset-0 z-50 bg-[#06080F]/95 backdrop-blur-md hidden flex items-center justify-center p-4">
     <div class="relative max-w-4xl w-full max-h-[90vh] flex flex-col items-center">
       <button onclick="closeLightbox()" class="absolute -top-12 right-0 text-slate-300 hover:text-white font-mono text-sm flex items-center gap-1.5">
         <span>Close [ESC]</span>
         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
-      <img id="lightboxImg" src="" alt="" class="max-w-full max-h-[75vh] object-contain rounded-2xl border border-blue-900/60 shadow-2xl">
+      <img id="lightboxImg" src="" alt="" class="max-w-full max-h-[75vh] object-contain rounded-2xl border border-white/[0.1] shadow-2xl">
       <div id="lightboxCaption" class="mt-4 text-sm font-mono text-slate-200 text-center"></div>
     </div>
   </div>
 
-  <!-- FOOTER -->
-  <footer class="border-t border-blue-900/30 bg-[#050E1E] py-16 text-slate-400 text-xs font-sans">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-8">
+  <!-- ================================================================= -->
+  <!-- 10. FOOTER -->
+  <!-- ================================================================= -->
+  <footer class="border-t border-white/[0.08] bg-[#04060A] py-16 text-slate-400 text-xs font-sans">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 flex flex-col md:flex-row items-center justify-between gap-8">
       
       <div class="flex items-center gap-4">
         <img src="./website_assets/logo_white.png" alt="AURA" class="h-8 w-auto">
-        <div class="border-l border-blue-900/60 pl-4 space-y-0.5">
+        <div class="border-l border-white/[0.1] pl-4 space-y-0.5">
           <div class="font-display font-bold text-sm text-white">AURA BIONIC SMART GLOVE</div>
-          <div class="text-[11px] text-slate-400">Bach Khoa Innovation 2026 • University Division</div>
+          <div class="text-[11px] text-slate-400 font-mono">Bach Khoa Innovation 2026 • University Division</div>
         </div>
       </div>
 
       <div class="text-center md:text-right space-y-1">
         <p class="text-slate-300 font-medium">Ho Chi Minh City University of Technology (HCMUT - VNU-HCM)</p>
-        <p class="text-slate-400 font-mono text-[11px]">Researched & Developed by Team AURA • All rights reserved 2026</p>
+        <p class="text-slate-500 font-mono text-[11px]">Researched & Developed by Team AURA • All rights reserved 2026</p>
       </div>
 
     </div>
   </footer>
 
-  <!-- SCRIPT ENGINE FOR INTERACTIVE DEMO -->
+  <!-- ================================================================= -->
+  <!-- 11. SCRIPT ENGINE FOR INTERACTIVE DEMO -->
+  <!-- ================================================================= -->
   <script>
     let currentTokens = [];
     let currentLang = 'en'; // 'en' or 'vi'
@@ -1198,16 +1305,16 @@
         listenContainer.classList.add('hidden');
         listenContainer.classList.remove('grid');
 
-        tabSign.className = "px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all bg-blue-600 text-white shadow-sm";
-        tabListen.className = "px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all text-slate-400 hover:text-white";
+        tabSign.className = "px-6 py-2.5 rounded-full font-bold uppercase tracking-wider transition-all bg-sky-400 text-slate-950 shadow-[0_0_15px_rgba(56,189,248,0.3)]";
+        tabListen.className = "px-6 py-2.5 rounded-full font-bold uppercase tracking-wider transition-all text-slate-400 hover:text-white";
       } else {
         listenContainer.classList.remove('hidden');
         listenContainer.classList.add('grid');
         signContainer.classList.add('hidden');
         signContainer.classList.remove('grid');
 
-        tabListen.className = "px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all bg-emerald-600 text-white shadow-sm";
-        tabSign.className = "px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all text-slate-400 hover:text-white";
+        tabListen.className = "px-6 py-2.5 rounded-full font-bold uppercase tracking-wider transition-all bg-sky-400 text-slate-950 shadow-[0_0_15px_rgba(56,189,248,0.3)]";
+        tabSign.className = "px-6 py-2.5 rounded-full font-bold uppercase tracking-wider transition-all text-slate-400 hover:text-white";
       }
     }
 
@@ -1293,21 +1400,12 @@
       countEl.innerText = currentTokens.length + " tokens";
 
       if (currentTokens.length === 0) {
-        container.innerHTML = '<span class="text-slate-400 italic text-xs">Click gesture buttons above to assemble sign tokens...</span>';
+        container.innerHTML = '<span class="text-slate-500 italic text-xs">Click gesture buttons above to assemble sign tokens...</span>';
       } else {
         container.innerHTML = currentTokens.map(t => 
-          `<span class="px-3 py-1 rounded-lg bg-blue-950 text-sky-400 border border-blue-700/50 text-xs font-mono font-bold">${t}</span>`
+          `<span class="px-3 py-1 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/30 text-xs font-mono font-bold">${t}</span>`
         ).join('');
       }
-    }
-
-    // Trigger Hold / Execution
-    function triggerHoldGesture() {
-      if (currentTokens.length === 0) {
-        currentTokens = ['Hello'];
-        updateTokenUI();
-      }
-      computeAutomaticResponse(true);
     }
 
     // Language toggle: English (en) / Tiếng Việt (vi)
@@ -1319,12 +1417,12 @@
       
       if (lang === 'vi') {
         label.innerText = 'Tiếng Việt';
-        btnVi.className = 'px-2.5 py-1 rounded bg-blue-600 text-white text-[10px] font-bold';
-        btnEn.className = 'px-2.5 py-1 rounded bg-blue-950 hover:bg-blue-900 text-slate-300 text-[10px] font-bold border border-blue-800/50';
+        btnVi.className = 'px-2.5 py-1 rounded bg-sky-400 text-slate-950 text-[10px] font-bold';
+        btnEn.className = 'px-2.5 py-1 rounded bg-[#080D17] hover:bg-white/[0.05] text-slate-300 text-[10px] font-bold border border-white/[0.1]';
       } else {
         label.innerText = 'English';
-        btnEn.className = 'px-2.5 py-1 rounded bg-blue-600 text-white text-[10px] font-bold';
-        btnVi.className = 'px-2.5 py-1 rounded bg-blue-950 hover:bg-blue-900 text-slate-300 text-[10px] font-bold border border-blue-800/50';
+        btnEn.className = 'px-2.5 py-1 rounded bg-sky-400 text-slate-950 text-[10px] font-bold';
+        btnVi.className = 'px-2.5 py-1 rounded bg-[#080D17] hover:bg-white/[0.05] text-slate-300 text-[10px] font-bold border border-white/[0.1]';
       }
 
       if (currentTokens.length > 0) {
@@ -1380,7 +1478,7 @@
       }
       
       document.getElementById('inboundSignSequence').innerHTML = tokens.map(t => 
-        `<span class="px-2.5 py-1 rounded-lg bg-blue-950 text-sky-300 text-xs font-mono font-bold border border-blue-700/40">${t}</span>`
+        `<span class="px-2.5 py-1 rounded-full bg-[#080D17] text-sky-400 text-xs font-mono font-bold border border-sky-400/30">${t}</span>`
       ).join('');
 
       speakText(speechText, 'en-US');
