@@ -404,101 +404,71 @@
         <!-- Left: Virtual Gestures & Sensor Gauges -->
         <div class="lg:col-span-7 space-y-8">
           
-          <div class="flex items-center justify-between border-b border-white/[0.08] pb-4">
+          <div class="flex items-center justify-between border-b border-white/[0.08] pb-4 flex-wrap gap-3">
             <div>
               <h3 class="text-sm font-mono font-bold text-white uppercase tracking-wider">
-                10 Biomechanical Gesture Lexicon
+                Sign Gesture Lexicon
               </h3>
               <p class="text-xs text-slate-400 font-mono mt-0.5">Click any sign to simulate real-time flex resistance vectors and vocalize speech</p>
             </div>
-            <button onclick="clearGestureBuffer()" class="text-xs font-mono px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.1] text-slate-300 hover:text-white hover:border-sky-400 transition flex items-center gap-1.5">
-              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-              <span>Reset</span>
-            </button>
+            <div class="flex items-center gap-2.5">
+              <label class="inline-flex items-center gap-2 cursor-pointer text-[11px] font-mono text-sky-400 bg-[#06080F] px-3 py-1.5 rounded-full border border-white/[0.1]">
+                <input type="checkbox" id="autoVoiceToggle" checked onchange="toggleAutoVoice(this.checked)" class="accent-sky-400 cursor-pointer">
+                <span>Auto-vocalize</span>
+              </label>
+              <button onclick="clearGestureBuffer()" class="text-xs font-mono px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.1] text-slate-300 hover:text-white hover:border-sky-400 transition flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                <span>Reset</span>
+              </button>
+            </div>
           </div>
 
-          <!-- 10 Gesture Buttons -->
+          <!-- Gesture Trigger Cards (Main Words Only, Clean & Focused) -->
           <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
             
-            <button onclick="addGesture('Hello', '04_Hello', 'Greeting', [80, 85, 90, 88, 82])" class="p-3.5 rounded-2xl bg-[#06080F] border border-white/[0.08] hover:border-sky-400 hover:bg-white/[0.02] transition text-left group">
-              <div class="flex items-center justify-between mb-1.5">
-                <span class="font-mono text-[11px] text-slate-400 font-semibold group-hover:text-sky-400">04_Hello</span>
-                <span class="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-sky-400 transition-colors"></span>
-              </div>
-              <div class="text-sm font-bold text-white font-display">Hello</div>
-              <div class="text-[11px] text-slate-400 font-mono">Greeting / Hi</div>
+            <button onclick="addGesture('Hello', '04_Hello', 'Greeting', [80, 85, 90, 88, 82])" class="py-4 px-4 rounded-2xl bg-[#06080F] border border-white/[0.08] hover:border-sky-400 hover:bg-sky-500/[0.05] hover:shadow-[0_0_16px_rgba(56,189,248,0.12)] transition-all flex items-center justify-between group cursor-pointer">
+              <span class="text-sm sm:text-base font-display font-bold text-white group-hover:text-sky-300 transition-colors">Hello</span>
+              <span class="w-2 h-2 rounded-full bg-slate-700 group-hover:bg-sky-400 group-hover:shadow-[0_0_8px_rgba(56,189,248,0.9)] transition-all"></span>
             </button>
 
-            <button onclick="addGesture('I', '05_I', 'Self / Me', [95, 15, 10, 15, 20])" class="p-3.5 rounded-2xl bg-[#06080F] border border-white/[0.08] hover:border-sky-400 hover:bg-white/[0.02] transition text-left group">
-              <div class="flex items-center justify-between mb-1.5">
-                <span class="font-mono text-[11px] text-slate-400 font-semibold group-hover:text-sky-400">05_I</span>
-                <span class="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-sky-400 transition-colors"></span>
-              </div>
-              <div class="text-sm font-bold text-white font-display">I</div>
-              <div class="text-[11px] text-slate-400 font-mono">Self / Myself</div>
+            <button onclick="addGesture('I', '05_I', 'Self / Me', [95, 15, 10, 15, 20])" class="py-4 px-4 rounded-2xl bg-[#06080F] border border-white/[0.08] hover:border-sky-400 hover:bg-sky-500/[0.05] hover:shadow-[0_0_16px_rgba(56,189,248,0.12)] transition-all flex items-center justify-between group cursor-pointer">
+              <span class="text-sm sm:text-base font-display font-bold text-white group-hover:text-sky-300 transition-colors">I</span>
+              <span class="w-2 h-2 rounded-full bg-slate-700 group-hover:bg-sky-400 group-hover:shadow-[0_0_8px_rgba(56,189,248,0.9)] transition-all"></span>
             </button>
 
-            <button onclick="addGesture('Meet', '06_Meet', 'Encounter', [65, 70, 75, 70, 60])" class="p-3.5 rounded-2xl bg-[#06080F] border border-white/[0.08] hover:border-sky-400 hover:bg-white/[0.02] transition text-left group">
-              <div class="flex items-center justify-between mb-1.5">
-                <span class="font-mono text-[11px] text-slate-400 font-semibold group-hover:text-sky-400">06_Meet</span>
-                <span class="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-sky-400 transition-colors"></span>
-              </div>
-              <div class="text-sm font-bold text-white font-display">Meet</div>
-              <div class="text-[11px] text-slate-400 font-mono">Encounter</div>
+            <button onclick="addGesture('Meet', '06_Meet', 'Encounter', [65, 70, 75, 70, 60])" class="py-4 px-4 rounded-2xl bg-[#06080F] border border-white/[0.08] hover:border-sky-400 hover:bg-sky-500/[0.05] hover:shadow-[0_0_16px_rgba(56,189,248,0.12)] transition-all flex items-center justify-between group cursor-pointer">
+              <span class="text-sm sm:text-base font-display font-bold text-white group-hover:text-sky-300 transition-colors">Meet</span>
+              <span class="w-2 h-2 rounded-full bg-slate-700 group-hover:bg-sky-400 group-hover:shadow-[0_0_8px_rgba(56,189,248,0.9)] transition-all"></span>
             </button>
 
-            <button onclick="addGesture('You', '07_You', 'Target', [20, 85, 20, 15, 15])" class="p-3.5 rounded-2xl bg-[#06080F] border border-white/[0.08] hover:border-sky-400 hover:bg-white/[0.02] transition text-left group">
-              <div class="flex items-center justify-between mb-1.5">
-                <span class="font-mono text-[11px] text-slate-400 font-semibold group-hover:text-sky-400">07_You</span>
-                <span class="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-sky-400 transition-colors"></span>
-              </div>
-              <div class="text-sm font-bold text-white font-display">You</div>
-              <div class="text-[11px] text-slate-400 font-mono">Partner / Target</div>
+            <button onclick="addGesture('You', '07_You', 'Target', [20, 85, 20, 15, 15])" class="py-4 px-4 rounded-2xl bg-[#06080F] border border-white/[0.08] hover:border-sky-400 hover:bg-sky-500/[0.05] hover:shadow-[0_0_16px_rgba(56,189,248,0.12)] transition-all flex items-center justify-between group cursor-pointer">
+              <span class="text-sm sm:text-base font-display font-bold text-white group-hover:text-sky-300 transition-colors">You</span>
+              <span class="w-2 h-2 rounded-full bg-slate-700 group-hover:bg-sky-400 group-hover:shadow-[0_0_8px_rgba(56,189,248,0.9)] transition-all"></span>
             </button>
 
-            <button onclick="addGesture('Happy', '08_Happy', 'Emotion', [70, 75, 80, 75, 70])" class="p-3.5 rounded-2xl bg-[#06080F] border border-white/[0.08] hover:border-sky-400 hover:bg-white/[0.02] transition text-left group">
-              <div class="flex items-center justify-between mb-1.5">
-                <span class="font-mono text-[11px] text-slate-400 font-semibold group-hover:text-sky-400">08_Happy</span>
-                <span class="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-sky-400 transition-colors"></span>
-              </div>
-              <div class="text-sm font-bold text-white font-display">Happy</div>
-              <div class="text-[11px] text-slate-400 font-mono">Joy / Positive</div>
+            <button onclick="addGesture('Happy', '08_Happy', 'Emotion', [70, 75, 80, 75, 70])" class="py-4 px-4 rounded-2xl bg-[#06080F] border border-white/[0.08] hover:border-sky-400 hover:bg-sky-500/[0.05] hover:shadow-[0_0_16px_rgba(56,189,248,0.12)] transition-all flex items-center justify-between group cursor-pointer">
+              <span class="text-sm sm:text-base font-display font-bold text-white group-hover:text-sky-300 transition-colors">Happy</span>
+              <span class="w-2 h-2 rounded-full bg-slate-700 group-hover:bg-sky-400 group-hover:shadow-[0_0_8px_rgba(56,189,248,0.9)] transition-all"></span>
             </button>
 
-            <button onclick="addGesture('Name', '09_Name', 'Identity', [45, 60, 65, 20, 20])" class="p-3.5 rounded-2xl bg-[#06080F] border border-white/[0.08] hover:border-sky-400 hover:bg-white/[0.02] transition text-left group">
-              <div class="flex items-center justify-between mb-1.5">
-                <span class="font-mono text-[11px] text-slate-400 font-semibold group-hover:text-sky-400">09_Name</span>
-                <span class="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-sky-400 transition-colors"></span>
-              </div>
-              <div class="text-sm font-bold text-white font-display">Name</div>
-              <div class="text-[11px] text-slate-400 font-mono">Identity / Label</div>
+            <button onclick="addGesture('Name', '09_Name', 'Identity', [45, 60, 65, 20, 20])" class="py-4 px-4 rounded-2xl bg-[#06080F] border border-white/[0.08] hover:border-sky-400 hover:bg-sky-500/[0.05] hover:shadow-[0_0_16px_rgba(56,189,248,0.12)] transition-all flex items-center justify-between group cursor-pointer">
+              <span class="text-sm sm:text-base font-display font-bold text-white group-hover:text-sky-300 transition-colors">Name</span>
+              <span class="w-2 h-2 rounded-full bg-slate-700 group-hover:bg-sky-400 group-hover:shadow-[0_0_8px_rgba(56,189,248,0.9)] transition-all"></span>
             </button>
 
-            <button onclick="addGesture('Thank_you', '02_Thank', 'Gratitude', [85, 90, 90, 85, 80])" class="p-3.5 rounded-2xl bg-[#06080F] border border-white/[0.08] hover:border-sky-400 hover:bg-white/[0.02] transition text-left group">
-              <div class="flex items-center justify-between mb-1.5">
-                <span class="font-mono text-[11px] text-slate-400 font-semibold group-hover:text-sky-400">02_Thank</span>
-                <span class="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-sky-400 transition-colors"></span>
-              </div>
-              <div class="text-sm font-bold text-white font-display">Thank You</div>
-              <div class="text-[11px] text-slate-400 font-mono">Gratitude</div>
+            <button onclick="addGesture('Thank_you', '02_Thank', 'Gratitude', [85, 90, 90, 85, 80])" class="py-4 px-4 rounded-2xl bg-[#06080F] border border-white/[0.08] hover:border-sky-400 hover:bg-sky-500/[0.05] hover:shadow-[0_0_16px_rgba(56,189,248,0.12)] transition-all flex items-center justify-between group cursor-pointer">
+              <span class="text-sm sm:text-base font-display font-bold text-white group-hover:text-sky-300 transition-colors">Thank You</span>
+              <span class="w-2 h-2 rounded-full bg-slate-700 group-hover:bg-sky-400 group-hover:shadow-[0_0_8px_rgba(56,189,248,0.9)] transition-all"></span>
             </button>
 
-            <button onclick="addGesture('Good_bye', '03_Bye', 'Farewell', [75, 80, 85, 80, 75])" class="p-3.5 rounded-2xl bg-[#06080F] border border-white/[0.08] hover:border-sky-400 hover:bg-white/[0.02] transition text-left group">
-              <div class="flex items-center justify-between mb-1.5">
-                <span class="font-mono text-[11px] text-slate-400 font-semibold group-hover:text-sky-400">03_Bye</span>
-                <span class="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-sky-400 transition-colors"></span>
-              </div>
-              <div class="text-sm font-bold text-white font-display">Goodbye</div>
-              <div class="text-[11px] text-slate-400 font-mono">Farewell</div>
+            <button onclick="addGesture('Good_bye', '03_Bye', 'Farewell', [75, 80, 85, 80, 75])" class="py-4 px-4 rounded-2xl bg-[#06080F] border border-white/[0.08] hover:border-sky-400 hover:bg-sky-500/[0.05] hover:shadow-[0_0_16px_rgba(56,189,248,0.12)] transition-all flex items-center justify-between group cursor-pointer">
+              <span class="text-sm sm:text-base font-display font-bold text-white group-hover:text-sky-300 transition-colors">Goodbye</span>
+              <span class="w-2 h-2 rounded-full bg-slate-700 group-hover:bg-sky-400 group-hover:shadow-[0_0_8px_rgba(56,189,248,0.9)] transition-all"></span>
             </button>
 
-            <button onclick="addGesture('Rest', '01_Rest', 'Neutral', [15, 15, 15, 15, 15])" class="p-3.5 rounded-2xl bg-[#06080F] border border-white/[0.08] hover:border-sky-400 hover:bg-white/[0.02] transition text-left group">
-              <div class="flex items-center justify-between mb-1.5">
-                <span class="font-mono text-[11px] text-slate-400 font-semibold group-hover:text-sky-400">01_Rest</span>
-                <span class="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-sky-400 transition-colors"></span>
-              </div>
-              <div class="text-sm font-bold text-white font-display">Rest</div>
-              <div class="text-[11px] text-slate-400 font-mono">Neutral Position</div>
+            <button onclick="addGesture('Rest', '01_Rest', 'Neutral', [15, 15, 15, 15, 15])" class="py-4 px-4 rounded-2xl bg-[#06080F] border border-white/[0.08] hover:border-sky-400 hover:bg-sky-500/[0.05] hover:shadow-[0_0_16px_rgba(56,189,248,0.12)] transition-all flex items-center justify-between group cursor-pointer">
+              <span class="text-sm sm:text-base font-display font-bold text-white group-hover:text-sky-300 transition-colors">Rest</span>
+              <span class="w-2 h-2 rounded-full bg-slate-700 group-hover:bg-sky-400 group-hover:shadow-[0_0_8px_rgba(56,189,248,0.9)] transition-all"></span>
             </button>
 
           </div>
@@ -580,32 +550,6 @@
             </div>
           </div>
 
-          <!-- Quick Presets -->
-          <div class="space-y-3 pt-1">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-mono">
-              <span class="text-slate-300 uppercase tracking-wider font-semibold">Discrete Word Presets:</span>
-              <label class="inline-flex items-center gap-2 cursor-pointer text-[11px] text-sky-400 bg-[#06080F] px-3 py-1.5 rounded-full border border-white/[0.1]">
-                <input type="checkbox" id="autoVoiceToggle" checked onchange="toggleAutoVoice(this.checked)" class="accent-sky-400 cursor-pointer">
-                <span>Auto-vocalize on touch</span>
-              </label>
-            </div>
-            
-            <div class="flex flex-wrap gap-2">
-              <button onclick="loadScenario(['Hello'])" class="px-4 py-2 rounded-full text-xs font-mono bg-sky-400 text-slate-950 font-bold hover:bg-white transition flex items-center gap-2">
-                <span>👋 "Hello"</span>
-              </button>
-              <button onclick="loadScenario(['Thank_you'])" class="px-4 py-2 rounded-full text-xs font-mono bg-[#06080F] border border-white/[0.1] hover:border-sky-400 text-slate-200 transition">
-                🙏 "Thank You"
-              </button>
-              <button onclick="loadScenario(['Good_bye'])" class="px-4 py-2 rounded-full text-xs font-mono bg-[#06080F] border border-white/[0.1] hover:border-sky-400 text-slate-200 transition">
-                👋 "Goodbye"
-              </button>
-              <button onclick="loadScenario(['Hello', 'You', 'Happy'])" class="px-4 py-2 rounded-full text-xs font-mono bg-[#06080F] border border-white/[0.1] hover:border-sky-400 text-slate-200 transition">
-                🤝 "Hello • You • Happy"
-              </button>
-            </div>
-          </div>
-
         </div>
 
         <!-- Right: Simulated LilyGO AMOLED Display Module -->
@@ -646,7 +590,7 @@
                   </div>
                   
                   <div id="amoledSpeech" class="p-4 rounded-xl bg-[#0A101D] border border-sky-400/30 text-xs sm:text-sm text-slate-100 font-medium leading-relaxed min-h-[105px] flex items-center justify-center text-center">
-                    "Tap any gesture on the left or choose a Preset to vocalize discrete words!"
+                    "Tap any gesture on the left to simulate kinematics and vocalize discrete speech!"
                   </div>
                 </div>
 
@@ -1499,7 +1443,7 @@
     function clearGestureBuffer() {
       currentTokens = [];
       document.getElementById('amoledTokens').innerText = "Awaiting hand gesture kinematics...";
-      document.getElementById('amoledSpeech').innerText = '"Queue cleared. Tap any gesture or select a Preset to test discrete speech."';
+      document.getElementById('amoledSpeech').innerText = '"Queue cleared. Tap any gesture to test discrete speech."';
       document.getElementById('btnSpeakAudio').classList.add('hidden');
       document.getElementById('avatarSignLabel').innerText = "System: Ready";
       document.getElementById('avatarSignSub').innerText = "Latency: 11.8ms";
