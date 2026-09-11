@@ -140,32 +140,31 @@
   <!-- ================================================================= -->
   <!-- 2. NAVIGATION BAR -->
   <!-- ================================================================= -->
-  <nav class="border-b border-white/[0.07] bg-[#06080F]/80 backdrop-blur-xl sticky top-9 z-40">
-    <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex items-center justify-between">
+  <nav class="border-b border-white/[0.07] bg-[#06080F]/90 backdrop-blur-xl sticky top-[53px] z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 py-3.5 flex items-center justify-between">
       
-      <!-- Brand Logo (Enlarged, Clean Logo without Subtext) -->
+      <!-- Brand Logo (Enlarged 1.5x, Bold & Majestic) -->
       <a href="#" class="flex items-center gap-3 group">
-        <img src="./website_assets/logo_white.png" alt="AURA Logo" class="h-11 sm:h-12 w-auto transition-transform group-hover:scale-105">
+        <img src="./website_assets/logo_white.png" alt="AURA Logo" class="h-16 sm:h-[72px] w-auto transition-transform group-hover:scale-105">
       </a>
 
-      <!-- Desktop Nav Links -->
-      <div class="hidden lg:flex items-center gap-8 text-xs font-mono tracking-wider uppercase text-slate-300">
-        <a href="#overview" class="hover:text-sky-400 transition-colors">01. Overview</a>
-        <a href="#interactive-demo" class="hover:text-sky-400 transition-colors flex items-center gap-1.5 text-sky-400 font-bold">
-          <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+      <!-- Desktop Nav Links (Bold, Crisp White) -->
+      <div class="hidden lg:flex items-center gap-8 text-xs sm:text-sm font-display font-bold tracking-wider uppercase">
+        <a href="#overview" class="text-white hover:text-sky-400 transition-colors">01. Overview</a>
+        <a href="#interactive-demo" class="text-white hover:text-sky-400 transition-colors flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
           02. Live Studio
         </a>
-        <a href="#hardware" class="hover:text-sky-400 transition-colors">03. Hardware Blueprint</a>
-        <a href="#two-way" class="hover:text-sky-400 transition-colors">04. Two-Way Flow</a>
-        <a href="#benchmark" class="hover:text-sky-400 transition-colors">05. Benchmark</a>
-        <a href="#gallery" class="hover:text-sky-400 transition-colors">06. Archive</a>
+        <a href="#hardware" class="text-white hover:text-sky-400 transition-colors">03. Hardware Blueprint</a>
+        <a href="#two-way" class="text-white hover:text-sky-400 transition-colors">04. Two-Way Flow</a>
+        <a href="#benchmark" class="text-white hover:text-sky-400 transition-colors">05. Benchmark</a>
+        <a href="#gallery" class="text-white hover:text-sky-400 transition-colors">06. Archive</a>
       </div>
 
-      <!-- Header CTA -->
+      <!-- Header CTA (Square / Rectangular, White Text, No Arrow) -->
       <div class="flex items-center gap-3">
-        <a href="#interactive-demo" class="relative group px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-slate-950 bg-sky-400 hover:bg-white transition-all shadow-[0_0_20px_rgba(56,189,248,0.35)] flex items-center gap-2">
-          <span>Test Gestures</span>
-          <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        <a href="#interactive-demo" class="px-6 py-3 rounded-lg text-xs sm:text-sm font-display font-black uppercase tracking-wider text-white bg-sky-500 hover:bg-sky-400 transition-all shadow-[0_0_20px_rgba(56,189,248,0.35)] flex items-center justify-center">
+          Test Gestures
         </a>
       </div>
     </div>
