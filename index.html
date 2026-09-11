@@ -806,10 +806,10 @@
         <div class="lg:col-span-7 space-y-6">
           <div class="border-b border-white/[0.08] pb-4">
             <h3 class="text-sm font-mono font-bold text-white uppercase tracking-wider flex items-center gap-2">
-              <span>Two-Way Gemini AI Chat Assistant</span>
+              <span>Gemini AI Assistant for Deaf Users</span>
               <span class="text-[10px] px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 border border-sky-500/20">Gemini LLM</span>
             </h3>
-            <p class="text-xs text-slate-400 font-mono mt-0.5">Test intelligent sign-to-dialogue expansion and contextual conversational AI</p>
+            <p class="text-xs text-slate-400 font-mono mt-0.5">Intelligent sign expansion and visual text guidance rendered directly on wrist AMOLED</p>
           </div>
 
           <!-- Quick Chat Prompts -->
@@ -824,7 +824,7 @@
               <button onclick="sendAIChat('How do you recognize sign language without cameras?', 'I use 5 custom flex sensor strips along the fingers and a 6-axis IMU to measure joint angles and velocity directly on-device.')" class="p-4 rounded-2xl bg-[#06080F] border border-white/[0.08] hover:border-sky-400 text-left text-xs text-slate-200 font-mono transition">
                 🤖 "How do you recognize signs without cameras?"
               </button>
-              <button onclick="sendAIChat('Help me order coffee in sign language.', 'Sign: Hello • Coffee • Thank you. The onboard speaker will vocalize: "Hello, I would like to order a coffee, thank you!"')" class="p-4 rounded-2xl bg-[#06080F] border border-white/[0.08] hover:border-sky-400 text-left text-xs text-slate-200 font-mono transition">
+              <button onclick="sendAIChat('Help me order coffee in sign language.', 'Sign: Hello • Coffee • Thank you. The glove speaker will vocalize your order out loud to the barista!')" class="p-4 rounded-2xl bg-[#06080F] border border-white/[0.08] hover:border-sky-400 text-left text-xs text-slate-200 font-mono transition">
                 ☕ "Help me order coffee in sign language"
               </button>
               <button onclick="sendAIChat('Why is on-device TinyML better for privacy?', 'Because all sensor calculations run locally on the ESP32-S3 chip. No personal video or voice recordings leave your glove.')" class="p-4 rounded-2xl bg-[#06080F] border border-white/[0.08] hover:border-sky-400 text-left text-xs text-slate-200 font-mono transition">
@@ -847,7 +847,7 @@
             <button onclick="toggleWorkflow('chat')" class="w-full p-4 rounded-2xl bg-[#13243C] hover:bg-[#182E4D] text-left transition-all flex items-center justify-between group shadow-md border-0">
               <div class="flex items-center gap-3">
                 <span class="w-2.5 h-2.5 rounded-full bg-sky-400 animate-pulse"></span>
-                <span class="text-xs sm:text-sm font-bold text-white tracking-wide">How It Works: User Input ⟶ Gemini Context Engine ⟶ Intelligent Assistant</span>
+                <span class="text-xs sm:text-sm font-bold text-white tracking-wide">How It Works: Sign & Prompt Input ⟶ Gemini Context Engine ⟶ Visual AMOLED Guidance</span>
               </div>
               <span id="chatWorkflowArrow" class="text-xs font-bold text-sky-400 shrink-0">View Workflow ↓</span>
             </button>
@@ -855,15 +855,15 @@
             <div id="chatWorkflowDetails" class="hidden p-5 rounded-2xl bg-[#0E1B2D] text-xs space-y-3.5 border-0 shadow-inner">
               <div class="flex items-start gap-3">
                 <span class="px-2.5 py-1 rounded-lg bg-sky-400 text-slate-950 font-bold text-[11px] shrink-0">Step 1</span>
-                <div class="text-white leading-relaxed"><strong class="text-sky-300">User Input Ingestion:</strong> Signs or voice query are captured and packed into lightweight contextual tokens.</div>
+                <div class="text-white leading-relaxed"><strong class="text-sky-300">Sign & Prompt Ingestion:</strong> Deaf user inputs sign gestures or selects contextual queries, converted into semantic tokens.</div>
               </div>
               <div class="flex items-start gap-3">
                 <span class="px-2.5 py-1 rounded-lg bg-sky-400 text-slate-950 font-bold text-[11px] shrink-0">Step 2</span>
-                <div class="text-white leading-relaxed"><strong class="text-sky-300">Gemini AI Reasoning:</strong> LLM analyzes intention, expands abbreviated sign tokens, and generates polite natural phrasing.</div>
+                <div class="text-white leading-relaxed"><strong class="text-sky-300">Gemini AI Reasoning:</strong> Cloud LLM analyzes context, expands abbreviated sign tokens into full natural sentences, and formulates visual advice.</div>
               </div>
               <div class="flex items-start gap-3">
                 <span class="px-2.5 py-1 rounded-lg bg-sky-400 text-slate-950 font-bold text-[11px] shrink-0">Step 3</span>
-                <div class="text-white leading-relaxed"><strong class="text-sky-300">Dual-Modal Response:</strong> Streaming text response renders on wrist AMOLED while spoken response sounds via speaker.</div>
+                <div class="text-white leading-relaxed"><strong class="text-sky-300">Visual AMOLED Display:</strong> Real-time streaming text renders directly on the wrist AMOLED screen for the deaf user to read — 100% visual interface, no audio needed.</div>
               </div>
             </div>
           </div>
@@ -890,7 +890,7 @@
                 
                 <!-- Welcome Assistant Message -->
                 <div class="p-3 rounded-2xl bg-[#0B1220] border border-white/[0.08] text-slate-200 leading-relaxed max-w-[88%]">
-                  Hello! I am AURA Gemini Assistant. Tap any scenario or ask a question to test two-way conversational AI.
+                  Hello! I am your AURA Gemini Assistant. Tap any scenario or ask a question — answers display visually on your wrist screen.
                 </div>
 
               </div>
@@ -1613,8 +1613,7 @@
         historyEl.scrollTop = historyEl.scrollHeight;
         statusEl.innerText = "Online";
 
-        // Speak assistant answer
-        speakText(answerText, 'en-US');
+        // Render visual assistant response only (100% accessible visual display for deaf users)
       }, 700);
     }
 
