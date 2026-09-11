@@ -133,10 +133,10 @@
   <!-- ================================================================= -->
   <!-- 1. TOP COMPETITION BANNER (BKI26) -->
   <!-- ================================================================= -->
-  <header class="border-b border-white/[0.08] bg-[#070E1A]/95 backdrop-blur-md py-3.5 px-4 sm:px-8 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
-      <div class="flex items-center gap-3 sm:gap-4 flex-wrap">
-        <span class="font-display font-black text-white text-base sm:text-xl tracking-tight">
+  <header class="border-b border-white/[0.08] bg-[#070E1A]/95 backdrop-blur-md py-2.5 sm:py-3.5 px-4 sm:px-8 relative z-30">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3 sm:gap-4">
+      <div class="flex items-center gap-2 sm:gap-4 flex-wrap">
+        <span class="font-display font-black text-white text-sm sm:text-xl tracking-tight">
           BACH KHOA INNOVATION 2026
         </span>
         <span class="text-slate-600 hidden sm:inline text-lg font-black">/</span>
@@ -145,7 +145,7 @@
         </span>
       </div>
       <div class="flex items-center gap-2">
-        <span class="font-display font-black text-xs sm:text-sm text-sky-400 tracking-wider uppercase">
+        <span class="font-display font-black text-[11px] sm:text-sm text-sky-400 tracking-wider uppercase">
           Official Project Showcase
         </span>
       </div>
@@ -153,14 +153,14 @@
   </header>
 
   <!-- ================================================================= -->
-  <!-- 2. NAVIGATION BAR -->
+  <!-- 2. NAVIGATION BAR (Clean & Sticky at top-0, No Overlap) -->
   <!-- ================================================================= -->
-  <nav class="border-b border-white/[0.07] bg-[#06080F]/90 backdrop-blur-xl sticky top-[53px] z-40">
-    <div class="max-w-7xl mx-auto px-4 sm:px-8 py-3.5 flex items-center justify-between gap-4">
+  <nav class="border-b border-white/[0.07] bg-[#06080F]/95 backdrop-blur-xl sticky top-0 z-40 py-2.5 sm:py-3.5 px-4 sm:px-8">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
       
-      <!-- Brand Logo (Enlarged 1.5x, Bold & Majestic) -->
+      <!-- Brand Logo -->
       <a href="#" class="flex items-center gap-3 group shrink-0">
-        <img src="./website_assets/logo_white.png" alt="AURA Logo" class="h-16 sm:h-[72px] w-auto transition-transform group-hover:scale-105">
+        <img src="./website_assets/logo_white.png" alt="AURA Logo" class="h-10 sm:h-16 w-auto transition-transform group-hover:scale-105">
       </a>
 
       <!-- Desktop Nav Links (Bold, Crisp White, No Numbers, Single Line) -->
@@ -398,16 +398,19 @@
           </p>
         </div>
 
-        <!-- 3-Mode Toggle Switcher (Sign / Listen / AI Chat) -->
-        <div class="flex items-center p-1 rounded-full bg-[#06080F] border border-white/[0.12] shrink-0 font-mono text-xs flex-wrap gap-1">
-          <button id="tabSignMode" onclick="switchStudioMode('sign')" class="px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full font-bold uppercase tracking-wider transition-all bg-sky-400 text-slate-950 text-[11px] sm:text-xs shadow-[0_0_15px_rgba(56,189,248,0.3)]">
-            I Sign (Glove ⟶ Speech)
+        <!-- 3-Mode Toggle Switcher (Sign / Listen / AI Chat - Sleek Segmented Control) -->
+        <div class="w-full sm:w-auto grid grid-cols-3 sm:flex items-center p-1 rounded-xl sm:rounded-full bg-[#06080F] border border-white/[0.12] shrink-0 font-mono text-xs gap-1">
+          <button id="tabSignMode" onclick="switchStudioMode('sign')" class="w-full sm:w-auto px-2.5 sm:px-5 py-2 rounded-lg sm:rounded-full font-bold uppercase tracking-wider transition-all bg-sky-400 text-slate-950 text-center text-xs shadow-[0_0_15px_rgba(56,189,248,0.3)]">
+            <span class="sm:hidden">Sign</span>
+            <span class="hidden sm:inline">I Sign (Glove ⟶ Speech)</span>
           </button>
-          <button id="tabListenMode" onclick="switchStudioMode('listen')" class="px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full font-bold uppercase tracking-wider transition-all text-slate-400 hover:text-white text-[11px] sm:text-xs">
-            I Listen (Voice ⟶ Signs)
+          <button id="tabListenMode" onclick="switchStudioMode('listen')" class="w-full sm:w-auto px-2.5 sm:px-5 py-2 rounded-lg sm:rounded-full font-bold uppercase tracking-wider transition-all text-slate-400 hover:text-white text-center text-xs">
+            <span class="sm:hidden">Listen</span>
+            <span class="hidden sm:inline">I Listen (Voice ⟶ Signs)</span>
           </button>
-          <button id="tabChatMode" onclick="switchStudioMode('chat')" class="px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full font-bold uppercase tracking-wider transition-all text-slate-400 hover:text-white text-[11px] sm:text-xs flex items-center gap-1.5">
-            <span>AI Chat (Gemini)</span>
+          <button id="tabChatMode" onclick="switchStudioMode('chat')" class="w-full sm:w-auto px-2.5 sm:px-5 py-2 rounded-lg sm:rounded-full font-bold uppercase tracking-wider transition-all text-slate-400 hover:text-white text-center text-xs flex items-center justify-center gap-1.5">
+            <span class="sm:hidden">AI Chat</span>
+            <span class="hidden sm:inline">AI Chat (Gemini)</span>
             <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
           </button>
         </div>
@@ -805,9 +808,8 @@
         <!-- Left / Bottom: AI Chat Prompts & Interactive Input -->
         <div class="lg:col-span-7 space-y-4 sm:space-y-6 order-2 lg:order-1">
           <div class="border-b border-white/[0.08] pb-3 sm:pb-4">
-            <h3 class="text-xs sm:text-sm font-mono font-bold text-white uppercase tracking-wider flex items-center gap-2">
-              <span>Gemini AI Assistant for Deaf Users</span>
-              <span class="text-[10px] px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 border border-sky-500/20">Gemini LLM</span>
+            <h3 class="text-xs sm:text-sm font-mono font-bold text-white uppercase tracking-wider">
+              Gemini AI Assistant for Deaf Users
             </h3>
             <p class="text-xs text-slate-400 font-mono mt-0.5 hidden sm:block">Intelligent sign expansion and visual text guidance rendered directly on wrist AMOLED</p>
           </div>
@@ -1386,12 +1388,12 @@
       chatContainer.classList.remove('grid');
 
       // Reset tab styling
-      const defaultTab = "px-5 py-2 rounded-full font-bold uppercase tracking-wider transition-all text-slate-400 hover:text-white";
-      const activeTab = "px-5 py-2 rounded-full font-bold uppercase tracking-wider transition-all bg-sky-400 text-slate-950 shadow-[0_0_15px_rgba(56,189,248,0.3)]";
+      const defaultTab = "w-full sm:w-auto px-2.5 sm:px-5 py-2 rounded-lg sm:rounded-full font-bold uppercase tracking-wider transition-all text-slate-400 hover:text-white text-center text-xs";
+      const activeTab = "w-full sm:w-auto px-2.5 sm:px-5 py-2 rounded-lg sm:rounded-full font-bold uppercase tracking-wider transition-all bg-sky-400 text-slate-950 text-center text-xs shadow-[0_0_15px_rgba(56,189,248,0.3)]";
 
       tabSign.className = defaultTab;
       tabListen.className = defaultTab;
-      tabChat.className = defaultTab + " flex items-center gap-1.5";
+      tabChat.className = defaultTab + " flex items-center justify-center gap-1.5";
 
       if (mode === 'sign') {
         signContainer.classList.remove('hidden');
@@ -1404,7 +1406,7 @@
       } else if (mode === 'chat') {
         chatContainer.classList.remove('hidden');
         chatContainer.classList.add('grid');
-        tabChat.className = activeTab + " flex items-center gap-1.5";
+        tabChat.className = activeTab + " flex items-center justify-center gap-1.5";
       }
     }
 
